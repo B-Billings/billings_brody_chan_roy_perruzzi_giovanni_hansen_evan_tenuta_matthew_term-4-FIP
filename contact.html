@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Contact Page</title>
+</head>
+<body>
+  <main>
+    <h1 class="hidden">Contact Page</h1>
+    <header>
+
+    </header>
+      <section>
+        <h2 class="hidden">Mail Form</h2>
+      <form action="includes/mail/send.php" method="POST" id="mail-form">
+          <label for="firstname">First Name</label>
+          <input ref="fname" type="text" id="firstname" name="firstname" required="required">
+
+          <label for="lastname">Last Name</label>
+          <input ref="lname" type="text" id="lastname" name="lastname" required>
+
+          <label for="firstname">Email</label>
+          <input ref="email" type="email" id="email" name="email" required>
+
+          <label for="message">Your Message</label>
+          <textarea ref="message" name="message" id="message" cols="30" rows="10"></textarea>
+
+          <label for="phone">Your Phone # <i>(optional)</i></label>
+          <input ref="phone" type="tel" value="tel" name="phone">
+          
+          <div class="wrapper">
+              <input @click.prevent="processMail" type="submit" class="submit" value="Submit!">
+          </div>                              
+      </form>
+      </section>
+  </main>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="js/main.js" type="module" defer></script>
+</html>
