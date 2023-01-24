@@ -9,7 +9,7 @@
         if($runAll){
             return $runAll;
         }else{
-            $error = "It Broke";
+            $error = "oops";
             return $error;
         }
         mysqli_close($link);
