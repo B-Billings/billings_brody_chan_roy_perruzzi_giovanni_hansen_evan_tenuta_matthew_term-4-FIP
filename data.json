@@ -1,0 +1,29 @@
+{
+    "proj1": {
+        "ad_id": "1",
+        "ad_name": "Ad 1",
+        "ad_desc": "place desc here",
+        "ad_image": "placeholder.png"
+    },
+
+    "proj2": {
+        "ad_id": "2",
+        "ad_name": "Ad 2",
+        "ad_desc": "place desc here",
+        "ad_image": "placeholder.png"
+    },
+    "proj3": {
+        "ad_id": "3",
+        "ad_name": "Ad 3",
+        "ad_desc": "place desc here",
+        "ad_image": "placeholder.png"
+    },
+
+    "proj4": {
+        "ad_id": "4",
+        "ad_name": "Ad 4",
+        "ad_desc": "place desc here",
+        "ad_image": "placeholder.png"
+    }
+    
+}

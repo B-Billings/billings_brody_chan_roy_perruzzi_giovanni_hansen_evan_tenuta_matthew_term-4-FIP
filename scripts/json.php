@@ -8,8 +8,8 @@
     require_once("config.php");
 
     // return all results
-    $getContent = getAll('tbl_projects');
-    $label = "proj_name";
+    $getContent = getAll('tbl_models');
+    $label = "car_name";
 
     $grpResult = "";
     $grpResult .= "{";

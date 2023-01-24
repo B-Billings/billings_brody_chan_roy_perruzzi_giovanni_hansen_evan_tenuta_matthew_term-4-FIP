@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>How you can help</title>
+</head>
+<body>
+    <h1 class="hidden">main content</h1>
+    <header class="mainheader">
+        <nav id="mainnav">
+          <h2 class="hidden">Main Navigation</h2>
+          <div class="ncontent">
+            <a id="logo" href="index.html"> <img src="images/" alt="Logo"></a>
+            <button id="navbutton"></button>
+          </div>
+              <div id="menucontent">
+                <ul id="togglemenu">
+                  <li><a href="index.html"> HOME </a></li>
+                  <li><a href="help.html"> HOW YOU CAN HELP </a></li>
+                  <li><a href="aboutus.html"> ABOUT US</a></li>
+                  <li><a href="blog.html"> BLOG </a></li>  
+                  <li><a href="contact.html"> CONTACT </a></li>            
+                </ul>
+            </div>
+        </nav>
+      </header>
+    <section id="hero">
+        <h2 class="hidden">hero image</h2>
+        <img src="https://via.placeholder.com/1920x550/0000FF/808080 ?Text=Digital.com" alt="">
+    </section>
+
+    <main id="app">  
+        <h2 class="hidden">Promotional content</h2>  
+            <section class="locked" v-show="displayothers">
+                <h3 class="hidden">Project display</h3>
+                         <portstuff v-for="item in ProjectData" :item="item"></portstuff>
+            </section>
+          </main>
+          <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="js/components/menu.js" type="module" defer></script>
+<script src="js/gsap.js" > </script>
+<script src="js/main.js" type="module" defer></script>
+
+        </body>

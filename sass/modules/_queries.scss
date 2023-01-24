@@ -1,0 +1,148 @@
+@media only screen and (max-width:699px) {
+    .ncontent button{
+        display: block;
+    }
+    
+    .ncontent{
+        max-width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        padding: 4em;
+            }
+    .ncontent img{
+    max-width: 100%;
+    padding: 0 0 0 0;
+    }
+            #mainnav button
+            {
+              background-image: url("../images/menu.png");
+              background-color: rgb(7, 7, 7);
+              background-size: 50px 50px;
+              height: 50px;
+              width: 50px;
+              border: 2px;
+              transition: all 300ms ease;
+            }
+    
+            #mainnav button.expanded
+            {
+                transform: rotate(90deg);
+            }
+    
+            #mainnav ul li {
+                margin-top: 5px;
+            }
+    
+            #mainnav li a
+            {
+                display: block;
+                padding: 20px 0 20px 0;
+                text-align: center;
+                width: 100%;
+                text-decoration: none;
+                color: rgb(0, 0, 0);
+            }
+            #menucontent
+            {
+                display: none;
+            }
+    
+            #menucontent.slideToggle
+            {
+                display: block;
+            }
+    
+            #togglemenu{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: rgb(245, 228, 206);
+    
+            }
+            
+            #logo{
+                width: 200px;
+            }
+    
+}
+
+@media only screen and (min-width:700px) {
+
+  #logo{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: auto;
+    opacity: auto;
+
+}
+#logo img{
+  scale: 100%;
+}
+    .ncontent button{
+        display: none;
+    }
+    
+    .ncontent img{
+      max-width: 100%;
+    }
+    
+    .ncontent{
+    max-width: 100%;
+      justify-content: center;
+      
+    }
+    .ncontent img{
+      max-height: 150px;
+    }
+    #menucontent{
+        display: contents;
+        
+    }
+
+    #togglemenu{
+      height: 4em;
+      align-items: center;
+    
+    }
+    
+    .mainnav{
+        display: flex;
+        flex-direction: column;
+    }
+    #togglemenu{
+        display: flex;
+        flex-direction: row;
+      justify-content: space-around;
+      background-color: #c977da;
+    }
+    
+    #mainnav li a{
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+    }
+    
+    #mainnav a:hover{
+      color: rgb(57, 53, 53);
+      transition: 2s ease;
+    }
+    
+    .maincon{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      padding: 2em;
+      align-items: center;
+  }
+  
+  .maincontxt{
+      display: flex;
+      flex-direction: column;
+      width: 70%;
+      padding: 2em;
+  }
+  
+  
+  }

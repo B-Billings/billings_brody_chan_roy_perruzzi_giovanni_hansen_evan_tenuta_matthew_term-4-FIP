@@ -1,0 +1,93 @@
+.maincon{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    align-items: center;
+}
+
+.maincontxt{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    padding: 2em;
+}
+
+
+// This area is for the how you can help page
+#vueimg{
+    cursor: pointer;
+    padding: 2em;
+    max-width: 400px;
+    transition: ease-in-out 1s;
+}
+
+#vueimg:hover{
+    transform: scale(1.1);
+}
+
+#imagename{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.projinfo{
+    max-width: 300px;
+    width: 100%;
+border: solid #42eec3 7px;
+
+}
+
+#app{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: none;
+}
+
+.locked{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: none;
+    max-width: 60%;
+}
+
+
+
+#lineuphead{
+    font-size: 6vw;
+    width: 100%;
+    text-align: center;
+    padding: 1em;
+}
+
+#undername{
+    font-size: 3em;
+    padding: .70em;
+    max-width: 300px;
+    overflow: none;
+}
+
+.locked{
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+#projectcont{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+
+.selector{
+    overflow: none;
+}
