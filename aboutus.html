@@ -1,33 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
-    <title>About us Page</title>
-</head>
-<body>
-<h1 class="hidden">Main content</h1>
-    <header class="mainheader">
-        <nav id="mainnav">
-          <h2 class="hidden">Main Navigation</h2>
-          <div class="ncontent">
-            <a id="logo" href="index.html"> <img src="images/" alt="Logo"></a>
-            <button id="navbutton"></button>
-          </div>
-              <div id="menucontent">
-                <ul id="togglemenu">
-                  <li><a href="index.html"> HOME </a></li>
-                  <li><a href="help.html"> HOW YOU CAN HELP </a></li>
-                  <li><a href="aboutus.html"> ABOUT US</a></li>
-                  <li><a href="blog.html"> BLOG </a></li>  
-                  <li><a href="contact.html"> CONTACT </a></li>            
-                </ul>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+            content="This website aims to showcase the issue of bullying in Esports, its impact on players, and strategies to address and prevent it.">
+        <meta name="keywords" content="Esports, bullying, players, video games">
+        <meta name="author" content="Giovanni Perruzzi, Evan Hansen">
+        <link rel="stylesheet" href="css/main.css" type="text/css">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <title>About us Page</title>
+    </head>
+
+    <body class="site">
+        <header class="head">
+            <h1 class="hidden">Homepage</h1>
+            <div class="logo-nav">
+                <a href="index.html">
+                    <img src="https://via.placeholder.com/150" alt="Logo" class="logo">
+                </a>
+                <nav class="main-navigation" aria-label="Main Navigation">
+                    <h2 class="hidden">Main Navigation</h2>
+                    <ul class="menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="help.html">How You Can Help</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
-        </nav>
-      </header>
-    <section id="hero">
-        <h2 class="hidden">Hero image</h2>
-        <img src="https://via.placeholder.com/1920x550/0000FF/808080 ?Text=Digital.com" alt="">
-    </section>
+        </header>
+        <main class="main">
+        </main>
+        <footer class="foot">
+            <section class="follow-us">
+                <h2 class="hidden">Follow us on Social Media</h2>
+                <div class="social-media-links">
+                    <h2 class="follow-us-heading">Lorem ipsum.</h2>
+                    <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+                    <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="images/linkedin.png" alt="LinkedIn"></a>
+                    <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+                </div>
+            </section>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://via.placeholder.com/200" alt="Logo" class="footer-logo">
+                </div>
+                <div class="footer-links">
+                    <h2 class="hidden">Footer Links</h2>
+                    <ul class="footer-links-1">
+                        <li class="heading">Lorem ipsum</li>
+                        <li><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                        <li><a href="#">Link 3</a></li>
+                        <li><a href="#">Link 4</a></li>
+                    </ul>
+                    <ul class="footer-links-2">
+                        <li class="heading-2">Lorem ipsum</li>
+                        <li><a href="#">Link 5</a></li>
+                        <li><a href="#">Link 6</a></li>
+                        <li><a href="#">Link 7</a></li>
+                        <li><a href="#">Link 8</a></li>
+                    </ul>
+                </div>
+                <div class="legal">
+                    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                    <p>&copy; 2023 Disconnected. All rights reserved</p>
+                </div>
+            </div>
+        </footer>
+        <script src=" https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="js/gsap.js"></script>
+        <script src="js/main.js" type="module" defer></script>
+    </body>
+
+</html>
