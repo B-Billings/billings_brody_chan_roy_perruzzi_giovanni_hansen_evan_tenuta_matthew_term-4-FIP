@@ -14,6 +14,16 @@
 }
 
 
+// Main Video
+
+.video-container {
+    display: block;
+
+    video {
+    max-width: 100vw;
+    }
+}
+
 // This area is for the how you can help page
 #vueimg{
     cursor: pointer;

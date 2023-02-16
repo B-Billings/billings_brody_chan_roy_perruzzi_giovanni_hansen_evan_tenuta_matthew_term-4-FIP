@@ -16,3 +16,23 @@
     width: 100%;
     height: auto;
 }
+
+.head {
+    display: grid;
+    background-color: rgb(50, 30, 30);
+}
+
+.logo-nav {
+    display: flex;
+}
+
+.main-navigation {
+    display: flex;
+    float: right;
+    justify-content: flex-end;
+    ul {
+        background-color: white;
+        padding: 1em;
+    }
+
+}
