@@ -19,12 +19,11 @@
 
 .head {
     display: grid;
-    background-color: rgb(231, 35, 35);
+    background-color: rgb(242, 204, 195);
 }
 
 .menu {
     display: flex;
-    color: rgb(231, 35, 35);
     flex-direction: row;
 }
 
@@ -33,7 +32,8 @@
 }
 
 .logo {
-    max-width: 10vw;
+    max-width: 20vw;
+    padding: .5em;
 }
 
 .main-navigation {
@@ -49,6 +49,10 @@
 
     li {
         margin-left: 2em;
+    }
+
+    a {
+        color: rgb(231, 35, 35);
     }
 
 }
