@@ -19,20 +19,36 @@
 
 .head {
     display: grid;
-    background-color: rgb(50, 30, 30);
+    background-color: rgb(231, 35, 35);
+}
+
+.menu {
+    display: flex;
+    color: rgb(231, 35, 35);
+    flex-direction: row;
 }
 
 .logo-nav {
     display: flex;
 }
 
+.logo {
+    max-width: 10vw;
+}
+
 .main-navigation {
     display: flex;
     float: right;
     justify-content: flex-end;
+    margin-left: auto;
+    align-items: center;
+
     ul {
-        background-color: white;
         padding: 1em;
+    }
+
+    li {
+        margin-left: 2em;
     }
 
 }
