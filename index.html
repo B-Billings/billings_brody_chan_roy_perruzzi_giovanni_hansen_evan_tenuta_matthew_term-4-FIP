@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description"
-            content="This website aims to showcase the issue of bullying in Esports, its impact on players, and strategies to address and prevent it.">
+        <meta name="description" content="This website aims to showcase the issue of bullying in Esports, its impact on players, and strategies to address and prevent it.">
         <meta name="keywords" content="Esports, bullying, players, video games">
         <meta name="author" content="Giovanni Perruzzi, Evan Hansen">
+        <!-- Font Import -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;500;700;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+        <!-- CSS Import -->
         <link rel="stylesheet" href="css/main.css" type="text/css">
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <title>Homepage</title>
@@ -23,7 +26,7 @@
                 </a>
                 <nav class="main-navigation" aria-label="Main Navigation">
                     <h2 class="hidden">Main Navigation</h2>
-                    <ul class="menu">
+                    <ul class="menu lexend headerText">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="help.html">How You Can Help</a></li>
                         <li><a href="aboutus.html">About Us</a></li>
@@ -34,13 +37,18 @@
             </div>
         </header>
         <main class="main">
-            <section class="hero">
-                <h2 class="hidden">Hero Content</h2>
+
+            <section class="video-container">
+                <h2 class="hidden">Hero Video</h2>
                 <div class="video-container">
                     <h2 class="hidden">Video</h2>
                     <video src="video/promotion_video.mp4" controls>
                     </video>
                 </div>
+            </section>
+
+            <section class="hero">
+                <h2 class="hidden">Hero Content</h2>
                 <div class="hero-content">
                     <h2 class="hero-heading">Lorem ipsum dolor.</h2>
                     <h3 class="hero-subheading">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed
@@ -56,6 +64,7 @@
                     <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
                 </div>
             </section>
+            
             <article class="about-disconnected">
                 <h2 class="about-disconnected-heading">Lorem ipsum dolor.</h2>
                 <h3 class="disconnected-hashtag">#Lorem ipsum dolor.</h3>
