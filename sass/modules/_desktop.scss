@@ -1,0 +1,321 @@
+/* Homepage Starts */
+
+/* Grid starts */
+
+@media screen and (min-width: 1000px) {
+
+    .header,
+    .main-content > *,
+    .footer {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(31.25rem, 1fr));
+        align-items: center;
+        background-color: #FFF;
+    }
+
+    /* Grid Ends */
+
+    /* Header Starts */
+
+    .logo {
+        width: 100%;
+        max-width: 15.625rem;
+        height: auto;
+    }
+
+    .logo-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-navigation {
+        margin-left: 5.5rem;
+    }
+
+    a {
+        color: #343434;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #E72323;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: flex-end;
+        list-style: none;
+    }
+
+    .menu li {
+        margin-right: 5.313rem;
+    }
+
+    /* Header Ends */
+
+    /* Hero Starts */
+
+    .hero-video-container {
+        display: grid;
+        height: 100%;
+        justify-items: center;
+        align-items: center;
+    }
+
+    .hero-video-container video {
+        width: 100%;
+        height: auto;
+        max-width: 62.5rem;
+    }
+
+    /* Hero Ends */
+
+    /* Main Starts */
+
+    .about-disconnected {
+        background-color: #343434;
+    }
+
+    .mission {
+        display: flex;
+        grid-column: 1 / -1;
+        padding: 1.5rem;
+        background-color: #F43E3E;
+        margin-top: 1.25rem;
+        justify-content: center;
+    }
+
+    .mission p {
+        font-size: 1.25rem;
+        color: #FFF;
+        width: 21.9%;
+        height: auto;
+        text-align: center;
+    }
+
+    .general-stats,
+    .bullying-stats,
+    .motto {
+        grid-column: 1 / span 3;
+        display: flex;
+        justify-content: space-evenly;
+        padding: 5.625rem 20.313rem 6.25rem 20.313rem;
+    }
+
+    .motto {
+        padding: 3.125rem;
+    }
+
+    .bullying-stats h4 {
+        font-size: 5rem;
+        font-weight: bold;
+        color: #F43E3E;
+    }
+
+    .bullying-stats p {
+        font-size: 1.25rem;
+        color: #F43E3E;
+        text-align: center;
+        word-wrap: break-word;
+        width: 18.5rem;
+        padding-top: 1.875rem;
+    }
+
+    .motto p {
+        font-size: 1.875rem;
+        color: #F43E3E;
+    }
+
+    .section-divider {
+        grid-column: 2 / span 1;
+        justify-content: center;
+        display: flex;
+        padding: 1.25rem;
+    }
+
+    .section-divider h3 {
+        color: #FFF;
+        font-size: 4.688rem;
+    }
+
+    .section-divider-2 {
+        grid-column: 1 / span 3;
+    }
+
+    .section-divider-2 span {
+        border: 0.25rem solid #fff;
+        display: block;
+        color: #FFF;
+    }
+
+    .call-to-action {
+        align-items: center;
+        grid-column: 1 / span 3;
+        display: flex;
+        flex-direction: column;
+        padding-top: 6.25rem;
+        padding-bottom: 2.813rem;
+    }
+
+    .call-to-action ul {
+        display: flex;
+        padding: 1.25rem;
+    }
+
+    .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .general-stats h4 {
+        font-size: 5rem;
+        font-weight: bold;
+        color: #FFF;
+    }
+
+    .general-stats p {
+        font-size: 1.25rem;
+        color: #FFF;
+        padding-top: 1.875rem;
+    }
+
+    .call-to-action h3 {
+        font-size: 2rem;
+        color: #FFF;
+    }
+
+    .call-to-action ul {
+        list-style: none;
+    }
+
+    .call-to-action li {
+        margin-bottom: 0.625rem;
+        font-size: 1.125rem;
+        font-weight: 500;
+        padding: 4.375rem;
+    }
+
+    .call-to-action li a {
+        align-items: center;
+        font-size: 1.25rem;
+        justify-content: center;
+        color: #343434;
+        display: flex;
+        text-decoration: none;
+        background-color: #E72323;
+        width: 13.75rem;
+        height: 3.125rem;
+        border-radius: 1.563rem;
+    }
+
+    /* Main Ends */
+
+    /* Footer Starts */
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        align-items: center;
+    }
+
+    .footer-logo {
+        margin-left: 5.625rem;
+    }
+
+    .footer-logo img {
+        width: 25rem;
+        height: auto;
+    }
+
+    .footer-links-heading {
+        color: #E72323;
+        font-size: 1.625rem;
+        padding: 0.938rem;
+        padding-bottom: 1.25rem;
+    }
+
+    .footer-nav-list {
+        list-style: none;
+        padding-left: 0.938rem;
+    }
+
+    .footer-nav-list li {
+        padding-bottom: 0.938rem;
+    }
+
+    .social-media {
+        display: flex;
+        justify-content: center;
+        margin-top: 0.625rem;
+    }
+
+    /* Footer Ends */
+
+    /* Homepage Ends */
+
+    /* How You Can Help Page Starts */
+
+    /* How You Can Help Page Ends */
+
+    /* About Us Page Starts */
+
+    /* About Us Page Ends */
+
+    /* Blog Page Starts */
+
+    /* Blog Page Ends */
+
+    /* Contact Page Starts */
+
+    /* Main Starts */
+
+    #mail-form {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: #343434;
+    }
+
+    .form-heading {
+        font-size: 2.25rem;
+        color: #fff;
+        padding-top: 6.25rem;
+        padding-bottom: 2.5rem;
+    }
+
+    label {
+        color: #FFF;
+        padding: 0.625rem;
+    }
+
+    input {
+        width: 25rem;
+        height: 2.5rem;
+    }
+
+    textarea {
+        width: 25rem;
+    }
+
+    .wrapper {
+        border-radius: 2.125rem;
+        padding-bottom: 12.5rem;
+        padding-top: 1.875rem;
+    }
+
+    .submit {
+        border-radius: 1.875rem;
+        width: 12.5rem;
+        height: 3.75rem;
+        color: #FFF;
+        background-color: #F43E3E;
+        font-size: 1.875rem;
+        font-weight: bold;
+    }
+
+    /* Main Ends */
+
+    /* Contact Page Ends */
+}

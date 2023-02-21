@@ -1,0 +1,300 @@
+/* Homepage Starts */
+
+/* Grid starts */
+
+@media screen and (min-width: 768px) {
+
+    .header,
+    .main-content > *,
+    .footer {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+    }
+
+    /* Grid Ends */
+
+    /* Header Starts */
+
+    .logo {
+        max-width: 12.5rem;
+    }
+
+    .logo-nav {
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    .main-navigation li {
+        display: none;
+    }
+
+    /* Header Ends */
+
+    /* Hero Starts */
+
+    .video-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .hero-video-container video {
+        max-width: 37.5rem;
+    }
+
+    /* Hero Ends */
+
+    /* Main Starts */
+
+    .about-disconnected {
+        background-color: #343434;
+    }
+
+    .mission {
+        grid-column: 1 / span 2;
+        background-color: #F43E3E;
+        display: flex;
+        justify-content: center;
+        margin-top: 1.125rem;
+        padding: 0.75rem;
+    }
+
+    .mission p {
+        font-size: 1.125rem;
+        color: #FFF;
+        width: 38.9%;
+        text-align: center;
+    }
+
+    .general-stats {
+        display: flex;
+        grid-column: 1 / span 2;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding-top: 2.5rem;
+    }
+
+    .general-stats h4 {
+        font-size: 3.438rem;
+        color: #FFF;
+    }
+
+    .general-stats p {
+        font-size: 1.125rem;
+        color: #FFF;
+        padding-top: 1.25rem;
+        padding-bottom: 5rem;
+    }
+
+    .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bullying-stats {
+        display: flex;
+        grid-column: 1 / span 2;
+        flex-direction: row;
+        padding-bottom: 5rem;
+    }
+
+    .motto {
+        grid-column: 1/span 2;
+        display: flex;
+        justify-content: center;
+    }
+
+    .bullying-stats h4 {
+        font-size: 3.438rem;
+        color: #F43E3E;
+    }
+
+    .bullying-stats p {
+        width: 88%;
+        text-align: center;
+        padding-top: 1.125rem;
+        color: #F43E3E;
+    }
+
+    .motto p {
+        font-size: 1.5rem;
+        color: #F43E3E;
+        padding-bottom: 2.813rem;
+    }
+
+    .section-divider {
+        grid-column: 1 / span 2;
+        justify-content: center;
+        display: flex;
+        padding-bottom: 4.688rem;
+    }
+
+    .section-divider h3 {
+        font-size: 3.438rem;
+        color: #FFF;
+    }
+
+    .section-divider-2 {
+        grid-column: 1 / span 2;
+        border: 0.25rem solid #FFF;
+    }
+
+    .call-to-action {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        grid-column: 1 / span 2;
+        padding-top: 3.125rem;
+        padding: 1.875rem;
+    }
+
+    .call-to-action h3 {
+        font-size: 1.5rem;
+        color: #FFF;
+    }
+
+    .call-to-action ul {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .call-to-action li {
+        padding: 1.875rem;
+    }
+
+    .call-to-action a {
+        color: #343434;
+        background-color: #F43E3E;
+        border-radius: 1.875rem;
+        width: 10.313rem;
+        height: 2.813rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+
+    /* Main Ends */
+
+    /* Footer Starts */
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 1.25rem;
+    }
+
+    .footer-logo {
+        margin-left: 1.25rem;
+    }
+
+    .footer-links-heading {
+        padding-bottom: 0.625rem;
+        padding-top: 0.938rem;
+    }
+
+    .footer-logo img {
+        max-width: 12.5rem;
+    }
+
+    .footer-nav-list a {
+        text-decoration: none;
+    }
+
+    .footer-nav-list li {
+        margin-bottom: 0.938rem;
+        font-size: 1rem;
+    }
+
+    .footer-nav-list li a {
+        font-size: 1rem;
+        color: #343434;
+    }
+
+    .social-media {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .footer-social-links {
+        justify-content: center;
+        margin-left: 1.25rem;
+    }
+
+    .footer-social-links a {
+        margin-right: 1.25rem;
+    }
+
+    .social-media a {
+        padding: 0.313rem;
+    }
+
+    /* Footer Ends */
+
+    /* Homepage Ends */
+
+    /* How You Can Help Page Starts */
+
+    /* How You Can Help Page Ends */
+
+    /* About Us Page Starts */
+
+    /* About Us Page Ends */
+
+    /* Blog Page Starts */
+
+    /* Blog Page Ends */
+
+    /* Contact Page Starts */
+
+    /* Main Starts */
+
+    #mail-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #343434;
+    }
+
+    .form-heading {
+        font-size: 1.5rem;
+        padding-top: 2.188rem;
+        padding-bottom: 2.188rem;
+        color: #FFF;
+    }
+
+    label {
+        padding: 0.313rem;
+        color: #FFF;
+    }
+
+    input {
+        width: 18.75rem;
+        height: 2.188rem;
+    }
+
+    textarea {
+        width: 18.75rem;
+        height: 7.813rem;
+    }
+
+    .wrapper {
+        padding-bottom: 4.375rem;
+        padding-top: 2.188rem;
+    }
+
+    .submit {
+        border-radius: 1.563rem;
+        width: 8.75rem;
+        height: 3.125rem;
+        font-size: 1.375rem;
+        color: #FFF;
+        background-color: #F43E3E;
+    }
+
+    /* Main Ends */
+
+    /* Contact Page Ends */
+}
