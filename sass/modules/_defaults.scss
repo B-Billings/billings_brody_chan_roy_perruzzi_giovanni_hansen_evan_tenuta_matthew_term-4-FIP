@@ -1,10 +1,27 @@
+body {
+    font-family: 'Lexend', sans-serif;
+}
+
 .hidden {
     display: none;
 }
 
-html{
-    background-color: rgb(52,52,52);
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    width: 100%;
+.roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.smallText {
+    font-size: small;
+}
+
+.mediumText {
+    font-size: medium;
+}
+
+.largeText {
+    font-size: large;
+}
+
+.headertext {
+    font-size: 2vw;
 }
