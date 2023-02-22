@@ -29,14 +29,14 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    overflow: none;
+    overflow: hidden;
 }
 
 .locked {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    overflow: none;
+    overflow: hidden;
     max-width: 60%;
 }
 
@@ -51,7 +51,7 @@
     font-size: 3em;
     padding: .70em;
     max-width: 300px;
-    overflow: none;
+    overflow: hidden;
 }
 
 .locked {
@@ -71,5 +71,5 @@
 
 
 .selector {
-    overflow: none;
+    overflow: hidden;
 }
