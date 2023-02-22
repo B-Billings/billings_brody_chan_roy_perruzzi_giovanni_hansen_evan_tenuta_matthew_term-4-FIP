@@ -1,1 +1,332 @@
-@media screen and (min-width: 428px) {}
+/* Homepage Starts */
+
+/* Grid starts */
+@media screen and (min-width: 428px) {
+
+    .header,
+    .main-content > *,
+    .footer {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 7.5px;
+    }
+
+    /* Grid Ends */
+
+    /* Header Starts */
+
+    .logo {
+        max-width: 200px;
+    }
+
+    .logo-nav {
+        grid-column: 1 / -1;
+    }
+
+    .main-navigation {
+        display: none;
+    }
+
+    /* Header Ends */
+
+    /* Hero Starts */
+
+    .hero-video-container {
+        grid-column: 1 / span 1;
+    }
+
+    .hero-video-container video {
+        width: 100%;
+        height: auto;
+        max-width: 62.5rem;
+    }
+
+    /* Hero Ends */
+
+    /* Main Starts */
+
+
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .about-disconnected {
+        background-color: #343434;
+        margin-bottom: 30px;
+    }
+
+    .mission {
+        grid-column: 1 / span 3;
+        background-color: #F43E3E;
+        display: flex;
+        justify-content: center;
+        margin-top: 1.125rem;
+        padding: 0.75rem;
+    }
+
+    .mission p {
+        font-size: 18px;
+        color: #FFF;
+        width: 93%;
+        text-align: center;
+    }
+
+    .bullying-stats {
+        display: flex;
+        flex-direction: column;
+        grid-column: 1 / span 3;
+        padding-bottom: 5rem;
+    }
+
+    .general-stats,
+    .motto {
+        display: flex;
+        grid-column: 1 / span 3;
+        justify-content: space-evenly;
+        padding-top: 2.5rem;
+        flex-direction: column;
+    }
+
+    .motto {
+        grid-column: 1/span 3;
+        display: flex;
+        align-items: center;
+    }
+
+    .motto p {
+        font-size: 1.1rem;
+        color: #F43E3E;
+        padding-bottom: 2.813rem;
+    }
+
+    .bullying-stats h4 {
+        font-size: 3.438rem;
+        color: #F43E3E;
+        font-weight: bold;
+    }
+
+    .bullying-stats p {
+        width: 88%;
+        text-align: center;
+        padding-top: 1.125rem;
+        color: #F43E3E;
+    }
+
+    .section-divider {
+        grid-column: 1 / span 3;
+        justify-content: center;
+        display: flex;
+        padding-bottom: 4.688rem;
+    }
+
+    .section-divider h3 {
+        font-size: 3.438rem;
+        color: #FFF;
+    }
+
+    .section-divider-2 {
+        grid-column: 1 / span 3;
+        border: 0.25rem solid #FFF;
+    }
+
+    .general-stats h4 {
+        font-size: 3.438rem;
+        color: #FFF;
+        font-weight: bold;
+    }
+
+    .general-stats p {
+        font-size: 1.125rem;
+        color: #FFF;
+        padding-top: 1.25rem;
+        padding-bottom: 5rem;
+    }
+
+    .call-to-action {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        grid-column: 1 / span 3;
+        padding: 1.875rem 0 3rem 0;
+    }
+
+    .call-to-action ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 55px 0 55px 0;
+    }
+
+    .general-stats h4 {
+        font-size: 3.438rem;
+        color: #FFF;
+        font-weight: bold;
+    }
+
+    .general-stats p {
+        font-size: 1.125rem;
+        color: #FFF;
+        padding-top: 1.25rem;
+        padding-bottom: 5rem;
+    }
+
+    .call-to-action h3 {
+        font-size: 1.1rem;
+        color: #FFF;
+    }
+
+    .call-to-action li {
+        padding: 1.875rem 0 0.5rem 0;
+    }
+
+    .call-to-action li a {
+        color: #343434;
+        background-color: #F43E3E;
+        border-radius: 1.875rem;
+        width: 10.313rem;
+        height: 2.813rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+
+    /* Main Ends */
+
+    /* Footer Starts */
+
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links-heading {
+        padding-bottom: 0.625rem;
+        padding-top: 0.938rem;
+    }
+
+    .footer-logo img {
+        max-width: 12.5rem;
+    }
+
+    .footer-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-media {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .footer-nav-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-nav-list li {
+        margin-bottom: 0.938rem;
+        font-size: 1rem;
+    }
+
+    .footer-nav-list a {
+        text-decoration: none;
+    }
+
+    .footer-nav-list li a {
+        font-size: 1rem;
+        color: #343434;
+    }
+
+    .footer-social-links {
+        justify-content: center;
+        margin-left: 1.25rem;
+    }
+
+    .footer-social-links a {
+        margin-right: 1.25rem;
+    }
+
+    .social-media a {
+        padding: 0.313rem;
+    }
+
+    /* Footer Ends */
+
+    /* Homepage Ends */
+
+    /* How You Can Help Page Starts */
+
+    /* How You Can Help Page Ends */
+
+    /* About Us Page Starts */
+
+    /* About Us Page Ends */
+
+    /* Blog Page Starts */
+
+    /* Blog Page Ends */
+
+    /* Contact Page Starts */
+
+    /* Main Starts */
+
+    #mail-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #343434;
+    }
+
+    .form-heading {
+        font-size: 1.5rem;
+        padding-top: 2.188rem;
+        padding-bottom: 2.188rem;
+        color: #FFF;
+    }
+
+    label {
+        padding: 0.313rem;
+        color: #FFF;
+    }
+
+    input {
+        width: 18.75rem;
+        height: 2.188rem;
+    }
+
+    textarea {
+        width: 18.75rem;
+        height: 7.813rem;
+    }
+
+    .wrapper {
+        padding-bottom: 4.375rem;
+        padding-top: 2.188rem;
+    }
+
+    .submit {
+        border-radius: 1.563rem;
+        width: 8.75rem;
+        height: 3.125rem;
+        font-size: 1.375rem;
+        color: #FFF;
+        background-color: #F43E3E;
+    }
+
+    /* Main Ends */
+
+    /* Contact Page Ends */
+}
