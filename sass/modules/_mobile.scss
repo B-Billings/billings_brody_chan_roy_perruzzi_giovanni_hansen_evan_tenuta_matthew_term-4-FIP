@@ -7,8 +7,7 @@
     .main-content > *,
     .footer {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 7.5px;
+        grid-template-columns: auto;
     }
 
     /* Grid Ends */
@@ -20,7 +19,7 @@
     }
 
     .logo-nav {
-        grid-column: 1 / -1;
+        grid-column: 1 / span 2;
     }
 
     .main-navigation {
@@ -31,10 +30,6 @@
 
     /* Hero Starts */
 
-    .hero-video-container {
-        grid-column: 1 / span 1;
-    }
-
     .hero-video-container video {
         width: 100%;
         height: auto;
@@ -44,13 +39,6 @@
     /* Hero Ends */
 
     /* Main Starts */
-
-
-    main {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-    }
 
     .about-disconnected {
         background-color: #343434;
@@ -69,7 +57,6 @@
     .mission p {
         font-size: 18px;
         color: #FFF;
-        width: 93%;
         text-align: center;
     }
 
@@ -77,28 +64,20 @@
         display: flex;
         flex-direction: column;
         grid-column: 1 / span 3;
-        padding-bottom: 5rem;
     }
 
     .general-stats,
     .motto {
         display: flex;
         grid-column: 1 / span 3;
-        justify-content: space-evenly;
         padding-top: 2.5rem;
         flex-direction: column;
     }
 
-    .motto {
-        grid-column: 1/span 3;
-        display: flex;
-        align-items: center;
-    }
-
     .motto p {
-        font-size: 1.1rem;
         color: #F43E3E;
         padding-bottom: 2.813rem;
+        text-align: center;
     }
 
     .bullying-stats h4 {
@@ -108,10 +87,12 @@
     }
 
     .bullying-stats p {
+        font-size: 1.125rem;
         width: 88%;
         text-align: center;
         padding-top: 1.125rem;
         color: #F43E3E;
+        width: 56%;
     }
 
     .section-divider {
@@ -142,6 +123,8 @@
         color: #FFF;
         padding-top: 1.25rem;
         padding-bottom: 5rem;
+        width: 100%;
+        text-align: center;
     }
 
     .call-to-action {
@@ -209,8 +192,8 @@
     }
 
     .footer-links-heading {
-        padding-bottom: 0.625rem;
-        padding-top: 0.938rem;
+        color: #F43E3E;
+        padding-bottom: 0.8rem;
     }
 
     .footer-logo img {
@@ -225,9 +208,6 @@
 
     .social-media {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        align-items: flex-end;
     }
 
     .footer-nav-list {
@@ -238,7 +218,6 @@
 
     .footer-nav-list li {
         margin-bottom: 0.938rem;
-        font-size: 1rem;
     }
 
     .footer-nav-list a {
@@ -246,7 +225,6 @@
     }
 
     .footer-nav-list li a {
-        font-size: 1rem;
         color: #343434;
     }
 
@@ -298,7 +276,7 @@
     }
 
     label {
-        padding: 0.313rem;
+        padding: 0.5rem;
         color: #FFF;
     }
 
@@ -309,20 +287,19 @@
 
     textarea {
         width: 18.75rem;
-        height: 7.813rem;
     }
 
     .wrapper {
         padding-bottom: 4.375rem;
-        padding-top: 2.188rem;
+        padding-top: 1.5rem;
     }
 
     .submit {
         border-radius: 1.563rem;
-        width: 8.75rem;
+        width: 100%;
         height: 3.125rem;
         font-size: 1.375rem;
-        color: #FFF;
+        color: #343434;
         background-color: #F43E3E;
     }
 
