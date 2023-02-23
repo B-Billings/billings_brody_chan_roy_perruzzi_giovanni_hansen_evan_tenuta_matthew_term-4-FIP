@@ -8,7 +8,7 @@
     .main-content > *,
     .footer {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         gap: 7.5px;
         align-items: center;
         justify-content: center;
@@ -19,18 +19,24 @@
     /* Header Starts */
 
     .logo {
+        grid-column: 1 / span 1;
         width: 350px;
         max-width: 350px;
-        margin-left: 25px;
     }
 
     .logo-nav {
-        display: flex;
+        display: grid;
         justify-content: center;
         align-items: center;
     }
 
+    .logo-nav a {
+        display: grid;
+    }
+
     .main-navigation {
+        grid-column: 2 / span 1;
+        justify-self: end;
         display: flex;
         margin-left: 1.3em;
     }
@@ -38,7 +44,8 @@
     .menu {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: flex-end;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -65,161 +72,100 @@
     /* Hero Starts */
 
     .hero-video-container {
-        grid-column: 1 / span 2;
-        text-align: center;
-    }
-
-    .hero-video-container video {
-        width: 100%;
-        height: auto;
-        max-width: 62.5rem;
+        display: flex;
     }
 
     /* Hero Ends */
 
     /* Main Starts */
 
-    main {
-        display: grid;
-    }
-
-    .about-disconnected {
-        grid-column: 1 / span 2;
-        background-color: #343434;
-    }
-
     .mission {
-        display: flex;
         grid-column: 1 / span 9;
-        background-color: #F43E3E;
-        margin-top: 1.25rem;
-        justify-content: center;
     }
 
     .mission p {
         font-size: 1.25rem;
-        color: #FFF;
-        width: 21.9%;
-        height: auto;
-        text-align: center;
+        width: 42%;
     }
 
     .bullying-stats {
-        grid-column: 1 / span 3;
-        padding-top: 12em;
+        grid-column: 1 / span 9;
+        padding: 11em 1.9em 3em 0.9em;
     }
 
     .general-stats,
     .motto {
-        grid-column: 1 / span 3;
+        grid-column: 1 / span 9;
         display: flex;
-        justify-content: space-evenly;
-        padding: 5.625rem 6.25rem;
+        padding: 5.625rem 9.25rem;
     }
 
     .motto {
-        padding: 3.125rem;
+        padding: 3.125em 1.3em 4em 0;
     }
 
     .motto p {
         font-size: 1.875rem;
-        color: #F43E3E;
     }
 
     .bullying-stats h4 {
         font-size: 5rem;
-        font-weight: bold;
-        color: #F43E3E;
     }
 
     .bullying-stats p {
         font-size: 1.25rem;
-        color: #F43E3E;
-        text-align: center;
-        word-wrap: break-word;
         width: 18.5rem;
         padding-top: 1.875rem;
     }
 
     .section-divider {
-        grid-column: 1 / span 3;
-        justify-content: center;
-        display: flex;
-        padding: 1.25rem;
-        width: 100%;
+        grid-column: 1 / span 9;
+        padding: 1.25em 5em 0 4em;
     }
 
     .section-divider h3 {
-        color: #FFF;
         font-size: 4.688rem;
     }
 
     .section-divider-2 {
         grid-column: 1 / span 9;
-        width: 100%;
-        border: 0.25rem solid #fff;
-        display: block;
-        color: #FFF;
     }
 
     .call-to-action {
-        align-items: center;
-        grid-column: 1 / span 3;
-        display: flex;
-        flex-direction: column;
-        padding-top: 6.25rem;
-        padding-bottom: 2.813rem;
+        grid-column: 1 / span 9;
+        padding: 6em 2.5em 2em 1.9em;
     }
 
     .call-to-action ul {
-        display: flex;
-        padding: 1.25rem;
-        list-style: none;
-
+        padding: 1.25em 6em 2em 5.4em;
     }
 
     .stat {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         width: 100%;
     }
 
     .general-stats h4 {
         font-size: 5rem;
-        font-weight: bold;
-        color: #FFF;
     }
 
     .general-stats p {
         font-size: 1.25rem;
-        color: #FFF;
         padding-top: 1.875rem;
     }
 
     .call-to-action h3 {
         font-size: 2rem;
-        color: #FFF;
     }
 
     .call-to-action li {
         margin-bottom: 0.625rem;
-        font-size: 1.125rem;
-        font-weight: 500;
         padding: 4.375rem;
     }
 
     .call-to-action li a {
-        align-items: center;
         font-size: 1.25rem;
-        justify-content: center;
-        color: #343434;
-        display: flex;
-        text-decoration: none;
-        background-color: #E72323;
         width: 13.75rem;
         height: 3.125rem;
-        border-radius: 1.563rem;
     }
 
     /* Main Ends */
@@ -257,7 +203,7 @@
         grid-row: 2 / 3;
         justify-self: end;
         margin-right: 6em;
-        margin-top: 11em;
+        margin-top: 8.5em;
     }
 
     .footer-links-heading {
@@ -282,7 +228,7 @@
     }
 
     .footer-nav-list li a:hover {
-        color: #333;
+        color: #F43E3E;
     }
 
     /* Footer Ends */
@@ -310,6 +256,7 @@
         align-items: center;
         flex-direction: column;
         background-color: #343434;
+        grid-column: 1 / -1;
     }
 
     .form-heading {
