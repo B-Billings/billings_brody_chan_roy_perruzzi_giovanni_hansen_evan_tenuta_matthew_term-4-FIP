@@ -183,12 +183,6 @@
 
     /* Footer Starts */
 
-    .footer-content {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-    }
-
     .footer-links-heading {
         color: $secondary-color;
         padding: 0 0 0.8rem;
@@ -444,7 +438,7 @@
 
     .team-image-wrapper {
         img {
-            max-width: 100%;
+            max-width: 86%;
         }
     }
 
