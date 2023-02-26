@@ -26,7 +26,9 @@
             <h1 class="hidden">How You Can Help Page</h1>
             <div class="logo-nav">
                 <a href="index.html">
-                    <img src="images/primary_logo_alt_version_2.svg" alt="Disconnected logo" class="logo">
+                    <figure class="header-logo-wrapper">
+                        <img src="images/primary_logo_alt_version_2.svg" alt="Disconnected logo" class="logo">
+                    </figure>
                 </a>
                 <nav class="main-navigation" aria-label="Main Navigation">
                     <h2 class="hidden">Main Navigation</h2>
@@ -41,18 +43,75 @@
             </div>
         </header>
         <main class="main-content">
-            <h2 class="hidden">Promotional content</h2>
-            <section class="locked" v-show="displayothers">
-                <h3 class="hidden">Project display</h3>
-                <portstuff v-for="item in ProjectData" :item="item"></portstuff>
+            <section class="how-you-can-help-content">
+                <h2 class="hidden">How You Can Help</h2>
+                <div class="support-us">
+                    <h3 class="support-us-heading">Support Us</h3>
+                </div>
+                <section class="get-involved-section">
+                    <h2 class="hidden">Get Involved</h2>
+                    <div class="get-involved-wrapper">
+                        <h3 class="main-heading">Get Involved</h3>
+                        <p class="get-involved-desc">Get involved with Disconnected to promote respect and inclusivity
+                            in Esports. You
+                            can volunteer your time and expertise or donate. Help us create a culture where bullying is
+                            not tolerated
+                            and everyone feels safe and welcome in the gaming community.</p>
+                        <ul class="get-involved-links">
+                            <li><a href="#" title="Learn More about Disconnected" rel="noopener">Learn More</a></li>
+                            <li><a href="#" title="See Our Events Calendar" rel="noopener">See Our Events</a></li>
+                            <li><a href="#" title="Volunteer with Disconnected" rel="noopener">Volunteer</a></li>
+                        </ul>
+                    </div>
+                    <section class="esports-section">
+                        <h2 class="hidden">Esports image</h2>
+                        <figure class="esports-image-wrapper">
+                            <img src="images/friends_having_fun_playing_a_video_game.jpg"
+                                alt="Friends having fun playing a video game">
+                        </figure>
+                    </section>
+                    <section class="make-a-change-section">
+                        <h2 class="hidden">Let's Make A Change</h2>
+                        <div class="make-a-change-wrapper">
+                            <h3 class="main-heading">Let's Make A Change</h3>
+                            <h4 class="sub-heading">Here are some ways you can donate:</h4>
+                        </div>
+                        <section class="ways-to-donate">
+                            <h2 class="hidden">Ways You Can Donate</h2>
+                            <div class="donation-in-person">
+                                <figure class="in-person-wrapper">
+                                    <img src="images/profile_pic.png" alt="Profile pic">
+                                </figure>
+                                <h3 class="donation-method">In Person</h3>
+                                <p class="donation-address">5678 Maple Street Toronto, ON M1M 1M1</p>
+                            </div>
+                            <div class="donation-online">
+                                <figure class="online-wrapper">
+                                    <img src="images/website.png" alt="Website">
+                                </figure>
+                                <h3 class="donation-method">Online</h3>
+                                <p class="donation-desc">Make a tax deductible donation.</p>
+                                <button id="btn">Donate Now</button>
+                            </div>
+                            <div class="donation-over-the-phone">
+                                <figure class="over-the-phone-wrapper">
+                                    <img src="images/phone.png" alt="Phone">
+                                </figure>
+                                <h3 class="donation-method">Over The Phone</h3>
+                                <p class="donation-desc">It's easy to donate offline too.</p>
+                                <p class="donation-number">Tel: (647) 555-1234</p>
+                            </div>
+                        </section>
+                    </section>
+                </section>
             </section>
         </main>
         <footer class="footer">
             <section class="footer-content">
                 <h2 class="hidden">Footer content</h2>
-                <figure class="footer-logo">
+                <figure class="footer-logo-wrapper">
                     <img src="images/primary_logo_alt_version_2.svg" alt="Disconnected logo"
-                        title="Logo for Disconnected">
+                        title="Logo for Disconnected" class="logo">
                 </figure>
                 <nav class="footer-nav">
                     <h3 class="hidden">Footer navigation</h3>
@@ -66,11 +125,31 @@
                 </nav>
                 <section class="social-media">
                     <h3 class="hidden">Follow us on social media</h3>
-                    <a href="https://www.facebook.com/"><img src="images/facebook.png" alt="Facebook"></a>
-                    <a href="https://www.instagram.com/"><img src="images/instagram.png" alt="Instagram"></a>
-                    <a href="https://ca.linkedin.com/"><img src="images/linkedin.png" alt="LinkedIn"></a>
-                    <a href="https://twitter.com/"><img src="images/twitter.png" alt="Twitter"></a>
-                    <a href="https://www.youtube.com/"><img src="images/youtube.png" alt="YouTube"></a>
+                    <a href="https://www.facebook.com/">
+                        <figure class="facebook-wrapper">
+                            <img src="images/facebook.png" alt="Facebook">
+                        </figure>
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <figure class="instagram-wrapper">
+                            <img src="images/instagram.png" alt="Instagram">
+                        </figure>
+                    </a>
+                    <a href="https://ca.linkedin.com/">
+                        <figure class="linkedin-wrapper">
+                            <img src="images/linkedin.png" alt="LinkedIn">
+                        </figure>
+                    </a>
+                    <a href="https://twitter.com/">
+                        <figure class="twitter-wrapper">
+                            <img src="images/twitter.png" alt="Twitter">
+                        </figure>
+                    </a>
+                    <a href="https://www.youtube.com/">
+                        <figure class="youtube-wrapper">
+                            <img src="images/youtube.png" alt="YouTube">
+                        </figure>
+                    </a>
                 </section>
             </section>
         </footer>

@@ -1,0 +1,149 @@
+/* Mobile Starts */
+
+@media screen and (min-width: 428px) {
+
+    .header,
+    .main-content > *,
+    .footer {
+        display: grid;
+        grid-template-columns: auto;
+    }
+
+    .logo-nav {
+        grid-column: 1 / span 2;
+    }
+
+    .mission,
+    .general-stats,
+    .motto,
+    .bullying-stats,
+    .section-divider,
+    .section-divider-2,
+    .call-to-action {
+        grid-column: 1 / span 3;
+    }
+}
+
+/* Mobile Ends */
+
+/* Tablet Starts */
+
+@media screen and (min-width: 768px) {
+
+    .header,
+    .main-content > *,
+    .footer {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+    }
+
+    .mission,
+    .bullying-stats,
+    .general-stats,
+    .motto,
+    .section-divider {
+        grid-column: 1 / span 6;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .support-us,
+    .get-involved-section,
+    .our-mission,
+    .team-image-wrapper,
+    .our-mission-statement,
+    .heading,
+    .desc {
+        grid-column: 1 / span 2;
+    }
+}
+
+/* Tablet Ends */
+
+/* Desktop Starts */
+
+@media screen and (min-width: 1000px) {
+
+    .header,
+    .main-content > *,
+    .footer {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header-logo-wrapper {
+        img {
+            grid-column: 1 / span 1;
+        }
+    }
+
+    .logo-nav {
+        display: grid;
+    }
+
+    .logo-nav {
+        a {
+            display: grid;
+        }
+    }
+
+    .main-navigation,
+    .our-mission-statement,
+    .desc {
+        grid-column: 2 / span 1;
+    }
+
+    .mission,
+    .bullying-stats,
+    .general-stats,
+    .motto,
+    .section-divider,
+    .section-divider-2,
+    .call-to-action {
+        grid-column: 1 / span 9;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+    }
+
+    .footer-logo-wrapper {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+    }
+
+    .footer-nav,
+    .social-media {
+        grid-column: 2 / 3;
+        grid-row: 2 / 2;
+    }
+
+    .social-media {
+        grid-row: 2 / 3;
+    }
+
+    .support-us,
+    .get-involved-section {
+        grid-column: 1 / span 4;
+    }
+
+    .team-image-wrapper {
+        grid-column: 1 / span 1;
+    }
+
+    .heading {
+        grid-column: 1 / span 3;
+    }
+
+    #mail-form {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Desktop Ends */
