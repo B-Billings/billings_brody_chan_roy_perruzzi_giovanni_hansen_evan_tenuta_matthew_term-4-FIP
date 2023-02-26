@@ -4,6 +4,12 @@
 
     /* Header Starts */
 
+    .logo-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .header-logo-wrapper {
         img {
             max-width: 12.5rem;
@@ -31,6 +37,7 @@
             height: auto;
             max-width: 100%;
             width: 100%;
+            margin-bottom: 1rem;
         }
     }
 
@@ -40,7 +47,7 @@
 
     .about-disconnected {
         background-color: $primary-color;
-        margin-bottom: 1.875rem;
+        margin-bottom: 1rem;
     }
 
     .mission,
@@ -66,7 +73,7 @@
 
     .general-stats,
     .motto {
-        padding: 1.5rem;
+        padding: 1.2rem;
     }
 
     .motto {
@@ -133,7 +140,7 @@
         align-items: center;
         display: flex;
         flex-direction: column;
-        padding: 1.875rem 0 3rem;
+        padding: 1.875rem 0 0.5rem;
     }
 
     .call-to-action {
@@ -339,11 +346,7 @@
     }
 
     .ways-to-donate {
-        align-items: center;
         background-color: $secondary-color;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         margin-top: 2rem;
     }
 
@@ -438,7 +441,7 @@
 
     .team-image-wrapper {
         img {
-            max-width: 86%;
+            max-width: 100%;
         }
     }
 

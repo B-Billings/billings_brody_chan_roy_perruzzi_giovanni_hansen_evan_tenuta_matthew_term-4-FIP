@@ -9,38 +9,18 @@
     .footer {
         display: grid;
         grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+        padding: 0.1rem;
     }
 
     /* Grid Ends */
 
-    /* Header Starts */
-
-    .logo-nav {
-        grid-column: 1 / span 2;
-    }
-
-    /* Header Ends */
-
-    /* Main Starts */
-
-    .mission,
-    .general-stats,
-    .motto,
-    .bullying-stats,
-    .section-divider,
-    .section-divider-2,
-    .call-to-action {
-        grid-column: 1 / span 3;
-    }
-
-    /* Main Ends */
-
     /* Footer Starts */
 
     .footer-content {
-        align-items: center;
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 
     /* Footer Ends */
@@ -59,6 +39,7 @@
     .footer {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+        padding: 0.5rem;
     }
 
     /* Grid Ends */
@@ -69,7 +50,9 @@
     .bullying-stats,
     .general-stats,
     .motto,
-    .section-divider {
+    .section-divider,
+    .section-divider-2,
+    .call-to-action {
         grid-column: 1 / span 6;
     }
 
@@ -83,6 +66,11 @@
         grid-column: 1 / span 2;
     }
 
+    .ways-to-donate {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
     /* Main Ends */
 
     /* Footer Starts*/
@@ -90,6 +78,18 @@
     .footer-content {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer-logo-wrapper {
+        grid-column: 1 / span 2;
+    }
+
+    .footer-nav {
+        grid-column: 1 / span 2;
+    }
+
+    .social-media {
+        grid-column: 3;
     }
 
     /* Footer Ends */
@@ -110,6 +110,9 @@
         grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
         align-items: center;
         justify-content: center;
+        justify-content: space-between;
+        overflow: hiddem;
+        padding: 1rem;
     }
 
     /* Grid Ends */
@@ -122,18 +125,21 @@
         }
     }
 
+    .main-navigation {
+        display: grid;
+        grid-template-columns: repeat(5, auto);
+        gap: 1rem;
+    }
+
+    .menu {
+        grid-column: 1 / span 4;
+    }
+
     .logo-nav {
         display: grid;
-    }
-
-    .logo-nav {
-        a {
-            display: grid;
-        }
-    }
-
-    .main-navigation {
-        grid-column: 2 / span 1;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        gap: 1rem;
     }
 
     /* Header Ends */
