@@ -2,6 +2,8 @@
 
 @media screen and (min-width: 428px) {
 
+    /* Grid Starts */
+
     .header,
     .main-content > *,
     .footer {
@@ -9,9 +11,17 @@
         grid-template-columns: auto;
     }
 
+    /* Grid Ends */
+
+    /* Header Starts */
+
     .logo-nav {
         grid-column: 1 / span 2;
     }
+
+    /* Header Ends */
+
+    /* Main Starts */
 
     .mission,
     .general-stats,
@@ -22,6 +32,8 @@
     .call-to-action {
         grid-column: 1 / span 3;
     }
+
+    /* Main Ends */
 }
 
 /* Mobile Ends */
@@ -30,6 +42,8 @@
 
 @media screen and (min-width: 768px) {
 
+    /* Grid Starts */
+
     .header,
     .main-content > *,
     .footer {
@@ -37,17 +51,16 @@
         grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
     }
 
+    /* Grid Ends */
+
+    /* Main Starts */
+
     .mission,
     .bullying-stats,
     .general-stats,
     .motto,
     .section-divider {
         grid-column: 1 / span 6;
-    }
-
-    .footer-content {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
     }
 
     .support-us,
@@ -59,6 +72,17 @@
     .desc {
         grid-column: 1 / span 2;
     }
+
+    /* Main Ends */
+
+    /* Footer Starts*/
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Footer Ends */
 }
 
 /* Tablet Ends */
@@ -66,6 +90,8 @@
 /* Desktop Starts */
 
 @media screen and (min-width: 1000px) {
+
+    /* Grid Starts*/
 
     .header,
     .main-content > *,
@@ -75,6 +101,10 @@
         align-items: center;
         justify-content: center;
     }
+
+    /* Grid Ends */
+
+    /* Header Starts */
 
     .header-logo-wrapper {
         img {
@@ -92,7 +122,14 @@
         }
     }
 
-    .main-navigation,
+    .main-navigation {
+        grid-column: 2 / span 1;
+    }
+
+    /* Header Ends */
+
+    /* Main Starts */
+
     .our-mission-statement,
     .desc {
         grid-column: 2 / span 1;
@@ -107,6 +144,27 @@
     .call-to-action {
         grid-column: 1 / span 9;
     }
+
+    .support-us,
+    .get-involved-section {
+        grid-column: 1 / span 4;
+    }
+
+    .team-image-wrapper {
+        grid-column: 1 / span 1;
+    }
+
+    .heading {
+        grid-column: 1 / span 3;
+    }
+
+    #mail-form {
+        grid-column: 1 / -1;
+    }
+
+    /* Main Ends */
+
+    /* Footer Starts */
 
     .footer-content {
         display: grid;
@@ -128,22 +186,7 @@
         grid-row: 2 / 3;
     }
 
-    .support-us,
-    .get-involved-section {
-        grid-column: 1 / span 4;
-    }
-
-    .team-image-wrapper {
-        grid-column: 1 / span 1;
-    }
-
-    .heading {
-        grid-column: 1 / span 3;
-    }
-
-    #mail-form {
-        grid-column: 1 / -1;
-    }
+    /* Footer Ends */
 }
 
 /* Desktop Ends */
