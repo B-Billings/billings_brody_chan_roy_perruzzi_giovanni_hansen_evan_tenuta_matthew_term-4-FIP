@@ -121,13 +121,13 @@
 
     .footer-nav {
         align-items: flex-start;
-        margin-top: 2rem;
+        margin-left: 3rem;
     }
 
     .social-media {
         display: flex;
         justify-content: center;
-        margin-top: 5rem;
+        margin-top: 7rem;
     }
 
     .footer-links-heading {
@@ -177,6 +177,7 @@
 
     .get-involved-links {
         flex-direction: row;
+        margin-top: 0;
     }
 
     .get-involved-links {
@@ -187,10 +188,6 @@
 
     .sub-heading {
         margin-top: 1rem;
-    }
-
-    .ways-to-donate {
-        flex-direction: row;
     }
 
     /* Main Ends */
@@ -222,7 +219,7 @@
 
     .our-mission-statement {
         font-size: $font-size-xs-2;
-        padding: 1rem 3.1rem;
+        padding: 0.5rem 0.1rem;
     }
 
     .heading {
