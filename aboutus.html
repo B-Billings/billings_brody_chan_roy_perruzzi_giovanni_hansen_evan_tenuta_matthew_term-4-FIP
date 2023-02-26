@@ -26,7 +26,9 @@
             <h1 class="hidden">About Us Page</h1>
             <div class="logo-nav">
                 <a href="index.html">
-                    <img src="images/primary_logo_alt_version_2.svg" alt="Disconnected logo" class="logo">
+                    <figure class="header-logo-wrapper">
+                        <img src="images/primary_logo_alt_version_2.svg" alt="Disconnected logo" class="logo">
+                    </figure>
                 </a>
                 <nav class="main-navigation" aria-label="Main Navigation">
                     <h2 class="hidden">Main Navigation</h2>
@@ -41,13 +43,43 @@
             </div>
         </header>
         <main class="main-content">
+            <section class="about-us">
+                <h2 class="hidden">About Us</h2>
+                <div class="about-us-header">
+                    <h3 class="about-us-heading">About Us</h3>
+                </div>
+            </section>
+            <article class="team-image-and-mission">
+                <h2 class="hidden">Our Team Image and Mission</h2>
+                <h3 class="our-mission">Our Mission</h3>
+                <figure class="team-image-wrapper">
+                    <img src="images/team.jpg" alt="Disconnected team">
+                </figure>
+                <p class="our-mission-statement">
+                    Disconnected is a company committed to ending bullying in esports and supporting those affected by
+                    harassment. Our team includes passionate individuals that provide gaming, mental health, and support
+                    services.
+                    Our organization aims to create a safe and inclusive esports community, and we welcome you to join
+                    us in our
+                    mission.
+                </p>
+            </article>
+            <nav class="promotional-content">
+                <h2 class="hidden">Promotional Content</h2>
+                <h3 class="heading">Promotional Content</h3>
+                <p class="desc">Here are some promotional ads that we created for our brand</p>
+                <section class="project-list" v-show="displayOthers">
+                    <h3 class="hidden">Project Display</h3>
+                    <port-stuff v-for="item in projectData" :item="item"></port-stuff>
+                </section>
+            </nav>
         </main>
         <footer class="footer">
             <section class="footer-content">
                 <h2 class="hidden">Footer content</h2>
-                <figure class="footer-logo">
+                <figure class="footer-logo-wrapper">
                     <img src="images/primary_logo_alt_version_2.svg" alt="Disconnected logo"
-                        title="Logo for Disconnected">
+                        title="Logo for Disconnected" class="logo">
                 </figure>
                 <nav class="footer-nav">
                     <h3 class="hidden">Footer navigation</h3>
@@ -61,11 +93,31 @@
                 </nav>
                 <section class="social-media">
                     <h3 class="hidden">Follow us on social media</h3>
-                    <a href="https://www.facebook.com/"><img src="images/facebook.png" alt="Facebook"></a>
-                    <a href="https://www.instagram.com/"><img src="images/instagram.png" alt="Instagram"></a>
-                    <a href="https://ca.linkedin.com/"><img src="images/linkedin.png" alt="LinkedIn"></a>
-                    <a href="https://twitter.com/"><img src="images/twitter.png" alt="Twitter"></a>
-                    <a href="https://www.youtube.com/"><img src="images/youtube.png" alt="YouTube"></a>
+                    <a href="https://www.facebook.com/">
+                        <figure class="facebook-wrapper">
+                            <img src="images/facebook.png" alt="Facebook">
+                        </figure>
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <figure class="instagram-wrapper">
+                            <img src="images/instagram.png" alt="Instagram">
+                        </figure>
+                    </a>
+                    <a href="https://ca.linkedin.com/">
+                        <figure class="linkedin-wrapper">
+                            <img src="images/linkedin.png" alt="LinkedIn">
+                        </figure>
+                    </a>
+                    <a href="https://twitter.com/">
+                        <figure class="twitter-wrapper">
+                            <img src="images/twitter.png" alt="Twitter">
+                        </figure>
+                    </a>
+                    <a href="https://www.youtube.com/">
+                        <figure class="youtube-wrapper">
+                            <img src="images/youtube.png" alt="YouTube">
+                        </figure>
+                    </a>
                 </section>
             </section>
         </footer>

@@ -1,57 +1,23 @@
 /* Homepage Starts */
 
-/* Grid starts */
-
 @media screen and (min-width: 768px) {
-
-    .header,
-    .main-content > *,
-    .footer {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 5px;
-    }
-
-    /* Grid Ends */
 
     /* Header Starts */
 
-    .logo {
-        width: 250px;
-        max-width: 250px;
+    .header-logo-wrapper {
+        img {
+            max-width: 15.625rem;
+            width: 100%;
+        }
     }
 
     .logo-nav {
-        display: flex;
         align-items: center;
+        display: flex;
+        justify-content: space-between;
     }
 
     .main-navigation {
-        display: none;
-    }
-
-    .menu {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .menu li {
-        margin: 5px;
-        padding: 10px;
-    }
-
-    .menu li a {
-        color: #333;
-        text-decoration: none;
-        font-size: 1.2rem;
-        padding: 0.5em;
-    }
-
-    .menu li a:hover {
         display: none;
     }
 
@@ -62,139 +28,127 @@
     /* Main Starts */
 
     .about-disconnected {
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
     }
-
 
     .mission {
-        grid-column: 1 / span 6;
+        align-items: center;
+        display: flex;
     }
 
-    .mission p {
-        font-size: 1.2rem;
-        width: 70%;
+    .mission {
+        p {
+            font-size: $font-size-small;
+            width: 70%;
+        }
     }
 
     .bullying-stats {
-        grid-column: 1 / span 6;
-        display: flex;
         flex-direction: row;
-        padding: 3em 0;
-        margin: 0 0 0 -0.8em;
+        margin: 0 0 0 -0.8rem;
     }
 
     .general-stats,
     .motto {
-        display: flex;
-        grid-column: 1 / span 6;
-        justify-content: space-evenly;
         flex-direction: row;
-        padding: 1em 0.5em 0 0.5em;
-        margin-bottom: 20px;
+        justify-content: space-evenly;
+        margin-bottom: 1.25rem;
     }
 
     .motto {
-        grid-column: 1/span 6;
-        display: flex;
-        justify-content: center;
+        p {
+            font-size: $font-size-small;
+            padding: 0 0 3.125rem 0;
+        }
     }
 
-    .motto p {
-        font-size: 1.2rem;
-        padding-bottom: 3.125rem;
-    }
-
-    .bullying-stats p {
-        padding-top: 1.25rem;
-        font-size: 1.2rem;
-        padding: 2em 2em 0em 2em;
-        width: 100%;
+    .bullying-stats {
+        p {
+            font-size: $font-size-small;
+            padding: 2rem 2rem 0 2rem;
+            width: 100%;
+        }
     }
 
     .section-divider {
-        grid-column: 1 / span 6;
-        padding-bottom: 3.75rem;
+        padding: 0 0 3.75rem 0;
     }
 
-    .section-divider h3 {
-        font-size: 3.125rem;
-    }
-
-    .section-divider-2 {
-        grid-column: 1 / span 6;
+    .section-divider {
+        h3 {
+            font-size: $font-size-large-2;
+        }
     }
 
     .call-to-action {
-        grid-column: 1 / span 6;
-        padding: 3em 0 3em 0;
+        padding: 3rem 0 3rem 0;
     }
 
-    .call-to-action ul {
-        display: flex;
-        flex-direction: row;
+    .call-to-action {
+        ul {
+            flex-direction: row;
+        }
     }
 
-    .general-stats p {
-        font-size: 1.2rem;
+    .general-stats {
+        p {
+            font-size: $font-size-small;
+        }
     }
 
-    .call-to-action h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
+    .call-to-action {
+        h3 {
+            font-size: $font-size-large;
+            margin-bottom: 2rem;
+        }
     }
 
-    .call-to-action li {
-        padding: 1.5em;
+    .call-to-action {
+        li {
+            padding: 2rem;
+        }
     }
 
     /* Main Ends */
 
     /* Footer Starts */
 
-    .footer-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .footer-logo {
-        margin-left: 1.25rem;
-        grid-row: 1 / span 2;
+    .footer-logo-wrapper {
+        img {
+            margin-left: 1.25rem;
+        }
     }
 
     .footer-nav {
-        display: flex;
         align-items: flex-start;
-        margin-top: 1.5em;
+        margin-top: 2rem;
     }
 
     .social-media {
         display: flex;
         justify-content: center;
-        margin-top: 10.5em;
+        margin-top: 5rem;
     }
 
     .footer-links-heading {
-        padding-bottom: 0.625rem;
-        padding-top: 2rem;
+        padding: 0 0 0.625rem 0;
     }
 
     .footer-nav-list {
-        padding-top: 10px;
-        display: flex;
         align-items: flex-start;
-    }
-
-    .footer-nav-list li a:hover {
-        display: none;
+        display: flex;
+        padding: 1.25rem 0 0 0;
     }
 
     .footer-social-links {
         justify-content: center;
-        margin-left: 1.25rem;
+        margin-left: 2.5rem;
     }
 
-    .footer-social-links a {
-        margin-right: 1.25rem;
+    .footer-social-links {
+        a {
+            margin-right: 1.25rem;
+        }
     }
 
     /* Footer Ends */
@@ -203,9 +157,84 @@
 
     /* How You Can Help Page Starts */
 
+    /* Main Starts */
+
+    .support-us-heading {
+        font-size: $font-size-large;
+    }
+
+    .get-involved-section {
+        margin-top: 4rem;
+    }
+
+    .main-heading {
+        font-size: $font-size-large;
+    }
+
+    .get-involved-desc {
+        font-size: $font-size-xs-2;
+    }
+
+    .get-involved-links {
+        flex-direction: row;
+    }
+
+    .get-involved-links {
+        li {
+            padding: 2rem 2rem 2rem 2rem;
+        }
+    }
+
+    .sub-heading {
+        margin-top: 1rem;
+    }
+
+    .ways-to-donate {
+        flex-direction: row;
+    }
+
+    /* Main Ends */
+
     /* How You Can Help Page Ends */
 
     /* About Us Page Starts */
+
+    /* Main Starts */
+
+    .about-us-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .about-us-header {
+        h3 {
+            font-size: $font-size-large;
+        }
+    }
+
+    .our-mission {
+        font-size: $font-size-large;
+        margin-bottom: 1rem;
+    }
+
+    .team-image-wrapper {
+        width: 100%;
+    }
+
+    .our-mission-statement {
+        font-size: $font-size-xs-2;
+        padding: 1rem 3.1rem;
+    }
+
+    .heading {
+        font-size: $font-size-large;
+    }
+
+    .desc {
+        font-size: $font-size-xs-2;
+        margin-bottom: 2rem;
+    }
+
+    /* Main Ends */
 
     /* About Us Page Ends */
 
@@ -219,7 +248,7 @@
 
     #mail-form {
         display: flex;
-        padding: 20px;
+        padding: 1.25rem;
     }
 
     label {
@@ -231,7 +260,7 @@
     }
 
     .submit {
-        margin-top: 10px;
+        margin-top: 0.625rem;
     }
 
     /* Main Ends */
