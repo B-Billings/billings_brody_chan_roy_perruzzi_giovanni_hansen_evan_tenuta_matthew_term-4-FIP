@@ -45,7 +45,7 @@
 
     .bullying-stats {
         flex-direction: row;
-        margin: 0 0 0 -0.8rem;
+        margin: 0 0 0 -0.2rem;
     }
 
     .general-stats,
@@ -65,7 +65,7 @@
     .bullying-stats {
         p {
             font-size: $font-size-small;
-            padding: 2rem 2rem 0 2rem;
+            padding: 1rem 1rem 0 1rem;
             width: 100%;
         }
     }
@@ -81,7 +81,7 @@
     }
 
     .call-to-action {
-        padding: 3rem 0 3rem 0;
+        padding: 3rem 0 0 0;
     }
 
     .call-to-action {
@@ -122,16 +122,17 @@
     .footer-nav {
         align-items: flex-start;
         margin-left: 3rem;
+        margin-top: 2rem;
     }
 
     .social-media {
         display: flex;
         justify-content: center;
-        margin-top: 7rem;
+        margin-top: 10rem;
     }
 
     .footer-links-heading {
-        padding: 0 0 0.625rem 0;
+        padding: 0.625rem 0;
     }
 
     .footer-nav-list {
@@ -143,6 +144,7 @@
     .footer-social-links {
         justify-content: center;
         margin-left: 2.5rem;
+        margin-top: 2rem;
     }
 
     .footer-social-links {
@@ -186,6 +188,12 @@
         }
     }
 
+    .donation-in-person,
+    .donation-online,
+    .donation-over-the-phone {
+        padding: 1.4rem;
+    }
+
     .sub-heading {
         margin-top: 1rem;
     }
@@ -217,13 +225,18 @@
         width: 100%;
     }
 
+    .team-image-wrapper img {
+        max-width: 70%;
+    }
+
     .our-mission-statement {
-        font-size: $font-size-xs-2;
-        padding: 0.5rem 0.1rem;
+        padding: 0.5rem 7rem;
+        text-align: inherit;
     }
 
     .heading {
         font-size: $font-size-large;
+        margin-bottom: 0.5rem;
     }
 
     .desc {

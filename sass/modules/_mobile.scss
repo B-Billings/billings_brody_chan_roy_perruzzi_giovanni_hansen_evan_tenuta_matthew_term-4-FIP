@@ -13,6 +13,7 @@
     .header-logo-wrapper {
         img {
             max-width: 12.5rem;
+            height: auto;
         }
     }
 
@@ -56,13 +57,13 @@
     .bullying-stats {
         display: flex;
         flex-direction: column;
+        padding: 1rem;
     }
 
     .mission {
         background-color: $secondary-color;
         justify-content: center;
-        margin-top: 1.125rem;
-        padding: 0.75rem;
+        margin-top: 1rem;
 
         p {
             color: $primary-color;
@@ -79,7 +80,7 @@
     .motto {
         p {
             color: $text-color;
-            padding-bottom: 2.813rem;
+            padding-bottom: 1rem;
             text-align: center;
         }
     }
@@ -89,14 +90,13 @@
             color: $text-color;
             font-size: $font-size-xl;
             font-weight: bold;
+            text-align: center;
         }
-    }
 
-    .bullying-stats {
         p {
             color: $text-color;
             font-size: $font-size-custom;
-            padding-top: 1.125rem;
+            padding-top: 1rem;
             text-align: center;
             width: 56%;
         }
@@ -112,6 +112,7 @@
         h3 {
             color: $text-color;
             font-size: $font-size-xl;
+            margin-bottom: 1rem;
         }
     }
 
@@ -124,10 +125,9 @@
             color: $text-color;
             font-size: $font-size-xl;
             font-weight: bold;
+            margin-bottom: 1rem;
         }
-    }
 
-    .general-stats {
         p {
             color: $text-color;
             font-size: $font-size-custom;
@@ -140,7 +140,7 @@
         align-items: center;
         display: flex;
         flex-direction: column;
-        padding: 1.875rem 0 0.5rem;
+        margin-top: 1rem;
     }
 
     .call-to-action {
@@ -161,30 +161,28 @@
         h3 {
             color: $text-color;
             font-size: $font-size-small;
+            margin-bottom: 1rem;
         }
     }
 
     .call-to-action {
         li {
-            padding: 1.875rem 0 0.5rem;
+            padding: 1rem 0 0.5rem;
+        }
+
+        a {
+            align-items: center;
+            background-color: $secondary-color;
+            border-radius: 1.875rem;
+            color: $button-text-color;
+            display: flex;
+            height: 2.813rem;
+            justify-content: center;
+            text-decoration: none;
+            width: 10.313rem;
         }
     }
 
-    .call-to-action {
-        li {
-            a {
-                align-items: center;
-                background-color: $secondary-color;
-                border-radius: 1.875rem;
-                color: $button-text-color;
-                display: flex;
-                height: 2.813rem;
-                justify-content: center;
-                text-decoration: none;
-                width: 10.313rem;
-            }
-        }
-    }
 
     /* Main Ends */
 
@@ -198,6 +196,7 @@
     .footer-logo-wrapper {
         img {
             max-width: 12.5rem;
+            height: auto;
         }
     }
 
@@ -229,7 +228,7 @@
 
     .footer-social-links {
         justify-content: center;
-        margin-left: 1.25rem;
+        margin-top: 1rem;
     }
 
     .footer-social-links {
@@ -261,14 +260,14 @@
 
     .support-us {
         background-color: $heading-color;
-        padding: 0 0 2rem 0;
+        padding: 0 0 1rem;
         width: 100%;
     }
 
     .support-us-heading {
         color: $primary-color;
         font-size: $font-size-large;
-        margin-top: 2rem;
+        margin-top: 1rem;
         text-align: center;
     }
 
@@ -279,13 +278,12 @@
 
     .main-heading {
         font-size: $font-size-medium;
-        margin-top: 2rem;
+        margin-top: 1rem;
         text-align: center;
     }
 
     .get-involved-desc {
-        font-size: $font-size-xs;
-        padding: 0.625rem;
+        padding: 0.5rem;
         text-align: center;
     }
 
@@ -294,12 +292,12 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin-top: -1rem;
+        margin-top: 0.5rem;
     }
 
     .get-involved-links {
         li {
-            padding: 1rem 0 0.5rem 0;
+            padding: 0.5rem 0;
         }
     }
 
@@ -307,7 +305,7 @@
         a {
             align-items: center;
             background-color: $secondary-color;
-            border-radius: 1.875rem;
+            border-radius: 1.5rem;
             color: $button-text-color;
             display: flex;
             height: 2.813rem;
@@ -318,7 +316,7 @@
     }
 
     .esports-section {
-        margin-top: 2rem;
+        margin-top: 3rem;
         width: 100%;
     }
 
@@ -416,7 +414,7 @@
         color: $primary-color;
         display: flex;
         justify-content: center;
-        padding: 2rem;
+        padding: 1rem;
     }
 
     .about-us-header {
@@ -430,7 +428,7 @@
         display: flex;
         font-size: $font-size-medium;
         justify-content: center;
-        padding: 4rem 0 2rem 0;
+        padding: 2rem 0;
     }
 
     .team-image-wrapper {
@@ -450,10 +448,10 @@
     }
 
     .our-mission-statement {
-        font-size: $font-size-xs;
         margin-top: 0.5rem;
-        text-align: justify;
+        text-align: center;
     }
+
 
     .heading {
         font-size: $font-size-small;
@@ -470,10 +468,6 @@
     /* Main Ends */
 
     /* About Us Page Ends */
-
-    /* Blog Page Starts */
-
-    /* Blog Page Ends */
 
     /* Contact Page Starts */
 
@@ -498,16 +492,23 @@
     }
 
     input {
+        border-radius: 0.313rem;
         height: 2.5rem;
         width: 18.75rem;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
     }
 
     textarea {
+        border-radius: 0.313rem;
+        border: 1px solid #000;
         width: 18.75rem;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
     }
 
     .wrapper {
-        padding: 1.5rem 0 1.375rem 0;
+        padding: 1.5rem 0 0rem 0;
     }
 
     .submit {

@@ -111,45 +111,12 @@
         align-items: center;
         justify-content: center;
         justify-content: space-between;
-        overflow: hiddem;
         padding: 1rem;
     }
 
     /* Grid Ends */
 
-    /* Header Starts */
-
-    .header-logo-wrapper {
-        img {
-            grid-column: 1 / span 1;
-        }
-    }
-
-    .main-navigation {
-        display: grid;
-        grid-template-columns: repeat(5, auto);
-        gap: 1rem;
-    }
-
-    .menu {
-        grid-column: 1 / span 4;
-    }
-
-    .logo-nav {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        align-items: center;
-        gap: 1rem;
-    }
-
-    /* Header Ends */
-
     /* Main Starts */
-
-    .our-mission-statement,
-    .desc {
-        grid-column: 2 / span 1;
-    }
 
     .mission,
     .bullying-stats,
@@ -161,9 +128,9 @@
         grid-column: 1 / span 9;
     }
 
-    .support-us,
-    .get-involved-section {
-        grid-column: 1 / span 4;
+    .our-mission-statement,
+    .desc {
+        grid-column: 2 / span 1;
     }
 
     .team-image-wrapper {
