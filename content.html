@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+            content="This website aims to showcase the issue of bullying in Esports, its impact on players, and strategies to address and prevent it.">
+        <meta name="keywords" content="Esports, bullying, players, video games">
+        <meta name="author" content="Giovanni Perruzzi, Evan Hansen">
+        <!-- Font Import -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;500;700;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+            rel="stylesheet">
+        <!-- CSS Import -->
+        <link rel="stylesheet" href="css/main.css" type="text/css">
+        <link rel="icon" href="images/primary_logo_alt_version_2.svg" type="image/x-icon">
+        <title>Our Content</title>
+    </head>
+
+    <body class="site">
+        <header class="header">
+            <h1 class="hidden">About Us Page</h1>
+            <div class="logo-nav">
+                <a href="index.html">
+                    <figure class="header-logo-wrapper">
+                        <img src="images/primary_logo_alt_version_2.svg" alt="Disconnected logo" class="logo">
+                    </figure>
+                </a>
+                <nav class="main-navigation" aria-label="Main Navigation">
+                    <h2 class="hidden">Main Navigation</h2>
+                    <ul class="menu lexend headertext">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="help.html">How You Can Help</a></li>
+                        <li><a href="content.html">Our Content</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <nav class="promotional-content">
+            <h2 class="hidden">Promotional Content</h2>
+            <h3 class="heading">Promotional Content</h3>
+            <p class="desc">Here are some promotional ads that we created for our brand</p>
+            <section class="project-list" v-show="displayOthers">
+                <h3 class="hidden">Project Display</h3>
+                <port-stuff v-for="item in projectData" :item="item"></port-stuff>
+            </section>
+        </nav>
+        <footer class="footer">
+            <section class="footer-content">
+                <h2 class="hidden">Footer content</h2>
+                <figure class="footer-logo-wrapper">
+                    <img src="images/primary_logo_alt_version_2.svg" alt="Disconnected logo"
+                        title="Logo for Disconnected" class="logo">
+                </figure>
+                <nav class="footer-nav">
+                    <h3 class="hidden">Footer navigation</h3>
+                    <h4 class="footer-links-heading">Quick Links</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="help.html">How You Can Help</a></li>
+                        <li><a href="content.html">Our Content</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <section class="social-media">
+                    <h3 class="hidden">Follow us on social media</h3>
+                    <a href="https://www.facebook.com/">
+                        <figure class="facebook-wrapper">
+                            <img src="images/facebook.png" alt="Facebook">
+                        </figure>
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <figure class="instagram-wrapper">
+                            <img src="images/instagram.png" alt="Instagram">
+                        </figure>
+                    </a>
+                    <a href="https://ca.linkedin.com/">
+                        <figure class="linkedin-wrapper">
+                            <img src="images/linkedin.png" alt="LinkedIn">
+                        </figure>
+                    </a>
+                    <a href="https://twitter.com/">
+                        <figure class="twitter-wrapper">
+                            <img src="images/twitter.png" alt="Twitter">
+                        </figure>
+                    </a>
+                    <a href="https://www.youtube.com/">
+                        <figure class="youtube-wrapper">
+                            <img src="images/youtube.png" alt="YouTube">
+                        </figure>
+                    </a>
+                </section>
+            </section>
+        </footer>
+        <script src=" https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="js/gsap.js"></script>
+        <script src="js/main.js" type="module" defer></script>
+    </body>
+
+</html>
