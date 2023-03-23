@@ -47,18 +47,21 @@
                 </nav>
             </div>
         </header>
-        <main id="app">
 
+        <!-- This is where the Vue is put in -->
+        <main id="app">
+            <nav class="promotional-content">
+                <h2 class="hidden">Promotional Content</h2>
+                <h3 class="heading">Promotional Content</h3>
+                <p class="desc">Here are some promotional ads that we created for our brand</p>
+                <section class="project-list" v-show="displayOthers">
+                    <h3 class="hidden">Project Display</h3>
+                    <port-stuff v-for="item in projectData" :item="item"></port-stuff>
+                </section>
+            </nav>
         </main>
-        <nav class="promotional-content">
-            <h2 class="hidden">Promotional Content</h2>
-            <h3 class="heading">Promotional Content</h3>
-            <p class="desc">Here are some promotional ads that we created for our brand</p>
-            <section class="project-list" v-show="displayOthers">
-                <h3 class="hidden">Project Display</h3>
-                <port-stuff v-for="item in projectData" :item="item"></port-stuff>
-            </section>
-        </nav>
+        <!-- End of Vue -->
+
         <footer class="footer">
             <section class="footer-content">
                 <h2 class="hidden">Footer content</h2>
