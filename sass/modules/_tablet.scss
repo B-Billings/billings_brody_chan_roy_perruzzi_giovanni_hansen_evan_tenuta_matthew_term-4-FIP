@@ -43,6 +43,10 @@
         }
     }
 
+    .case p {
+        font-size: 1.1rem;
+    }
+
     .bullying-stats {
         flex-direction: row;
         margin: 0 0 0 -0.2rem;
@@ -116,6 +120,7 @@
     .footer-logo-wrapper {
         img {
             margin-left: 1.25rem;
+            margin-bottom: 0;
         }
     }
 
