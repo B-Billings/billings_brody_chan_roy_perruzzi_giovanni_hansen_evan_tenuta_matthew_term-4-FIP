@@ -15,6 +15,7 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;500;700;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
             rel="stylesheet">
+            
         <!-- CSS Import -->
         <link rel="stylesheet" href="css/main.css" type="text/css">
         <link rel="icon" href="images/disconnected_logo.svg" type="image/x-icon">
@@ -47,15 +48,34 @@
                 </nav>
             </div>
         </header>
-        <nav class="promotional-content">
-            <h2 class="hidden">Promotional Content</h2>
-            <h3 class="heading">Promotional Content</h3>
-            <p class="desc">Here are some promotional ads that we created for our brand</p>
-            <section class="project-list" v-show="displayOthers">
-                <h3 class="hidden">Project Display</h3>
-                <port-stuff v-for="item in projectData" :item="item"></port-stuff>
-            </section>
-        </nav>
+
+        <!-- Main Start -->
+        <main id="app">
+            <nav class="promotional-content">
+                <h2 class="hidden">Promotional Content</h2>
+                <h3 class="heading">Promotional Content</h3>
+                <p class="desc">Here are some promotional ads that we created for our brand</p>
+
+
+                <!-- Here is where all the posts load in -->
+                <template class="project-list">
+                    <div>
+                    <ul>
+                        <li v-for="item in getDataFromAPI" :key="item.id">{{ item.name }}</li>
+                    </ul>
+                    </div>
+                </template>
+
+                <div>{{message}}</div>
+
+                <section class="project-list" v-show="displayOthers">
+                    <h3 class="hidden">Project Display</h3>
+                    <port-stuff v-for="item in projectData" :item="item"></port-stuff>
+                </section>
+            </nav>
+        </main>
+        <!-- Main End -->
+
         <footer class="footer">
             <section class="footer-content">
                 <h2 class="hidden">Footer content</h2>
@@ -107,7 +127,6 @@
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <script src="js/gsap.js"></script>
         <script src="js/components/menu.js"></script>
-
         <script src="js/main.js" type="module" defer></script>
     </body>
 

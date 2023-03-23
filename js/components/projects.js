@@ -6,16 +6,19 @@ export default {
     template:
     `
         <section class="selector">
-        <div>
-            <img id="vueimg" :src='"images/" + item.ad_image' alt="proj image" @click="getitemInfo ^= true">
-        </div>
-            <div id="imagename">
-            <h3 id="undername">{{ item.ad_name }}</h3>
-        </div>
+        <div id="miniarea">
+                        <img id="vueimg" :src='"images/" + ad_image' alt="proj image" @click="getitemInfo ^= true">
+             </div>
+                        <div id="imagename">
+                            <h3 id="undername">{{ item.ad_name }}</h3>
+            </div>
         <div id="projectcont" v-show="getitemInfo">
         <div class="projinfo">
-        <h3> About </h3>
-            <p id="desc">{{ item.ad_desc }}</p>
+        <h3> Engine </h3>
+       
+            <p id="desc">{{ ad_name }}</p>
+            <hr>
+        <h3>Horsepower</h3>
         </div>
     </div>
         </section>
@@ -23,7 +26,8 @@ export default {
 
     data() {
         return {
-            getitemInfo: false
+            getitemInfo: true
         }
     }
 }
+
