@@ -4,17 +4,11 @@
 
     /* Header Starts */
 
-    .logo-nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
     .header-logo-wrapper {
         img {
             width: 8.5rem;
             height: auto;
-            font-family: 'Sheeping Cats', cursive;
+            font-family: 'Sheeping Cats', sans-serif;
         }
     }
 
@@ -25,6 +19,12 @@
             }
         }
     }
+
+    .logo-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }    
 
     /* Header Ends */
 

@@ -27,7 +27,7 @@
             <div class="logo-nav">
                 <a href="index.html">
                     <figure class="header-logo-wrapper">
-                        <img src="images/disconnected_logo.svg" alt="Disconnected logo" class="logo">
+                        <img src="images/fip_logo_new.svg" alt="Disconnected logo" class="logo">
                     </figure>
                 </a>
                 <nav class="main-navigation" aria-label="Main Navigation">
@@ -36,6 +36,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="help.html">How You Can Help</a></li>
                         <li><a href="content.html">Our Content</a></li>
+                        <li><a href="forum.html">Forum</a></li>
                         <li><a href="aboutus.html">About Us</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -60,9 +61,7 @@
                     <!-- 'item' are the individual entries in the adData array -->
                     <!-- adData is the array holding the entries from the database -->
                     <!-- key = principle entry. item.name is what we're displaying -->
-                    <div v-for="item in adData" :key="item.id" class="desc">
-                        <p>{{adData}}</p>
-                    </div>
+                    <forum v-for="item in forumData" :key="item.id" :item="item" class="desc"></forum>
                     
                 </section>
             </nav>
