@@ -1,5 +1,6 @@
 import portStuff from './components/projects.js';
 import portpiece from './components/pieces.js';
+import adComponent from "./components/adComponent.js";
 import { SendMail } from "./components/mailer.js";
 import databaseLocation from "./config.js";
 
@@ -52,10 +53,11 @@ import databaseLocation from "./config.js";
         },
 
         components: {
+            ads : adComponent,
             portstuff: portStuff,
             portpiece: portpiece
         }
     })
-    
+
     app.mount('#app, #mail-form')
 })()
