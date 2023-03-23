@@ -34,11 +34,30 @@ import { SendMail } from "./components/mailer.js";
     createApp({
         data() {
             return {
-                message: 'Test!'
+                message: 'Test!',
+                dataFromAPI: []
             }
         },
 
         methods: {
+
+            // This executes on page load
+            mounted() {
+                this.getDataFromAPI()
+            },
+
+            // Here is where we get the data from Lumen
+            getDataFromAPI(requestedData) {
+                fetch(`http://localhost:8000/${requestedData}`)
+                  .then(response => response.json())
+                  .then(data => {
+                    this.dataFromAPI = data;
+                  })
+                  .catch(error => {
+                    console.log(error);
+                  });
+            },
+
             processMailFailure(result) {
         
             },
