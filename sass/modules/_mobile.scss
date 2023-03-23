@@ -12,7 +12,7 @@
 
     .header-logo-wrapper {
         img {
-            max-width: 12.5rem;
+            width: 8.5rem;
             height: auto;
             font-family: 'Sheeping Cats', cursive;
         }
@@ -47,7 +47,7 @@
 
     .about-disconnected {
         background-color: $primary-color;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
     }
 
     .mission,
@@ -69,6 +69,17 @@
             font-size: $font-size-custom;
             text-align: center;
         }
+    }
+
+    .case {
+        padding: 1.25rem;
+        background-color: #f2f2f2;
+        margin-bottom: 1.25rem;
+    }
+
+    .case p {
+        line-height: 1.5;
+        margin-bottom: 0;
     }
 
     .general-stats,
@@ -194,8 +205,9 @@
 
     .footer-logo-wrapper {
         img {
-            max-width: 12.5rem;
+            width: 8.5rem;
             height: auto;
+            margin-bottom: 1rem;
         }
     }
 
@@ -249,13 +261,6 @@
     /* How You Can Help Page Starts */
 
     /* Main Starts */
-
-    .how-you-can-help-content {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
 
     .support-us {
         background-color: $heading-color;
