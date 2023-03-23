@@ -4,9 +4,14 @@ import { SendMail } from "./components/mailer.js";
 import databaseLocation from "./config.js";
 
 (() => {
-    const { createApp } = Vue
-    
-    createApp({
+    const app = Vue.createApp({
+
+        // Protected method that runs on page load
+        mounted() {
+            // We're calling this method on page load, and passing in the 'items' variable
+            this.getDataFromAPI('item');
+        },
+
         data() {
             return {
                 adData: ['test'],
@@ -15,12 +20,6 @@ import databaseLocation from "./config.js";
         },
 
         methods: {
-
-            // Protected method that runs on page load
-            mounted() {
-                // We're calling this method on page load, and passing in the 'items' variable
-                this.getDataFromAPI('item');
-            },
 
             // Here is where we get the data from Lumen
             getDataFromAPI(requestedData) {
@@ -57,5 +56,6 @@ import databaseLocation from "./config.js";
             portpiece: portpiece
         }
     })
-    .mount('#app, #mail-form')
+    
+    app.mount('#app, #mail-form')
 })()
