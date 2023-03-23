@@ -56,7 +56,10 @@
                 <p class="desc">Here are some promotional ads that we created for our brand</p>
                 <section class="project-list" v-show="displayOthers">
                     <h3 class="hidden">Project Display</h3>
-                    <port-stuff v-for="item in projectData" :item="item"></port-stuff>
+                    <!-- 'item' are the individual entries in the adData array -->
+                    <!-- adData is the array holding the entries from the database -->
+                    <!-- key = principle entry. item.name is what we're displaying -->
+                    <div v-for="item in adData" :key="item.id">{{item.name}}</div>
                 </section>
             </nav>
         </main>
