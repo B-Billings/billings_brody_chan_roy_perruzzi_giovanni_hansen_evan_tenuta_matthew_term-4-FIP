@@ -15,6 +15,9 @@
         align-items: center;
         justify-content: space-between;
         margin: 0 auto;
+        padding-top: 1em;
+        border-top: solid 1em;
+        border-color: #f43e3e;
         max-width: 144rem;
     }
 
@@ -36,7 +39,7 @@
         }
 
         a {
-            font-size: $font-size-large;
+            font-size: $font-size-medium;
             font-weight: 600;
             text-decoration: none;
             color: $button-text-color;

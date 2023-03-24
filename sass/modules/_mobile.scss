@@ -8,7 +8,6 @@
         img {
             width: 8.5rem;
             height: auto;
-            font-family: 'Sheeping Cats', sans-serif;
         }
     }
 
@@ -182,7 +181,7 @@
             align-items: center;
             background-color: $secondary-color;
             border-radius: 1.875rem;
-            color: $button-text-color;
+            color: #f2f2f2;
             display: flex;
             height: 2.813rem;
             justify-content: center;
@@ -517,12 +516,19 @@
     .submit {
         background-color: $secondary-color;
         border-radius: 1.875rem;
-        color: $button-text-color;
+        border: none;
+        color: #f2f2f2;
         display: flex;
         font-size: $font-size-small;
         height: 2.813rem;
         justify-content: center;
         width: 10.313rem;
+    }
+    .submit:hover {
+        cursor: pointer;
+    }
+    .submit:active {
+        background-color: #343434;
     }
 
     /* Main Ends */
