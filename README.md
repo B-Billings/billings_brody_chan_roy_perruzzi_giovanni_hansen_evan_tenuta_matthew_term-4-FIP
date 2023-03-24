@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="images/disconnected_logo.svg" width="200px">
+  <img src="images/fip_logo_new.svg" width="200px">
 </div>
 
 # Term 4 FIP
