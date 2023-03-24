@@ -1,44 +1,64 @@
 import portStuff from './components/projects.js';
 import portpiece from './components/pieces.js';
+import adComponent from "./components/adComponent.js";
+import forumComponent from "./components/forumComponent.js";
 import { SendMail } from "./components/mailer.js";
+import databaseLocation from "./config.js";
+
+// Call the getDataFromAPI method with the appropriate endpoint
+
+
+
 (() => {
-    const { createApp } = Vue
+    const app = Vue.createApp({
 
-    createApp({
-        created() {
-            console.log('vue instance is created');
-
-            //fetch('./scripts/json.php')
-
-            fetch('./data.json')
-                .then(res => res.json())
-                .then(data => this.ProjectData = data)
-            .catch(error => console.error(error));
+        // Protected method that runs on page load
+        mounted() {
+            // We're calling this method on page load, and passing in the 'items' variable
+            this.getDataFromAds(databaseLocation.adsDatabase);
+            this.getDataFromForum(databaseLocation.forumDatabase);
         },
 
         data() {
-            console.log('vue data check');
             return {
-                ProjectData: {},
-                displayothers: true,
-                getitemInfo: false
-            }
-        },
-        
-        components: {
-            portstuff: portStuff,
-            portpiece: portpiece
-        }
-    }).mount('#app')
-
-    createApp({
-        data() {
-            return {
+                adData: ['test'],
+                forumData: ['test'],
                 message: 'Test!'
             }
         },
 
         methods: {
+
+            // Here is where we get the data from Lumen
+            // requestedData is from the asbove 
+            getDataFromAds(requestedData) {
+                // Gonna change from hardcoding the URl to something more modular
+                fetch(requestedData)
+                  .then(response => response.json())
+                  .then(data => {
+                    console.log(databaseLocation);
+                    // Then we can make adData the data we pull from the database
+                    this.adData = data;
+                  })
+                  .catch(error => {
+                    console.log(error);
+                  });
+            },
+
+            getDataFromForum(requestedData) {
+                // Gonna change from hardcoding the URl to something more modular
+                fetch(requestedData)
+                  .then(response => response.json())
+                  .then(data => {
+                    console.log(databaseLocation);
+                    // Then we can make adData the data we pull from the database
+                    this.forumData = data;
+                  })
+                  .catch(error => {
+                    console.log(error);
+                  });
+            },
+
             processMailFailure(result) {
         
             },
@@ -52,8 +72,15 @@ import { SendMail } from "./components/mailer.js";
                     .then(data => this.processMailSuccess(data))
                     .catch(err => this.processMailFailure(err));
             }
-        }
-    }).mount('#mail-form')
+        },
 
-    
+        components: {
+            ads : adComponent,
+            forum: forumComponent,
+            portstuff: portStuff,
+            portpiece: portpiece
+        }
+    })
+
+    app.mount('#app, #mail-form')
 })()

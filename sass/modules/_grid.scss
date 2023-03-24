@@ -1,6 +1,6 @@
 /* Mobile Starts */
 
-@media screen and (min-width: 428px) {
+@media screen and (min-width: 320px) {
 
     /* Grid Starts */
 
@@ -11,6 +11,13 @@
         grid-template-columns: auto;
         grid-template-rows: auto auto auto;
         padding: 0.1rem;
+    }
+
+    .header {
+        // Header Red Line
+        padding-top: 1em;
+        border-top: solid 1em;
+        border-color: #f43e3e;
     }
 
     /* Grid Ends */
@@ -114,7 +121,7 @@
 
 /* Desktop Starts */
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1024px) {
 
     /* Grid Starts*/
 

@@ -1,12 +1,17 @@
 @font-face {
     font-family: 'Sheeping Cats';
-    src: url('Sheeping Cats') format('otf');
+    src: url('/includes/Sheeping_Cats.otf') format('otf');
     font-weight: normal;
     font-style: normal;
 }
 
 body {
     font-family: "Lexend", sans-serif;
+    // For the footer sticky
+    min-height: 100vh;
+    position: relative;
+    margin-bottom: 100px;
+    padding-bottom: 200px;
 }
 
 .hidden {
