@@ -70,3 +70,11 @@
 .selector {
     overflow: hidden;
 }
+
+// General Tags that could be used anywhere
+
+.gridMiddle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

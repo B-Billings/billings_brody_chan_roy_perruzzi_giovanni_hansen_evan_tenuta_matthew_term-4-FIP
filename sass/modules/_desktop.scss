@@ -1,9 +1,8 @@
 /* Homepage Starts */
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1024px) {
 
     /* Header Starts */
-
     .header-logo-wrapper {
         img {
             width: 16rem;
@@ -15,15 +14,13 @@
         align-items: center;
         justify-content: space-between;
         margin: 0 auto;
-        padding-top: 1em;
-        border-top: solid 1em;
-        border-color: #f43e3e;
         max-width: 144rem;
     }
 
     .main-navigation {
         display: flex;
         align-items: center;
+        max-width: 100%;
     }
 
     .menu {
@@ -39,7 +36,7 @@
         }
 
         a {
-            font-size: $font-size-medium;
+            font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             color: $button-text-color;
@@ -79,9 +76,9 @@
     /* Main Starts */
 
     .mission {
+        
         p {
             font-size: $font-size-small-2;
-            width: 42%;
         }
     }
 
@@ -370,3 +367,12 @@
 
     /* Contact Page Ends */
 }
+
+// This text is too big in this awkward range >:(
+    @media screen and (min-width: 1200px) {
+        .menu {
+            a {
+                font-size: 1.5rem;
+            }
+        }
+    }
