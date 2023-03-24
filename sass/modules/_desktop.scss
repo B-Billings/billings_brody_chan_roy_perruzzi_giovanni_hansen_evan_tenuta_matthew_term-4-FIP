@@ -319,6 +319,15 @@
 
     /* Blog Page Starts */
 
+
+    .project-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        align-items: center;
+        grid-gap: 20px;
+    }
+
     /* Blog Page Ends */
 
     /* Contact Page Starts */
