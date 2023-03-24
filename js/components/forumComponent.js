@@ -8,10 +8,8 @@ export default {
     template:
     `
         <section class="">
-            <div class="">
-                <h3 class="undername">{{ item.post_title }}</h3>
-            </div>
-            <p id="desc">{{ item.post_body }}</p>
+            <h2>{{ item.post_title }}</h2>
+            <p>{{ item.post_body }}</p>
         </section>
     `,
 

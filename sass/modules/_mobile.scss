@@ -466,6 +466,7 @@
         font-size: $font-size-xs;
         padding: 0.5rem 0 0 0;
         text-align: center;
+        margin-bottom: 2rem;
     }
 
     /* Main Ends */
@@ -535,4 +536,12 @@
     /* Main Ends */
 
     /* Contact Page Ends */
+
+    /* Blog Page Starts */
+
+    .forumDisplay {
+        width: 90vw;
+    }
+
+    /* Blog Page Ends */
 }

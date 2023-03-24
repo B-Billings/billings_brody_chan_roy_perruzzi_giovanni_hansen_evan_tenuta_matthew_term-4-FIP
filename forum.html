@@ -53,15 +53,15 @@
         <main id="app">
             <nav class="forum-content">
                 <h2 class="hidden">Promotional Content</h2>
-                <h3 class="heading">Promotional Content</h3>
-                <p class="desc">Forum</p>
-                <section class="project-list">
-                    <h3 class="hidden">Project Display</h3>
+                <h3 class="heading">Forum</h3>
+                <p class="desc">Post about your experiences</p>
+                <section class="forumDisplay">
+                    <h3 class="hidden">Forum</h3>
                     
                     <!-- 'item' are the individual entries in the adData array -->
                     <!-- adData is the array holding the entries from the database -->
                     <!-- key = principle entry. item.name is what we're displaying -->
-                    <forum v-for="item in forumData" :key="item.id" :item="item" class="desc"></forum>
+                    <forum v-for="item in forumData" :key="item.id" :item="item" class="postBox"></forum>
                     
                 </section>
             </nav>

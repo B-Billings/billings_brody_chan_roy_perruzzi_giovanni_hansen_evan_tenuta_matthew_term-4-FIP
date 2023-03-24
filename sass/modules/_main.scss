@@ -1,16 +1,16 @@
 // This area is for the how you can help page
-#vueimg {
+.vueImg {
     cursor: pointer;
     padding: 2em;
     max-width: 400px;
-    transition: ease-in-out 1s;
+    transition: ease-in-out .25s;
 }
 
-#vueimg:hover {
+.vueImg:hover {
     transform: scale(1.1);
 }
 
-#imagename {
+.imageName {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -19,7 +19,8 @@
 .projinfo {
     max-width: 300px;
     width: 100%;
-    border: solid #42eec3 7px;
+    text-align: center;
+    // border: solid #42eec3 7px;
 }
 
 #app {
@@ -86,3 +87,42 @@
   align-items: center;
   gap: 20px;
 }
+
+.postBox {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  .postBox h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  .postBox p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .postBox .author {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  .postBox .date {
+    font-size: 12px;
+    color: #999;
+  }
+  .postBox .actions {
+    margin-top: 10px;
+  }
+  .postBox .actions a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #999;
+    font-size: 14px;
+  }
+  .postBox .actions a:hover {
+    color: #666;
+  }
+  

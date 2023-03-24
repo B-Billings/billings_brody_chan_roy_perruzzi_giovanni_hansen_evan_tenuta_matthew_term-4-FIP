@@ -39,14 +39,15 @@ CREATE TABLE `tbl_ads` (
 --
 
 INSERT INTO `tbl_ads` (`ad_id`, `ad_name`, `ad_desc`, `ad_image`) VALUES
-(1, 'Ad 1', 'Ad desc goes here', 'ad_1.jpg'),
-(2, 'Ad 2', 'Ad desc goes here', 'ad_2.jpg'),
-(3, 'Ad 3', 'Ad desc goes here', 'ad_3.jpg'),
-(4, 'Ad 4', 'Ad desc goes here', 'portrait_ad_1.jpg'),
-(5, 'Ad 5', 'Ad desc goes here', 'portrait_ad_2.jpg'),
-(6, 'Ad 6', 'Ad desc goes here', 'portrait_ad_3.jpg'),
-(7, 'Ad 7', 'Ad desc goes here', 'ad_1_bilboard_size.jpg'),
-(8, 'Ad 8', 'Ad desc goes here', 'ad_2_bilboard_size.jpg');
+(1, 'Ad 1', 'Ad desc goes here', 'disconnectedAd1Redesign.jpg'),
+(2, 'Ad 2', 'Ad desc goes here', 'disconnectedAd2Redesign.jpg'),
+(3, 'Ad 3', 'Ad desc goes here', 'disconnectedAd3Redesign.jpg'),
+(4, 'Ad 4', 'Ad desc goes here', 'busAd1.jpg'),
+(5, 'Ad 5', 'Ad desc goes here', 'busAd2.jpg'),
+(6, 'Ad 6', 'Ad desc goes here', 'billboardAd1.jpg'),
+(7, 'Ad 7', 'Ad desc goes here', 'billboardAd2.jpg'),
+(8, 'Ad 8', 'Ad desc goes here', 'xboxAd1.jpg'),
+(9, 'Ad 9', 'Ad desc goes here', 'xboxAd2.jpg');
 
 -- --------------------------------------------------------
 
