@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 17, 2023 at 01:54 AM
+-- Generation Time: Mar 28, 2023 at 02:21 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.1.0
 
@@ -117,9 +117,9 @@ CREATE TABLE `tbl_post` (
 --
 
 INSERT INTO `tbl_post` (`post_id`, `post_title`, `post_body`) VALUES
-(1, 'Post 1', 'This is the first post.'),
-(2, 'Post 2', 'This is the second post.'),
-(3, 'Post 3', 'This is the third post.');
+(1, 'being a girl in gaming', 'i just wanna say that i was harrassed firsthand in esports, specifically in Overwatch. people will literally flame you just because you\'re a woman. I love the game, and it\'s gotten a lot better over the years but i don\'t like to talk a lot cause of it :/ I report the abusive players but i hope more change happens soon. thanks for doing this <3'),
+(2, 'Flaming in League...', 'As I am guilty of flaming. Its because I am overly competitive. I have gotten a lot better about this but I definitely know why I have flamed people and that’s a big part of it.'),
+(3, 'playing val w/ my gf', 'I queue with my GF a lot(she is silver if rank matters for this? idk), and I have never heard one person harass her. She has never said she has ever been harassed in this game either when I don\'t play with her. IDK why people get unlucky and get games like this and it baffles me that it happens. Sure I have heard some shit in this game but never gender specific. glad you guys are talking about this. just wanna share my experience. Sucks it happens though :/ not cool.');
 
 -- --------------------------------------------------------
 
@@ -217,7 +217,7 @@ ALTER TABLE `tbl_volunteers`
 -- AUTO_INCREMENT for table `tbl_ads`
 --
 ALTER TABLE `tbl_ads`
-  MODIFY `ad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_authors`
