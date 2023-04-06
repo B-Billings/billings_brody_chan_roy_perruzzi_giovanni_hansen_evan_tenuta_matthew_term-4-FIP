@@ -31,20 +31,20 @@ $router->post('ads', ['uses' => 'AdController@createAd']);
 $router->put('ads/{id}', ['uses' => 'AdController@updateAd']);
 $router->delete('ads/{id}', ['uses' => 'AdController@deleteAd']);
 
-$router->get('authors/{id}', ['uses' => 'AuthorsController@getOneAuthor']);
-$router->post('authors', ['uses' => 'AuthorsController@createAuthor']);
-$router->put('authors/{id}', ['uses' => 'AuthorsController@updateAuthor']);
-$router->delete('authors/{id}', ['uses' => 'AuthorsController@deleteAuthor']);
+$router->get('authors/{id}', ['uses' => 'AuthorController@getOneAuthor']);
+$router->post('authors', ['uses' => 'AuthorController@createAuthor']);
+$router->put('authors/{id}', ['uses' => 'AuthorController@updateAuthor']);
+$router->delete('authors/{id}', ['uses' => 'AuthorController@deleteAuthor']);
 
-$router->get('posts/{id}', ['uses' => 'PostsController@getOnePost']);
-$router->post('posts', ['uses' => 'PostsController@createPost']);
-$router->put('posts/{id}', ['uses' => 'PostsController@updatePost']);
-$router->delete('posts/{id}', ['uses' => 'PostsController@deletePost']);
+$router->get('posts/{id}', ['uses' => 'PostController@getOnePost']);
+$router->post('posts', ['uses' => 'PostController@createPost']);
+$router->put('posts/{id}', ['uses' => 'PostController@updatePost']);
+$router->delete('posts/{id}', ['uses' => 'PostController@deletePost']);
 
-$router->get('events/{id}', ['uses' => 'EventsController@getOneEvent']);
-$router->post('events', ['uses' => 'EventsController@createEvent']);
-$router->put('events/{id}', ['uses' => 'EventsController@updateEvent']);
-$router->delete('events/{id}', ['uses' => 'EventsController@deleteEvent']);
+$router->get('events/{id}', ['uses' => 'EventController@getOneEvent']);
+$router->post('events', ['uses' => 'EventController@createEvent']);
+$router->put('events/{id}', ['uses' => 'EventController@updateEvent']);
+$router->delete('events/{id}', ['uses' => 'EventController@deleteEvent']);
 
 $router->get('subscribers/{id}', ['uses' => 'SubscriberController@getOneSubscriber']);
 $router->post('subscribers', ['uses' => 'SubscriberController@createSubscriber']);
