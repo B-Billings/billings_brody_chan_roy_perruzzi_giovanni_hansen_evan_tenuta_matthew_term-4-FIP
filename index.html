@@ -44,7 +44,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                      </button>
+                    </button>
                 </nav>
             </div>
         </header>
@@ -80,7 +80,7 @@
                     </p>
                 </div>
                 <!-- End of Mission Part -->
-                
+
                 <section class="general-stats">
                     <h3 class="hidden">General Statistics</h3>
                     <div class="stat">
@@ -126,8 +126,21 @@
                     <ul class="call-to-action-links">
                         <li><a href="forum.html" title="Join our forum" rel="noopener">Access our forum!</a></li>
                         <li><a href="#" title="Chat with us" rel="noopener">Chat with us</a></li>
-                        <li><a href="#" title="Join our mailing list" rel="noopener">Join our mailing list</a></li>
+                        <li><a href="#" title="Join our mailing list" rel="noopener" id="popup-link">Join our mailing
+                                list</a></li>
                     </ul>
+                    <div class="popup-overlay" id="popup-overlay"></div>
+                    <div class="popup-box" id="popup-box">
+                        <h2>Join our mailing list</h2>
+                        <form action="lumen/public/subscribers" method="POST">
+                            <label for="name">Name:</label>
+                            <input type="name" name="subscriber_name" id="name" required>
+                            <label for="email">Email:</label>
+                            <input type="email" name="subscriber_email" id="email" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                        <span class="popup-close" id="popup-close">&times;</span>
+                    </div>
                 </section>
             </section>
         </main>
@@ -184,6 +197,7 @@
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <script src="js/gsap.js"></script>
         <script src="js/components/menu.js"></script>
+        <script src="js/popup.js"></script>
         <script src="js/main.js" type="module" defer></script>
     </body>
 
