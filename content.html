@@ -51,19 +51,25 @@
 
         <!-- This is where the Vue is put in -->
         <main id="app">
+            <section class="about-us">
+                <h2 class="hidden">About Us</h2>
+                <div class="about-us-header">
+                    <h3 class="about-us-heading">Our Content</h3>
+                </div>
+            </section>
             <nav class="promotional-content">
                 <h2 class="hidden">Promotional Content</h2>
                 <h3 class="heading">Promotional Content</h3>
                 <p class="desc">Here are some promotional ads that we created for our brand</p>
                 <section class="project-list">
                     <h3 class="hidden">Project Display</h3>
-                    
+
                     <!-- 'item' are the individual entries in the adData array -->
                     <!-- adData is the array holding the entries from the database -->
                     <!-- key = principle entry. item.name is what we're displaying -->
                     <!-- idk what :item="item" is, but without it, it doesn't work -->
                     <ads v-for="item in adData" :key="item.id" :item="item"></ads>
-                    
+
                 </section>
             </nav>
         </main>
@@ -78,7 +84,7 @@
                         <img src="images/fip_logo_new.svg" alt="Disconnected logo" class="logo">
                     </figure>
                 </a>
-                
+
                 <nav class="footer-nav">
                     <h3 class="hidden">Footer navigation</h3>
                     <h4 class="footer-links-heading">Quick Links</h4>
