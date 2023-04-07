@@ -5,7 +5,7 @@ header("Content-Type: application/json; charset=UTF-8");
 
 if($_POST){ 
 
-    $receipent = "";
+    $receipent = "billings.brody@gmail.com";
     $subject = "Email from my *****";
     $visitor_name= "";
     $visitor_email="";

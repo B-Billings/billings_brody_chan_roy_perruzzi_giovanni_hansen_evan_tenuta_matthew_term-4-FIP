@@ -1,0 +1,137 @@
+#head-section{
+    display: flex;
+    width: 100%;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+#event-head{
+    display: flex;
+    width: 100%;
+    text-align: center;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+.event-wrapper{
+    width: 100%;
+    text-align: center;
+}
+#countdown {
+    text-align: center;
+    font-size: 36px;
+    color: #fff;
+    padding: 5px;
+  }
+
+  .cd-timer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color:#e72323;;
+  }
+  .countdown{
+    width: 100%;
+  }
+
+  .event-content{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content-areas{
+    display: flex;
+    padding: 1em;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .image-area-event{
+    display: flex;
+    width: 50%;
+    margin-right: .5em;
+    align-items: center;
+    justify-content: center;
+  }
+  .image-area-event img{
+    align-items: center;
+    max-width: 400px;
+
+  }
+  .text-area-event{
+    display: flex;
+    margin-left: .5em;
+    width: 45%;
+    margin-bottom: 2em;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .text-area-event h4{
+    font-size: 2rem;
+  }
+  .text-area-event p{
+    font-size: 1.8rem;
+  }
+  .event-spacer{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1.5em;
+    justify-content: center;
+  }
+  .video-topper{
+    width: 100%;
+    font-size: 2.2rem;
+    padding: 1em;
+  }
+  .video-content{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2em;
+    text-align: center;
+  }
+.seperate-videos{
+  width: 40%;
+  height: auto;
+}
+  .video-content video{
+    width: 100%;
+    padding: 1em;
+  }
+  .large-videos{
+    width: 70%;
+  }
+
+  @media only screen and (max-width: 828px) {
+    .content-areas{
+        display: flex;
+        padding: 1em;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .image-area-event img{
+        align-items: center;
+        max-width: 50vw;
+    
+      }
+      .text-area-event{
+        margin-top: 1em;
+        margin-left: .5em;
+        text-align: center;
+        width: 100%;
+      }
+      .text-area-event h4{
+        font-size: 1.5rem;
+      }
+      .text-area-event p{
+        font-size: 2vw;
+      }
+  }
