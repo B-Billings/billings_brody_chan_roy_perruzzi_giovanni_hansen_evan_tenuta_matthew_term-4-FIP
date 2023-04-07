@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 06, 2023 at 08:15 PM
+-- Generation Time: Apr 07, 2023 at 08:05 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_ads` (
   `ad_id` int(11) NOT NULL,
-  `ad_name` varchar(10) NOT NULL,
+  `ad_name` varchar(100) NOT NULL,
   `ad_desc` varchar(500) NOT NULL,
   `ad_image` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -41,17 +41,17 @@ CREATE TABLE `tbl_ads` (
 --
 
 INSERT INTO `tbl_ads` (`ad_id`, `ad_name`, `ad_desc`, `ad_image`, `created_at`, `updated_at`) VALUES
-(1, 'Disconnect', 'This is a social media styled ad of a man screaming in rage at a game.', 'disconnectedAd1Redesign.jpg', '2023-04-06 07:04:51', '2023-04-06 07:05:25'),
-(2, 'Disconnect', 'This is a social media styled ad of a female gamer feeling sad due to Esports bullying.', 'disconnectedAd2Redesign.jpg', '2023-04-06 07:04:51', '2023-04-06 07:05:25'),
-(3, 'Disconnect', 'This is a social media styled ad of a man raging during gamplay. With a stat relating to cyberbullying.', 'disconnectedAd3Redesign.jpg', '2023-04-06 07:04:51', '2023-04-06 07:05:25'),
-(4, 'Disconnect', 'This has taken our Screaming Gamer ad and placed it in a practicle environment.', 'busAd1.jpg', '2023-04-06 07:04:51', '2023-04-06 07:05:25'),
-(5, 'Disconnect', 'This has taken our Sad Gamer ad and placed it in a practicle environment.', 'busAd2.jpg', '2023-04-06 07:04:51', '2023-04-06 07:05:25'),
-(6, 'Disconnect', 'This has taken our Screaming Gamer ad and placed it in a practicle environment.', 'billboardAd1.jpg', '2023-04-06 07:04:51', '2023-04-06 07:05:25'),
-(7, 'Disconnect', 'This has taken our Screaming Gamer ad and placed it in a practicle environment.', 'billboardAd2.jpg', '2023-04-06 07:04:51', '2023-04-06 07:05:25'),
-(8, 'Disconnect', 'This has taken our Sad Gamer ad and placed it in a practicle digital environment on the XBOX home screen.', 'xboxAd1.jpg', '2023-04-06 07:04:51', '2023-04-06 07:05:25'),
-(9, 'Disconnect', 'This has taken our Screaming Gamer ad and placed it in a practicle digital environment on the XBOX home screen.', 'xboxAd2.jpg', '2023-04-06 07:04:51', '2023-04-06 07:05:25'),
-(10, 'Disconnect', 'This image features a girl who is losing connection from reality due to the hate received in Esports.', 'LSC1.jpg', '2023-04-06 07:04:51', '2023-04-06 07:05:25'),
-(11, 'Disconnect', 'This image features a boy who is losing connection from reality due to the hate received in Esports.', 'LSC2.jpg', '2023-04-06 07:04:51', '2023-04-06 07:05:25');
+(1, 'The Screaming Man', 'This is a social media styled ad of a man screaming in rage at a game.', 'disconnectedAd1Redesign.jpg', '2023-04-06 07:04:51', '2023-04-07 07:57:21'),
+(2, 'The Disconnected Gamer', 'This is a social media styled ad of a female gamer feeling sad due to Esports bullying.', 'disconnectedAd2Redesign.jpg', '2023-04-06 07:04:51', '2023-04-07 07:57:49'),
+(3, 'Man of Rage', 'This is a social media styled ad of a man raging during gamplay. With a stat relating to cyberbullying.', 'disconnectedAd3Redesign.jpg', '2023-04-06 07:04:51', '2023-04-07 07:58:05'),
+(4, 'The Screaming Man Bus stop', 'This has taken our Screaming Gamer ad and placed it in a practicle environment.', 'busAd1.jpg', '2023-04-06 07:04:51', '2023-04-07 07:58:29'),
+(5, 'The Disconnected Gamer Bus stop', 'This has taken our Sad Gamer ad and placed it in a practicle environment.', 'busAd2.jpg', '2023-04-06 07:04:51', '2023-04-07 07:58:49'),
+(6, 'The Screaming Man Bus billboard', 'This has taken our Screaming Gamer ad and placed it in a practicle environment.', 'billboardAd1.jpg', '2023-04-06 07:04:51', '2023-04-07 07:59:19'),
+(7, 'The Disconnected Gamer billboard\r\n', 'This has taken our Screaming Gamer ad and placed it in a practicle environment.', 'billboardAd2.jpg', '2023-04-06 07:04:51', '2023-04-07 07:59:40'),
+(8, 'Disconnected X XBOX 1', 'This has taken our Sad Gamer ad and placed it in a practicle digital environment on the XBOX home screen.', 'xboxAd1.jpg', '2023-04-06 07:04:51', '2023-04-07 08:00:01'),
+(9, 'Disconnected X XBOX 2', 'This has taken our Screaming Gamer ad and placed it in a practicle digital environment on the XBOX home screen.', 'xboxAd2.jpg', '2023-04-06 07:04:51', '2023-04-07 08:00:16'),
+(10, 'Disconnect static ad 1', 'This image features a girl who is losing connection from reality due to the hate received in Esports.', 'LSC1.jpg', '2023-04-06 07:04:51', '2023-04-07 08:01:06'),
+(11, 'Disconnect static ad 2', 'This image features a boy who is losing connection from reality due to the hate received in Esports.', 'LSC2.jpg', '2023-04-06 07:04:51', '2023-04-07 08:01:21');
 
 -- --------------------------------------------------------
 
@@ -152,7 +152,8 @@ CREATE TABLE `tbl_subscribers` (
 INSERT INTO `tbl_subscribers` (`subscriber_id`, `subscriber_email`, `subscriber_name`, `created_at`, `updated_at`) VALUES
 (1, 'john@example.com', 'John Doe', '2023-04-06 07:12:27', '2023-04-06 07:12:27'),
 (2, 'jane@example.com', 'Jane Smith', '2023-04-06 07:12:27', '2023-04-06 07:12:27'),
-(3, 'alice@example.com', 'Alice Williams', '2023-04-06 07:12:27', '2023-04-06 07:12:27');
+(3, 'alice@example.com', 'Alice Williams', '2023-04-06 07:12:27', '2023-04-06 07:12:27'),
+(11, 'Pleasework@hopefully.com', 'Final Test', '2023-04-07 08:04:31', '2023-04-07 08:04:31');
 
 -- --------------------------------------------------------
 
@@ -249,13 +250,13 @@ ALTER TABLE `tbl_events`
 -- AUTO_INCREMENT for table `tbl_post`
 --
 ALTER TABLE `tbl_post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_subscribers`
 --
 ALTER TABLE `tbl_subscribers`
-  MODIFY `subscriber_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `subscriber_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_volunteers`
