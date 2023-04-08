@@ -34,11 +34,14 @@ body {
     font-size: large;
 }
 
-#sub-but{
-    padding: 1em;
-    margin-bottom: 2em;
+#sub-but {
+    align-items: center;
     background-color: #f43e3e;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 1.875rem;
+    color: #f2f2f2;
+    display: flex;
+    height: 2.813rem;
+    justify-content: center;
+    text-decoration: none;
+    width: 10.313rem;
 }

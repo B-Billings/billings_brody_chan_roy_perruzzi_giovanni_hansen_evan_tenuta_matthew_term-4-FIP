@@ -6,7 +6,7 @@
 
     .header-logo-wrapper {
         img {
-            width: 15.625rem;
+            width: 12rem;
         }
     }
 
@@ -19,8 +19,6 @@
 
 
     /* Header Ends */
-
-    /* Hero Starts */
 
     /* Main Starts */
 
@@ -42,7 +40,7 @@
     }
 
     .case p {
-        font-size: 1.1rem;
+        font-size: $font-size-xs-3;
     }
 
     .bullying-stats {
@@ -124,7 +122,7 @@
 
     .popup-box {
         background: #fff;
-        max-width: 900px;
+        max-width: 700px;
         position: fixed;
         top: 50%;
         left: 50%;
@@ -147,10 +145,20 @@
     .popup-box input,
     .popup-box button {
         display: block;
-        width: 100%;
+        width: auto;
         padding: 10px;
         border: 1px solid #000;
         margin-bottom: 10px;
+    }
+
+    .popup-box input[type="submit"],
+    .popup-box button[type="submit"] {
+        background-color: #c52424;
+        color: #fff;
+        border: none;
+        padding: 12px 20px;
+        margin-top: 20px;
+        cursor: pointer;
     }
 
     .popup-close {
@@ -178,7 +186,7 @@
         margin: 10% auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 90%;
+        width: 60%;
         max-width: 600px;
         border-radius: 10px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -193,7 +201,7 @@
 
     .close:hover,
     .close:focus {
-        color: black;
+        color: #000;
         text-decoration: none;
         cursor: pointer;
     }
@@ -213,6 +221,7 @@
         align-items: flex-start;
         margin-left: 3rem;
         margin-top: 2rem;
+        width: 80%;
     }
 
     .social-media {
@@ -297,7 +306,7 @@
     /* Main Starts */
 
     .about-us-header {
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
     }
 
     .about-us-header {
@@ -308,7 +317,7 @@
 
     .our-mission {
         font-size: $font-size-large;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
     }
 
     .team-image-wrapper {
@@ -316,22 +325,13 @@
     }
 
     .team-image-wrapper img {
-        max-width: 70%;
+        max-width: 100%;
     }
 
     .our-mission-statement {
-        padding: 0.5rem 7rem;
-        text-align: inherit;
-    }
-
-    .heading {
-        font-size: $font-size-large;
-        margin-bottom: 0.5rem;
-    }
-
-    .desc {
-        font-size: $font-size-xs-2;
-        margin-bottom: 2rem;
+        padding: 0.5rem 2.6rem;
+        font-size: $font-size-small;
+        margin-bottom: 3rem;
     }
 
     /* Main Ends */
@@ -344,19 +344,20 @@
 
     #mail-form {
         display: flex;
-        padding: 1.25rem;
+        padding: 2rem;
     }
 
     label {
-        padding: 0.313rem;
+        font-size: $font-size-small-2;
+        padding: 0.625rem;
     }
 
     .wrapper {
-        padding-top: 0.5rem;
+        padding-top: 1.25rem;
     }
 
     .submit {
-        margin-top: 0.625rem;
+        margin-top: 2rem;
     }
 
     /* Main Ends */
@@ -366,7 +367,7 @@
     /* Blog Page Starts */
 
     .forumDisplay {
-        width: 90vw;
+        width: 80%;
         margin: 0 auto;
     }
 
@@ -374,6 +375,23 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .desc {
+        display: flex;
+        justify-content: center;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    .project-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        align-items: center;
+        grid-gap: 20px;
     }
 
     /* Blog Page Ends */
