@@ -16,7 +16,6 @@
             a {
                 color: $button-text-color;
                 font-size: $font-size-medium;
-                padding: 0.5rem;
             }
         }
     }
@@ -473,6 +472,7 @@
         font-size: $font-size-xs;
         margin-top: 0.5rem;
         text-align: center;
+        width: 68.9%;
     }
 
     .donation-desc {

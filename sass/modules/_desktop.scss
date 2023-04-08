@@ -5,7 +5,8 @@
     /* Header Starts */
     .header-logo-wrapper {
         img {
-            width: 16rem;
+            width: 100%;
+            max-width: 16rem;
         }
     }
 
@@ -14,8 +15,8 @@
         align-items: center;
         justify-content: space-between;
         margin: 0 auto;
-        padding: 1rem 2rem;
-        max-width: 144rem;
+        padding: 1rem 1rem;
+        max-width: 100%;
     }
 
     .main-navigation {
@@ -26,21 +27,20 @@
 
     .menu {
         display: flex;
-        justify-content: space-between;
         list-style: none;
         margin: 0;
         padding: 0;
 
         li {
-            margin: 0 2rem;
-            padding: 1rem 1.5rem;
+            margin: 0;
+            padding: 0 1.5rem;
         }
     }
 
     .menu {
         li {
             a {
-                font-size: $font-size-medium;
+                font-size: $font-size-xs-2;
                 font-weight: 600;
                 text-decoration: none;
                 color: $button-text-color;
@@ -94,7 +94,7 @@
     }
 
     .bullying-stats {
-        padding: 10rem 0 3rem 0;
+        padding: 10rem 0px 3rem 1.8rem;
     }
 
     .general-stats,
@@ -297,13 +297,14 @@
 
     .footer-content {
         align-items: center;
-        padding: 4rem 5rem;
+        padding: 1rem 1rem;
     }
 
     .footer-logo-wrapper {
         img {
             max-width: 25rem;
             height: auto;
+            width: 100%;
         }
     }
 
@@ -311,7 +312,7 @@
         align-items: flex-start;
         display: flex;
         flex-direction: column;
-        margin: 1.563rem 0 0 0;
+        margin: 1.563rem 0 0 4rem;
     }
 
     .social-media {
@@ -328,6 +329,8 @@
         display: flex;
         flex-direction: column;
         list-style: none;
+        margin: 0;
+        padding: 0;
     }
 
     .footer-nav-list {
@@ -338,7 +341,7 @@
 
     .footer-nav li a {
         color: $text-color;
-        font-size: $font-size-medium;
+        font-size: $font-size-xs-3;
         text-decoration: none;
         transition: color 0.2s ease-in-out;
     }
@@ -417,12 +420,6 @@
         margin: 0 0 4rem;
     }
 
-    .donation-in-person,
-    .donation-online,
-    .donation-over-the-phone {
-        margin-right: 2rem;
-    }
-
     /* How You Can Help Page Ends */
 
     /* About Us Page Starts */
@@ -446,7 +443,8 @@
 
     .team-image-wrapper img {
         max-width: 100%;
-        margin-left: 20rem;
+        margin-left: 7rem;
+        margin-bottom: 3rem;
     }
 
     .our-mission {
@@ -455,7 +453,7 @@
 
     .our-mission-statement {
         font-size: $font-size-medium;
-        margin-left: -10rem;
+        margin-left: -11rem;
         padding: 0;
         text-align: left;
     }
@@ -469,7 +467,7 @@
 
     .project-list {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         justify-content: center;
         align-items: center;
         grid-gap: 20px;
