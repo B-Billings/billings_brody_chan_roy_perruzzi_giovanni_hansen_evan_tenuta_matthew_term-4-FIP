@@ -14,6 +14,7 @@
         align-items: center;
         justify-content: space-between;
         margin: 0 auto;
+        padding: 1rem 2rem;
         max-width: 144rem;
     }
 
@@ -31,16 +32,21 @@
         padding: 0;
 
         li {
-            margin: 0 1rem;
-            padding: 0.5rem 1rem;
+            margin: 0 2rem;
+            padding: 1rem 1.5rem;
         }
+    }
 
-        a {
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            color: $button-text-color;
-            transition: color 0.2s ease-in-out;
+    .menu {
+        li {
+            a {
+                font-size: $font-size-medium;
+                font-weight: 600;
+                text-decoration: none;
+                color: $button-text-color;
+                transition: color 0.2s ease-in-out;
+                padding: 0;
+            }
         }
     }
 
@@ -66,7 +72,7 @@
         video {
             height: auto;
             max-width: 100%;
-            width: 50%;
+            width: 80%;
             margin-bottom: 0;
         }
     }
@@ -78,31 +84,32 @@
     .mission {
 
         p {
-            font-size: $font-size-small-2;
+            font-size: $font-size-medium;
+            width: 100%;
         }
     }
 
     .case p {
-        font-size: 1.25rem;
+        font-size: $font-size-medium;
     }
 
     .bullying-stats {
-        padding: 8rem 0rem 3rem 1rem;
+        padding: 10rem 0 3rem 0;
     }
 
     .general-stats,
     .motto {
         display: flex;
-        padding: 5.625rem 9.25rem;
+        padding: 7.5rem 15rem;
     }
 
     .motto {
-        padding: 3.125rem 1.3rem 4rem 0;
+        padding: 3.125rem 0 4rem 0;
     }
 
     .motto {
         p {
-            font-size: $font-size-medium-2;
+            font-size: $font-size-large;
         }
     }
 
@@ -114,12 +121,13 @@
 
     .bullying-stats {
         p {
-            width: 16.2rem;
+            width: 20rem;
+            font-size: $font-size-medium;
         }
     }
 
     .section-divider {
-        padding: 1.25rem 5rem 0 4rem;
+        padding: 1.25rem 5rem 0 5rem;
     }
 
     .section-divider {
@@ -129,11 +137,11 @@
     }
 
     .call-to-action {
-        padding: 6rem 0px 2rem 0.5rem;
+        padding: 8rem 0 2rem 0;
     }
 
     .stat {
-        width: 100%;
+        width: 50%;
     }
 
     .general-stats {
@@ -144,19 +152,20 @@
 
     .general-stats {
         p {
-            padding: 1.875rem 0 0 0;
+            padding: 1.875rem 0 0.625rem 0;
+            font-size: $font-size-medium;
         }
     }
 
     .call-to-action {
         h3 {
-            font-size: $font-size-large;
+            font-size: $font-size-xl;
         }
     }
 
     .call-to-action {
         li {
-            margin: 0 0 0.625rem 0;
+            margin: 0 0 1.25rem 0;
         }
     }
 
@@ -164,9 +173,17 @@
         li {
             a {
                 background-color: $secondary-color;
-                font-size: $font-size-small-2;
-                height: 3.125rem;
-                width: 13.75rem;
+                font-size: $font-size-medium;
+                height: 3.75rem;
+                width: 15rem;
+            }
+        }
+    }
+
+    .call-to-action {
+        li {
+            a:hover {
+                background-color: darken($secondary-color, 10%);
             }
         }
     }
@@ -184,12 +201,12 @@
 
     .popup-box {
         background: #fff;
-        max-width: 900px;
+        max-width: 600px;
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        padding: 20px;
+        padding: 30px;
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
         z-index: 1000;
         display: none;
@@ -207,18 +224,34 @@
     .popup-box input,
     .popup-box button {
         display: block;
-        width: 100%;
+        width: auto;
         padding: 10px;
         border: 1px solid #000;
-        margin-bottom: 10px;
+        margin-bottom: 0;
+    }
+
+    .popup-box input[type="submit"],
+    .popup-box button[type="submit"] {
+        background-color: #c52424;
+        color: #fff;
+        border: none;
+        padding: 12px 20px;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .popup-box input[type="submit"]:hover,
+    .popup-box button[type="submit"]:hover {
+        background-color: #c00b0b;
     }
 
     .popup-close {
         position: absolute;
-        top: 10px;
-        right: 10px;
+        top: 20px;
+        right: 20px;
         cursor: pointer;
-        font-size: 24px;
+        font-size: 30px;
     }
 
     .modal {
@@ -253,7 +286,7 @@
 
     .close:hover,
     .close:focus {
-        color: black;
+        color: #000;
         text-decoration: none;
         cursor: pointer;
     }
@@ -264,6 +297,7 @@
 
     .footer-content {
         align-items: center;
+        padding: 4rem 5rem;
     }
 
     .footer-logo-wrapper {
@@ -277,12 +311,12 @@
         align-items: flex-start;
         display: flex;
         flex-direction: column;
-        margin: 1.563rem 0 0 0rem;
+        margin: 1.563rem 0 0 0;
     }
 
     .social-media {
         justify-self: end;
-        margin-top: 12.5rem;
+        margin-top: 17.5rem;
     }
 
     .footer-links-heading {
@@ -300,6 +334,13 @@
         li {
             margin-bottom: 1.5rem;
         }
+    }
+
+    .footer-nav li a {
+        color: $text-color;
+        font-size: $font-size-medium;
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
     }
 
     .footer-nav {
@@ -321,25 +362,51 @@
         padding: 8rem 16rem;
     }
 
+    .get-involved-section {
+        margin-top: 4rem;
+    }
+
+    .main-heading {
+        font-size: $font-size-large-3;
+    }
+
     .support-us-heading {
         font-size: $font-size-xl-4;
         margin: 0;
     }
 
     .sub-heading {
+        font-size: $font-size-small;
         padding: 0 0 2rem;
     }
 
     .get-involved-desc {
-        font-size: $font-size-small;
+        font-size: $font-size-medium;
         padding: 2rem;
     }
 
-    .involved-links {
-        li {
-            padding: 2rem 1rem 2rem 1rem;
+    .get-involved-links {
+        padding: 2rem;
+    }
+
+    .get-involved-links li {
+        padding: 2rem;
+    }
+
+    .get-involved-links a {
+        background-color: #f43e3e;
+        border-radius: 1.875rem;
+        font-size: $font-size-medium;
+        height: 3.75rem;
+        width: 15rem;
+    }
+
+    .get-involved-links {
+        a:hover {
+            background-color: darken($secondary-color, 10%);
         }
     }
+
 
     .make-a-change-section {
         margin-top: 3rem;
@@ -353,9 +420,7 @@
     .donation-in-person,
     .donation-online,
     .donation-over-the-phone {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
+        margin-right: 2rem;
     }
 
     /* How You Can Help Page Ends */
@@ -365,21 +430,23 @@
     /* Main Starts */
 
     .about-us-header {
-        padding: 8rem;
+        padding: 10rem;
     }
 
     .about-us-header {
         h3 {
-            font-size: $font-size-xl-4;
+            font-size: $font-size-large-2;
         }
     }
 
     .team-image-wrapper {
-        width: 65%;
+        width: 50%;
+        max-width: 50%;
     }
 
     .team-image-wrapper img {
         max-width: 100%;
+        margin-left: 20rem;
     }
 
     .our-mission {
@@ -387,17 +454,10 @@
     }
 
     .our-mission-statement {
-        font-size: $font-size-small;
-        margin-left: -7rem;
+        font-size: $font-size-medium;
+        margin-left: -10rem;
         padding: 0;
-    }
-
-    .heading {
-        font-size: $font-size-large-3;
-    }
-
-    .desc {
-        font-size: $font-size-xs-3;
+        text-align: left;
     }
 
     /* Main Ends */
@@ -409,7 +469,7 @@
 
     .project-list {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         justify-content: center;
         align-items: center;
         grid-gap: 20px;
@@ -428,33 +488,34 @@
     }
 
     .form-heading {
-        font-size: $font-size-large-3;
-        padding: 4rem 0 2.5rem 0;
+        font-size: $font-size-large-2;
+        padding: 6rem 0 2.5rem 0;
     }
 
     label {
-        padding: 0.625rem;
+        padding: 1rem;
     }
 
     input {
         height: 2.5rem;
-        width: 25rem;
+        width: 35rem;
     }
 
     textarea {
         height: 10rem;
-        width: 25rem;
+        width: 35rem;
     }
 
     .wrapper {
         border-radius: 2.125rem;
-        padding: 1.875rem 0 4rem 0px;
+        padding: 3.75rem 0 7.5rem 0;
+        max-width: 50rem;
+        margin: 0 auto;
     }
 
     .submit {
         border-radius: 1.875rem;
         font-size: $font-size-medium-2;
-        font-weight: bold;
         height: 3.75rem;
         width: 12.5rem;
     }
@@ -464,7 +525,7 @@
     /* Blog Page Starts */
 
     .forumDisplay {
-        width: 30vw;
+        width: 60vw;
         margin: 0 auto;
     }
 
@@ -472,6 +533,16 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .desc {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-size: 1.2rem;
+        text-align: justify;
+        line-height: 1.5;
     }
 
     /* Blog Page Ends */

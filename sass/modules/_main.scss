@@ -20,7 +20,7 @@
   max-width: 300px;
   width: 100%;
   text-align: center;
-  // border: solid #42eec3 7px;
+  background-color: #f9f9f9;
 }
 
 #app {
@@ -83,7 +83,6 @@
 
 .gridMiddleStack {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
   justify-content: center;
   align-items: center;
   gap: 20px;

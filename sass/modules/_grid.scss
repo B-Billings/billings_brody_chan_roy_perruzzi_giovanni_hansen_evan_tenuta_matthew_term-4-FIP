@@ -10,7 +10,6 @@
         display: grid;
         grid-template-columns: auto;
         grid-template-rows: auto auto auto;
-        padding: 0.1rem;
     }
 
     .header {
@@ -39,6 +38,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 1rem;
     }
 
     /* Footer Ends */
@@ -56,8 +56,7 @@
     .main-content > *,
     .footer {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
-        padding: 0.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(31.25rem, 1fr));
     }
 
     /* Grid Ends */
@@ -65,7 +64,7 @@
     /* Main Starts */
 
     .case {
-        grid-column: 1/span 3;
+        grid-column: 1/span 6;
     }
 
     .mission,
@@ -91,6 +90,7 @@
     .ways-to-donate {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+        grid-column: 1 / span 6;
     }
 
     /* Main Ends */
@@ -132,7 +132,6 @@
         grid-template-columns: repeat(12, 1fr);
         align-items: center;
         justify-content: center;
-        padding: 1rem;
     }
 
     /* Grid Ends */
