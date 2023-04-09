@@ -23,13 +23,13 @@ class VolunteerController extends Controller
         $volunteer->volunteers_first_name = $request->volunteers_first_name;
         $volunteer->volunteers_last_name = $request->volunteers_last_name;
         $volunteer->volunteers_email = $request->volunteers_email;
-        $volunteer->volunteers_phone_number = $request->volunteers_phone_number;
-        $volunteer->volunteers_address = $request->volunteers_address;
-        $volunteer->volunteers_city = $request->volunteers_city;
-        $volunteer->volunteers_state = $request->volunteers_state;
-        $volunteer->volunteers_zip_code = $request->volunteers_zip_code;
-        $volunteer->volunteers_interests = $request->volunteers_interests;
-        $volunteer->volunteers_availability = $request->volunteers_availability;
+        // $volunteer->volunteers_phone_number = $request->volunteers_phone_number;
+        // $volunteer->volunteers_address = $request->volunteers_address;
+        // $volunteer->volunteers_city = $request->volunteers_city;
+        // $volunteer->volunteers_state = $request->volunteers_state;
+        // $volunteer->volunteers_zip_code = $request->volunteers_zip_code;
+        // $volunteer->volunteers_interests = $request->volunteers_interests;
+        // $volunteer->volunteers_availability = $request->volunteers_availability;
         $volunteer->save();
 
         return response()->json($volunteer);
@@ -41,13 +41,13 @@ class VolunteerController extends Controller
         $volunteer->volunteers_first_name = $request->volunteers_first_name;
         $volunteer->volunteers_last_name = $request->volunteers_last_name;
         $volunteer->volunteers_email = $request->volunteers_email;
-        $volunteer->volunteers_phone_number = $request->volunteers_phone_number;
-        $volunteer->volunteers_address = $request->volunteers_address;
-        $volunteer->volunteers_city = $request->volunteers_city;
-        $volunteer->volunteers_state = $request->volunteers_state;
-        $volunteer->volunteers_zip_code = $request->volunteers_zip_code;
-        $volunteer->volunteers_interests = $request->volunteers_interests;
-        $volunteer->volunteers_availability = $request->volunteers_availability;
+        // $volunteer->volunteers_phone_number = $request->volunteers_phone_number;
+        // $volunteer->volunteers_address = $request->volunteers_address;
+        // $volunteer->volunteers_city = $request->volunteers_city;
+        // $volunteer->volunteers_state = $request->volunteers_state;
+        // $volunteer->volunteers_zip_code = $request->volunteers_zip_code;
+        // $volunteer->volunteers_interests = $request->volunteers_interests;
+        // $volunteer->volunteers_availability = $request->volunteers_availability;
         $volunteer->save();
 
         return response()->json($volunteer);

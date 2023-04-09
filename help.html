@@ -34,7 +34,7 @@
                     <h2 class="hidden">Main Navigation</h2>
                     <ul class="menu lexend headertext">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="help.html">How You <br> Can Help</a></li>
+                        <li><a href="help.html">How You Can Help</a></li>
                         <li><a href="content.html">Our Content</a></li>
                         <li><a href="forum.html">Forum</a></li>
                         <li><a href="aboutus.html">About Us</a></li>
@@ -68,8 +68,27 @@
                                     More</a></li>
                             <li><a href="events.html" title="See Our Events Calendar" rel="noopener">See Our Events</a>
                             </li>
-                            <li><a href="#" title="Volunteer with Disconnected" rel="noopener">Volunteer</a></li>
-                        </ul>
+                            <li><a href="#" title="Join our mailing list" rel="noopener" id="popup2-link">Volunteer</a></li>                        </ul>
+                        <div class="popup2-overlay" id="popup2-overlay"></div>
+                    <div class="popup2-box" id="popup2-box">
+                        <h2>Want to volunteer?</h2>
+                        <form id="volunteer-form" action="lumen/public/volunteers" method="POST">
+                            <label for="name">First Name:</label>
+                            <input type="text" name="volunteers_first_name" id="name">
+                            <label for="name">Last Name:</label>
+                            <input type="text" name="volunteers_last_name" id="name">
+                            <label for="email">Email:</label>
+                            <input type="email" name="volunteers_email" id="email" required>
+                            <button type="submit"onclick="setTimeout(function(){location.reload()},2000)">Submit</button>
+                        </form>
+                        <span class="popup2-close" id="popup2-close">&times;</span>
+                    </div>
+                    <div id="subscribe-modal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <p>Thank you for subscribing!</p>
+                        </div>
+                    </div>
                     </div>
                     <section class="gridMiddle">
                         <h2 class="hidden">Esports image</h2>
@@ -168,8 +187,9 @@
         </footer>
         <script src=" https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <script src="js/gsap.js"></script>
         <script src="js/components/menu.js"></script>
+        <script src="js/popupv.js"></script>
+
 
         <script src="js/main.js" type="module" defer></script>
     </body>
