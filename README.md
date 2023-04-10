@@ -7,25 +7,26 @@
 
 <br>
 
-This is the submission file for our groups Term 4 Fip
+This is the submission file for our groups Term 4 Fip campaign.
 <br>
 
 A brief summary. This is a micro-website for our campaign to bradcast the effects and impacts of Bullying in e-sports and what we plan on doing to counter the issue that is currently growing. This assaignment will feature many things weve learned over the semeter such as SASS, Vue, Ajax and the Fetch API and PHP and lumen/laravel.
 
-Feel free to look at this [Google Docs](https://drive.google.com/drive/folders/1Ft7QOTgrdW0cAA29n3YYRMW8-zdodazj?usp=sharinghttps://drive.google.com/drive/folders/1Ft7QOTgrdW0cAA29n3YYRMW8-zdodazj?usp=sharing) folder for planning and problem solving
+Each form also features a unique key that is cached once the user completes the form. So if you would like to test it multiple times you will have to open it in a different window.
+
+Feel free to look at this [Google Docs](https://drive.google.com/drive/folders/1Ft7QOTgrdW0cAA29n3YYRMW8-zdodazj?usp=sharinghttps://drive.google.com/drive/folders/1Ft7QOTgrdW0cAA29n3YYRMW8-zdodazj?usp=sharing) folder for planning and problem solving and extra assets not found in the project.
 
 ## Installation
 ***
 
 ### ` To run from MAMP/WAMP`
 1. Clone the repo into your www or htdocs folder
-2. Open MAMP OR WAMP and create a database named `db_fip`
-3. import the tables from the database folder to the database you created named db_fip
-4. Edit the .env file found in the lumen folder to match the port, user and password as your MAMP or WAMP <br>
+2. Open MAMP OR WAMP `PHPmyadmin` and create a database named `db_fip`
+3. import the tables from the database folder to the database you created named `db_fip`
+4. Edit the `.env` file found in the lumen folder to match the port, username and password as your MAMP or WAMP uses <br>
 5. go to your browser and navigate to `localhost/billings_brody_chan_roy_perruzzi_giovanni_hansen_evan_tenuta_matthew_term-4-FIP`
 6. Have fun exploring our vue and lumen based website!
 
-You will need an installation of Lumen dependencies to run the site. The required "vendor" folder is not included.
 
 ## Contributing
 ***
