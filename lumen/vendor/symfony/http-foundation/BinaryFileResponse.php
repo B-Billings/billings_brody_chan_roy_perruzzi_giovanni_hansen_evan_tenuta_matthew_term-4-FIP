@@ -227,7 +227,7 @@ class BinaryFileResponse extends Response
             return $this;
         }
         $this->headers->remove('Transfer-Encoding');
-        $this->headers->set('Content-Length', $fileSize);
+        //$this->headers->set('Content-Length', $fileSize);
 
         if (!$this->headers->has('Accept-Ranges')) {
             // Only accept ranges on safe HTTP methods
@@ -249,7 +249,7 @@ class BinaryFileResponse extends Response
                 foreach ($parts as $part) {
                     [$pathPrefix, $location] = $part;
                     if (substr($path, 0, \strlen($pathPrefix)) === $pathPrefix) {
-                        $path = $location.substr($path, \strlen($pathPrefix));
+                        $path = $location . substr($path, \strlen($pathPrefix));
                         // Only set X-Accel-Redirect header if a valid URI can be produced
                         // as nginx does not serve arbitrary file paths.
                         $this->headers->set($type, $path);
@@ -289,7 +289,7 @@ class BinaryFileResponse extends Response
 
                             $this->setStatusCode(206);
                             $this->headers->set('Content-Range', sprintf('bytes %s-%s/%s', $start, $end, $fileSize));
-                            $this->headers->set('Content-Length', $end - $start + 1);
+                            //$this->headers->set('Content-Length', $end - $start + 1);
                         }
                     }
                 }
@@ -313,7 +313,7 @@ class BinaryFileResponse extends Response
             return false;
         }
 
-        return $lastModified->format('D, d M Y H:i:s').' GMT' === $header;
+        return $lastModified->format('D, d M Y H:i:s') . ' GMT' === $header;
     }
 
     /**

@@ -145,7 +145,7 @@ abstract class AbstractSessionHandler implements \SessionHandlerInterface, \Sess
                 } else {
                     $params = session_get_cookie_params();
                     unset($params['lifetime']);
-                    setcookie($this->sessionName, '', $params);
+                    setcookie($this->sessionName, '', $params['expires'], $params['path'], $params['domain'], $params['secure'], true);
                 }
             }
         }

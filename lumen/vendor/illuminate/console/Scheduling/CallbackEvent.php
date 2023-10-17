@@ -37,7 +37,7 @@ class CallbackEvent extends Event
      */
     public function __construct(EventMutex $mutex, $callback, array $parameters = [], $timezone = null)
     {
-        if (! is_string($callback) && ! Reflector::isCallable($callback)) {
+        if (!is_string($callback) && !Reflector::isCallable($callback)) {
             throw new InvalidArgumentException(
                 'Invalid scheduled callback event. Must be a string or callable.'
             );
@@ -59,8 +59,10 @@ class CallbackEvent extends Event
      */
     public function run(Container $container)
     {
-        if ($this->description && $this->withoutOverlapping &&
-            ! $this->mutex->create($this)) {
+        if (
+            $this->description && $this->withoutOverlapping &&
+            !$this->mutex->create($this)
+        ) {
             return;
         }
 
@@ -76,8 +78,8 @@ class CallbackEvent extends Event
 
         try {
             $response = is_object($this->callback)
-                        ? $container->call([$this->callback, '__invoke'], $this->parameters)
-                        : $container->call($this->callback, $this->parameters);
+                ? $container->call([$this->callback, '__invoke'], $this->parameters)
+                : $container->call($this->callback, $this->parameters);
 
             $this->exitCode = $response === false ? 1 : 0;
         } catch (Throwable $e) {
@@ -115,7 +117,7 @@ class CallbackEvent extends Event
      */
     public function withoutOverlapping($expiresAt = 1440)
     {
-        if (! isset($this->description)) {
+        if (!isset($this->description)) {
             throw new LogicException(
                 "A scheduled event name is required to prevent overlapping. Use the 'name' method before 'withoutOverlapping'."
             );
@@ -139,7 +141,7 @@ class CallbackEvent extends Event
      */
     public function onOneServer()
     {
-        if (! isset($this->description)) {
+        if (!isset($this->description)) {
             throw new LogicException(
                 "A scheduled event name is required to only run on one server. Use the 'name' method before 'onOneServer'."
             );
@@ -157,7 +159,7 @@ class CallbackEvent extends Event
      */
     public function mutexName()
     {
-        return 'framework/schedule-'.sha1($this->description);
+        return 'framework/schedule-' . hash("sha256", $this->description);
     }
 
     /**

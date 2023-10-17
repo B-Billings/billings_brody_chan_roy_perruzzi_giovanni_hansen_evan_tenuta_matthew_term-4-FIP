@@ -76,14 +76,14 @@ abstract class Component
             $factory = Container::getInstance()->make('view');
 
             return strlen($view) <= PHP_MAXPATHLEN && $factory->exists($view)
-                        ? $view
-                        : $this->createBladeViewFromString($factory, $view);
+                ? $view
+                : $this->createBladeViewFromString($factory, $view);
         };
 
         return $view instanceof Closure ? function (array $data = []) use ($view, $resolver) {
             return $resolver($view($data));
         }
-        : $resolver($view);
+            : $resolver($view);
     }
 
     /**
@@ -100,15 +100,15 @@ abstract class Component
             $directory = Container::getInstance()['config']->get('view.compiled')
         );
 
-        if (! is_file($viewFile = $directory.'/'.sha1($contents).'.blade.php')) {
-            if (! is_dir($directory)) {
+        if (!is_file($viewFile = $directory . '/' . hash("sha256", $contents) . '.blade.php')) {
+            if (!is_dir($directory)) {
                 mkdir($directory, 0755, true);
             }
 
             file_put_contents($viewFile, $contents);
         }
 
-        return '__components::'.basename($viewFile, '.blade.php');
+        return '__components::' . basename($viewFile, '.blade.php');
     }
 
     /**
@@ -135,7 +135,7 @@ abstract class Component
     {
         $class = get_class($this);
 
-        if (! isset(static::$propertyCache[$class])) {
+        if (!isset(static::$propertyCache[$class])) {
             $reflection = new ReflectionClass($this);
 
             static::$propertyCache[$class] = collect($reflection->getProperties(ReflectionProperty::IS_PUBLIC))
@@ -168,7 +168,7 @@ abstract class Component
     {
         $class = get_class($this);
 
-        if (! isset(static::$methodCache[$class])) {
+        if (!isset(static::$methodCache[$class])) {
             $reflection = new ReflectionClass($this);
 
             static::$methodCache[$class] = collect($reflection->getMethods(ReflectionMethod::IS_PUBLIC))
@@ -198,8 +198,8 @@ abstract class Component
     protected function createVariableFromMethod(ReflectionMethod $method)
     {
         return $method->getNumberOfParameters() === 0
-                        ? $this->createInvokableVariable($method->getName())
-                        : Closure::fromCallable([$this, $method->getName()]);
+            ? $this->createInvokableVariable($method->getName())
+            : Closure::fromCallable([$this, $method->getName()]);
     }
 
     /**
@@ -224,7 +224,7 @@ abstract class Component
     protected function shouldIgnore($name)
     {
         return Str::startsWith($name, '__') ||
-               in_array($name, $this->ignoredMethods());
+            in_array($name, $this->ignoredMethods());
     }
 
     /**

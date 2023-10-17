@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Mockery
  *
@@ -671,8 +672,8 @@ class Mockery
         $formatter = self::getConfiguration()->getObjectFormatter($class, $defaultFormatter);
 
         $array = array(
-          'class' => $class,
-          'identity' => '#' . md5(spl_object_hash($object))
+            'class' => $class,
+            'identity' => '#' . hash("sha256", spl_object_hash($object))
         );
 
         $array = array_merge($array, $formatter($object, $nesting));
@@ -805,14 +806,15 @@ class Mockery
         $methodNames = explode('->', $arg);
         reset($methodNames);
 
-        if (!\Mockery::getConfiguration()->mockingNonExistentMethodsAllowed()
+        if (
+            !\Mockery::getConfiguration()->mockingNonExistentMethodsAllowed()
             && !$mock->mockery_isAnonymous()
             && !in_array(current($methodNames), $mock->mockery_getMockableMethods())
         ) {
             throw new \Mockery\Exception(
                 'Mockery\'s configuration currently forbids mocking the method '
-                . current($methodNames) . ' as it does not exist on the class or object '
-                . 'being mocked'
+                    . current($methodNames) . ' as it does not exist on the class or object '
+                    . 'being mocked'
             );
         }
 
@@ -871,7 +873,7 @@ class Mockery
         $method,
         Mockery\ExpectationInterface $exp
     ) {
-        $newMockName = 'demeter_' . md5($parent) . '_' . $method;
+        $newMockName = 'demeter_' . hash("sha256", $parent) . '_' . $method;
 
         $parRef = null;
         $parRefMethod = null;
@@ -955,10 +957,10 @@ class Mockery
             $shortName = trim(array_pop($parts));
             $namespace = implode("\\", $parts);
 
-            $targetCode.= "namespace $namespace;\n";
+            $targetCode .= "namespace $namespace;\n";
         }
 
-        $targetCode.= "$type $shortName {} ";
+        $targetCode .= "$type $shortName {} ";
 
         /*
          * We could eval here, but it doesn't play well with the way

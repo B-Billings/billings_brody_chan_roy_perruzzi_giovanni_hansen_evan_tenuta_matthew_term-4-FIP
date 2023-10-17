@@ -253,8 +253,8 @@ class Response
     public function __toString()
     {
         return
-            sprintf('HTTP/%s %s %s', $this->version, $this->statusCode, $this->statusText)."\r\n".
-            $this->headers."\r\n".
+            sprintf('HTTP/%s %s %s', $this->version, $this->statusCode, $this->statusText) . "\r\n" .
+            $this->headers . "\r\n" .
             $this->getContent();
     }
 
@@ -297,10 +297,10 @@ class Response
             // Fix Content-Type
             $charset = $this->charset ?: 'UTF-8';
             if (!$headers->has('Content-Type')) {
-                $headers->set('Content-Type', 'text/html; charset='.$charset);
+                $headers->set('Content-Type', 'text/html; charset=' . $charset);
             } elseif (0 === stripos($headers->get('Content-Type'), 'text/') && false === stripos($headers->get('Content-Type'), 'charset')) {
                 // add the charset
-                $headers->set('Content-Type', $headers->get('Content-Type').'; charset='.$charset);
+                $headers->set('Content-Type', $headers->get('Content-Type') . '; charset=' . $charset);
             }
 
             // Fix Content-Length
@@ -313,7 +313,7 @@ class Response
                 $length = $headers->get('Content-Length');
                 $this->setContent(null);
                 if ($length) {
-                    $headers->set('Content-Length', $length);
+                    //$headers->set('Content-Length', $length);
                 }
             }
         }
@@ -356,13 +356,13 @@ class Response
         foreach ($this->headers->allPreserveCaseWithoutCookies() as $name => $values) {
             $replace = 0 === strcasecmp($name, 'Content-Type');
             foreach ($values as $value) {
-                header($name.': '.$value, $replace, $this->statusCode);
+                header($name . ': ' . $value, $replace, $this->statusCode);
             }
         }
 
         // cookies
         foreach ($this->headers->getCookies() as $cookie) {
-            header('Set-Cookie: '.$cookie, false, $this->statusCode);
+            header('Set-Cookie: ' . $cookie, false, $this->statusCode);
         }
 
         // status
@@ -679,7 +679,7 @@ class Response
         }
 
         $date = $date->setTimezone(new \DateTimeZone('UTC'));
-        $this->headers->set('Date', $date->format('D, d M Y H:i:s').' GMT');
+        $this->headers->set('Date', $date->format('D, d M Y H:i:s') . ' GMT');
 
         return $this;
     }
@@ -750,7 +750,7 @@ class Response
         }
 
         $date = $date->setTimezone(new \DateTimeZone('UTC'));
-        $this->headers->set('Expires', $date->format('D, d M Y H:i:s').' GMT');
+        $this->headers->set('Expires', $date->format('D, d M Y H:i:s') . ' GMT');
 
         return $this;
     }
@@ -899,7 +899,7 @@ class Response
         }
 
         $date = $date->setTimezone(new \DateTimeZone('UTC'));
-        $this->headers->set('Last-Modified', $date->format('D, d M Y H:i:s').' GMT');
+        $this->headers->set('Last-Modified', $date->format('D, d M Y H:i:s') . ' GMT');
 
         return $this;
     }
@@ -930,10 +930,10 @@ class Response
             $this->headers->remove('Etag');
         } else {
             if (!str_starts_with($etag, '"')) {
-                $etag = '"'.$etag.'"';
+                $etag = '"' . $etag . '"';
             }
 
-            $this->headers->set('ETag', (true === $weak ? 'W/' : '').$etag);
+            $this->headers->set('ETag', (true === $weak ? 'W/' : '') . $etag);
         }
 
         return $this;

@@ -67,7 +67,7 @@ class RateLimited
             $next,
             collect(Arr::wrap($limiterResponse))->map(function ($limit) {
                 return (object) [
-                    'key' => md5($this->limiterName.$limit->key),
+                    'key' => hash("sha256", $this->limiterName . $limit->key),
                     'maxAttempts' => $limit->maxAttempts,
                     'decayMinutes' => $limit->decayMinutes,
                 ];
@@ -88,8 +88,8 @@ class RateLimited
         foreach ($limits as $limit) {
             if ($this->limiter->tooManyAttempts($limit->key, $limit->maxAttempts)) {
                 return $this->shouldRelease
-                        ? $job->release($this->getTimeUntilNextRetry($limit->key))
-                        : false;
+                    ? $job->release($this->getTimeUntilNextRetry($limit->key))
+                    : false;
             }
 
             $this->limiter->hit($limit->key, $limit->decayMinutes * 60);

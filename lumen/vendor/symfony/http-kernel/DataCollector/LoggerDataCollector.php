@@ -69,7 +69,7 @@ class LoggerDataCollector extends DataCollector implements LateDataCollectorInte
             $this->data = $this->computeErrorsCount($containerDeprecationLogs);
             // get compiler logs later (only when they are needed) to improve performance
             $this->data['compiler_logs'] = [];
-            $this->data['compiler_logs_filepath'] = $this->containerPathPrefix.'Compiler.log';
+            $this->data['compiler_logs_filepath'] = $this->containerPathPrefix . 'Compiler.log';
             $this->data['logs'] = $this->sanitizeLogs(array_merge($this->logger->getLogs($this->currentRequest), $containerDeprecationLogs));
             $this->data = $this->cloneVar($this->data);
         }
@@ -197,7 +197,7 @@ class LoggerDataCollector extends DataCollector implements LateDataCollectorInte
 
     private function getContainerDeprecationLogs(): array
     {
-        if (null === $this->containerPathPrefix || !is_file($file = $this->containerPathPrefix.'Deprecations.log')) {
+        if (null === $this->containerPathPrefix || !is_file($file = $this->containerPathPrefix . 'Deprecations.log')) {
             return [];
         }
 
@@ -253,7 +253,7 @@ class LoggerDataCollector extends DataCollector implements LateDataCollectorInte
                 continue;
             }
 
-            $message = '_'.$log['message'];
+            $message = '_' . $log['message'];
             $exception = $log['context']['exception'];
 
             if ($exception instanceof SilencedErrorContext) {
@@ -273,7 +273,7 @@ class LoggerDataCollector extends DataCollector implements LateDataCollectorInte
                 continue;
             }
 
-            $errorId = md5("{$exception->getSeverity()}/{$exception->getLine()}/{$exception->getFile()}\0{$message}", true);
+            $errorId = hash("sha256", "{$exception->getSeverity()}/{$exception->getLine()}/{$exception->getFile()}\0{$message}", true);
 
             if (isset($sanitizedLogs[$errorId])) {
                 ++$sanitizedLogs[$errorId]['errorCount'];

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /*
  * This file is part of PHPUnit.
  *
@@ -7,6 +9,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PHPUnit\TextUI;
 
 use const PATH_SEPARATOR;
@@ -591,7 +594,7 @@ class Command
         if ($isOutdated) {
             printf(
                 'You are not using the latest version of PHPUnit.' . PHP_EOL .
-                'The latest version is PHPUnit %s.' . PHP_EOL,
+                    'The latest version is PHPUnit %s.' . PHP_EOL,
                 $latestVersion
             );
         } else {
@@ -632,7 +635,7 @@ class Command
     {
         $this->printVersionString();
 
-        print $message . PHP_EOL;
+        error_log($message . PHP_EOL);
 
         exit(TestRunner::FAILURE_EXIT);
     }
