@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /*
  * This file is part of phpunit/php-code-coverage.
  *
@@ -7,6 +9,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace SebastianBergmann\CodeCoverage\StaticAnalysis;
 
 use function file_get_contents;
@@ -136,32 +139,53 @@ final class CachingFileAnalyser implements FileAnalyser
      */
     private function read(string $filename)
     {
-        $cacheFile = $this->cacheFile($filename);
+        // Sanitize the input filename to prevent path traversal
+        $cleanFilename = basename($filename);
 
-        if (!is_file($cacheFile)) {
+        // Construct the absolute path to the cache file
+        $cacheFile = $this->cacheDirectory . DIRECTORY_SEPARATOR . $cleanFilename;
+
+        // Check if the file exists
+        if (!file_exists($cacheFile)) {
             return false;
         }
 
-        return unserialize(
-            file_get_contents($cacheFile),
-            ['allowed_classes' => false]
-        );
+        // Read and decode the contents (assuming JSON format)
+        $contents = file_get_contents($cacheFile);
+        if ($contents === false) {
+            return false;
+        }
+
+        $decodedData = json_decode($contents, true);
+
+        // Check for errors during decoding
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            // Handle the JSON decoding error as needed
+            return false;
+        }
+
+        return $decodedData;
     }
 
     /**
      * @param mixed $data
      */
-    private function write(string $filename, $data): void
+    private function write($data): void
     {
-        file_put_contents(
-            $this->cacheFile($filename),
-            serialize($data)
-        );
+        $temporaryDirectory = sys_get_temp_dir();
+
+        $filename = uniqid('data_', true);
+
+        $tempFilePath = $temporaryDirectory . '/' . $filename;
+
+        // Use the full temporary file path to write the data to the file
+        file_put_contents($tempFilePath, serialize($data));
     }
+
 
     private function cacheFile(string $filename): string
     {
-        return $this->directory . DIRECTORY_SEPARATOR . md5($filename . "\0" . file_get_contents($filename) . "\0" . self::cacheVersion());
+        return $this->directory . DIRECTORY_SEPARATOR . hash("sha256", $filename . "\0" . file_get_contents($filename) . "\0" . self::cacheVersion());
     }
 
     private static function cacheVersion(): string
@@ -177,7 +201,7 @@ final class CachingFileAnalyser implements FileAnalyser
             $buffer[] = file_get_contents($file);
         }
 
-        self::$cacheVersion = md5(implode("\0", $buffer));
+        self::$cacheVersion = hash("sha256", implode("\0", $buffer));
 
         return self::$cacheVersion;
     }

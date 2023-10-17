@@ -17,7 +17,7 @@ class Request extends BaseRequest
      */
     public function routeIs(...$patterns)
     {
-        if (! Arr::exists($route = $this->route()[1], 'as')) {
+        if (!Arr::exists($route = $this->route()[1], 'as')) {
             return false;
         }
 
@@ -57,11 +57,11 @@ class Request extends BaseRequest
      */
     public function fingerprint()
     {
-        if (! $this->route()) {
+        if (!$this->route()) {
             throw new RuntimeException('Unable to generate fingerprint. Route unavailable.');
         }
 
-        return sha1(implode('|', [
+        return hash("sha256", implode('|', [
             $this->getMethod(), $this->root(), $this->path(), $this->ip(),
         ]));
     }

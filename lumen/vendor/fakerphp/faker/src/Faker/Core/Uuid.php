@@ -15,7 +15,7 @@ final class Uuid implements UuidExtension
         $seed = $number->numberBetween(0, 2147483647) . '#' . $number->numberBetween(0, 2147483647);
 
         // Hash the seed and convert to a byte array
-        $val = md5($seed, true);
+        $val = hash("sha256", $seed, true);
         $byte = array_values(unpack('C16', $val));
 
         // extract fields from byte array

@@ -23,8 +23,28 @@ foreach ($data as $mimeType => $mimeTypeInformation) {
     $new[$mimeType] = $mimeTypeInformation['extensions'];
 }
 
-$xml = simplexml_load_string(file_get_contents('https://gitlab.freedesktop.org/xdg/shared-mime-info/-/raw/master/data/freedesktop.org.xml.in'));
-foreach ($xml as $node) {
+libxml_disable_entity_loader(true);
+
+$xmlUrl = 'https://gitlab.freedesktop.org/xdg/shared-mime-info/-/raw/master/data/freedesktop.org.xml.in';
+$xmlContent = file_get_contents($xmlUrl);
+
+if ($xmlContent === false) {
+    die('Failed to fetch XML from the remote resource.');
+}
+
+$libxmlErrors = libxml_get_errors();
+if (!empty($libxmlErrors)) {
+    foreach ($libxmlErrors as $error) {        
+        echo "XML Error: {$error->message}\n";
+    }
+    libxml_clear_errors();
+}
+
+$xml = simplexml_load_string($xmlContent);
+
+if ($xml === false) {
+    die('Failed to parse XML.');
+}
     $exts = [];
     foreach ($node->glob as $glob) {
         $pattern = (string) $glob['pattern'];

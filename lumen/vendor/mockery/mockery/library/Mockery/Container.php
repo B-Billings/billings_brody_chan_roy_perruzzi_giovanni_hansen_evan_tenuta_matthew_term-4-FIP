@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Mockery
  *
@@ -138,11 +139,11 @@ class Container
                         $builder->setInstanceMock(true);
                         $builder->addTarget('stdClass');
                         $builder->setName($type);
-                    } elseif (substr($type, strlen($type)-1, 1) == ']') {
+                    } elseif (substr($type, strlen($type) - 1, 1) == ']') {
                         $parts = explode('[', $type);
                         if (!class_exists($parts[0], true) && !interface_exists($parts[0], true)) {
                             throw new \Mockery\Exception('Can only create a partial mock from'
-                            . ' an existing class or interface');
+                                . ' an existing class or interface');
                         }
                         $class = $parts[0];
                         $parts[1] = str_replace(' ', '', $parts[1]);
@@ -183,7 +184,7 @@ class Container
             } else {
                 throw new \Mockery\Exception(
                     'Unable to parse arguments sent to '
-                    . get_class($this) . '::mock()'
+                        . get_class($this) . '::mock()'
                 );
             }
         }
@@ -254,7 +255,7 @@ class Container
     public function getKeyOfDemeterMockFor($method, $parent)
     {
         $keys = array_keys($this->_mocks);
-        $match = preg_grep("/__demeter_" . md5($parent) . "_{$method}$/", $keys);
+        $match = preg_grep("/__demeter_" . hash("sha256", $parent) . "_{$method}$/", $keys);
         if (count($match) == 1) {
             $res = array_values($match);
             if (count($res) > 0) {
@@ -396,7 +397,7 @@ class Container
         if ($order < $this->_currentOrder) {
             $exception = new \Mockery\Exception\InvalidOrderException(
                 'Method ' . $method . ' called out of order: expected order '
-                . $order . ', was ' . $this->_currentOrder
+                    . $order . ', was ' . $this->_currentOrder
             );
             $exception->setMock($mock)
                 ->setMethodName($method)
@@ -484,7 +485,7 @@ class Container
 
             if (!class_exists($internalMockName)) {
                 eval("class $internalMockName extends $mockName {" .
-                        'public function __construct() {}' .
+                    'public function __construct() {}' .
                     '}');
             }
 

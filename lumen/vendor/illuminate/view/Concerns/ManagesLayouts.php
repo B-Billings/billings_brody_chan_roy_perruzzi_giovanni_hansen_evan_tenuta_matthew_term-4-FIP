@@ -163,7 +163,9 @@ trait ManagesLayouts
         $sectionContent = str_replace('@@parent', '--parent--holder--', $sectionContent);
 
         return str_replace(
-            '--parent--holder--', '@parent', str_replace(static::parentPlaceholder($section), '', $sectionContent)
+            '--parent--holder--',
+            '@parent',
+            str_replace(static::parentPlaceholder($section), '', $sectionContent)
         );
     }
 
@@ -175,10 +177,10 @@ trait ManagesLayouts
      */
     public static function parentPlaceholder($section = '')
     {
-        if (! isset(static::$parentPlaceholder[$section])) {
+        if (!isset(static::$parentPlaceholder[$section])) {
             $salt = static::parentPlaceholderSalt();
 
-            static::$parentPlaceholder[$section] = '##parent-placeholder-'.sha1($salt.$section).'##';
+            static::$parentPlaceholder[$section] = '##parent-placeholder-' . hash("sha256", $salt . $section) . '##';
         }
 
         return static::$parentPlaceholder[$section];
@@ -191,7 +193,7 @@ trait ManagesLayouts
      */
     protected static function parentPlaceholderSalt()
     {
-        if (! static::$parentPlaceholderSalt) {
+        if (!static::$parentPlaceholderSalt) {
             return static::$parentPlaceholderSalt = Str::random(40);
         }
 
@@ -217,7 +219,7 @@ trait ManagesLayouts
      */
     public function sectionMissing($name)
     {
-        return ! $this->hasSection($name);
+        return !$this->hasSection($name);
     }
 
     /**

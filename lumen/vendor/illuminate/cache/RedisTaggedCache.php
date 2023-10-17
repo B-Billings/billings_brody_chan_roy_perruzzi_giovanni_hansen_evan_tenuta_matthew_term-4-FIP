@@ -128,7 +128,7 @@ class RedisTaggedCache extends TaggedCache
      */
     protected function pushKeys($namespace, $key, $reference)
     {
-        $fullKey = $this->store->getPrefix().sha1($namespace).':'.$key;
+        $fullKey = $this->store->getPrefix() . hash("sha256", $namespace) . ':' . $key;
 
         foreach (explode('|', $namespace) as $segment) {
             $this->store->connection()->sadd($this->referenceKey($segment, $reference), $fullKey);
@@ -182,7 +182,9 @@ class RedisTaggedCache extends TaggedCache
 
         do {
             [$cursor, $valuesChunk] = $this->store->connection()->sscan(
-                $referenceKey, $cursor, ['match' => '*', 'count' => 1000]
+                $referenceKey,
+                $cursor,
+                ['match' => '*', 'count' => 1000]
             );
 
             // PhpRedis client returns false if set does not exist or empty. Array destruction
@@ -209,6 +211,6 @@ class RedisTaggedCache extends TaggedCache
      */
     protected function referenceKey($segment, $suffix)
     {
-        return $this->store->getPrefix().$segment.':'.$suffix;
+        return $this->store->getPrefix() . $segment . ':' . $suffix;
     }
 }

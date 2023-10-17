@@ -86,9 +86,9 @@ class RetryCommand extends Command
     protected function getJobIdsByQueue($queue)
     {
         $ids = collect($this->laravel['queue.failer']->all())
-                        ->where('queue', $queue)
-                        ->pluck('id')
-                        ->toArray();
+            ->where('queue', $queue)
+            ->pluck('id')
+            ->toArray();
 
         if (count($ids) === 0) {
             $this->error("Unable to find failed jobs for queue [{$queue}].");
@@ -125,7 +125,8 @@ class RetryCommand extends Command
     protected function retryJob($job)
     {
         $this->laravel['queue']->connection($job->connection)->pushRaw(
-            $this->refreshRetryUntil($this->resetAttempts($job->payload)), $job->queue
+            $this->refreshRetryUntil($this->resetAttempts($job->payload)),
+            $job->queue
         );
     }
 
@@ -160,28 +161,42 @@ class RetryCommand extends Command
     {
         $payload = json_decode($payload, true);
 
-        if (! isset($payload['data']['command'])) {
+        if (!isset($payload['data']['command'])) {
             return json_encode($payload);
         }
 
-        if (Str::startsWith($payload['data']['command'], 'O:')) {
-            $instance = unserialize($payload['data']['command']);
+        $command = $payload['data']['command'];
+
+        if (Str::startsWith($command, 'O:')) {
+            $instance = $this->safeUnserialize($command);
         } elseif ($this->laravel->bound(Encrypter::class)) {
-            $instance = unserialize($this->laravel->make(Encrypter::class)->decrypt($payload['data']['command']));
+            $decryptedCommand = $this->laravel->make(Encrypter::class)->decrypt($command);
+            $instance = $this->safeUnserialize($decryptedCommand);
         }
 
-        if (! isset($instance)) {
+        if (!isset($instance)) {
             throw new RuntimeException('Unable to extract job payload.');
         }
 
-        if (is_object($instance) && ! $instance instanceof \__PHP_Incomplete_Class && method_exists($instance, 'retryUntil')) {
+        if (is_object($instance) && !$instance instanceof \__PHP_Incomplete_Class && method_exists($instance, 'retryUntil')) {
             $retryUntil = $instance->retryUntil();
 
             $payload['retryUntil'] = $retryUntil instanceof DateTimeInterface
-                                        ? $retryUntil->getTimestamp()
-                                        : $retryUntil;
+                ? $retryUntil->getTimestamp()
+                : $retryUntil;
         }
 
         return json_encode($payload);
+    }
+
+    protected function safeUnserialize($data)
+    {
+        $instance = @unserialize($data);
+
+        if ($instance === false) {
+            throw new RuntimeException('Failed to unserialize data.');
+        }
+
+        return $instance;
     }
 }

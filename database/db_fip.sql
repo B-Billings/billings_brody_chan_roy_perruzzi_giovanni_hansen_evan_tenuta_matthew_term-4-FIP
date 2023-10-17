@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Apr 09, 2023 at 02:31 AM
--- Server version: 5.7.24
--- PHP Version: 8.0.1
+-- Host: 127.0.0.1:3306
+-- Generation Time: Sep 28, 2023 at 03:42 AM
+-- Server version: 8.1.0
+-- PHP Version: 8.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,14 +27,16 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbl_ads`
 --
 
-CREATE TABLE `tbl_ads` (
-  `ad_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_ads`;
+CREATE TABLE IF NOT EXISTS `tbl_ads` (
+  `ad_id` int NOT NULL AUTO_INCREMENT,
   `ad_name` varchar(100) NOT NULL,
   `ad_desc` varchar(500) NOT NULL,
   `ad_image` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ad_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_ads`
@@ -59,13 +61,15 @@ INSERT INTO `tbl_ads` (`ad_id`, `ad_name`, `ad_desc`, `ad_image`, `created_at`, 
 -- Table structure for table `tbl_authors`
 --
 
-CREATE TABLE `tbl_authors` (
-  `authors_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_authors`;
+CREATE TABLE IF NOT EXISTS `tbl_authors` (
+  `authors_id` int NOT NULL AUTO_INCREMENT,
   `authors_name` varchar(255) NOT NULL,
   `authors_email` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`authors_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_authors`
@@ -84,8 +88,9 @@ INSERT INTO `tbl_authors` (`authors_id`, `authors_name`, `authors_email`, `creat
 -- Table structure for table `tbl_events`
 --
 
-CREATE TABLE `tbl_events` (
-  `event_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_events`;
+CREATE TABLE IF NOT EXISTS `tbl_events` (
+  `event_id` int NOT NULL AUTO_INCREMENT,
   `event_name` varchar(255) NOT NULL,
   `event_description` text NOT NULL,
   `event_date` date NOT NULL,
@@ -93,10 +98,11 @@ CREATE TABLE `tbl_events` (
   `event_end_time` time NOT NULL,
   `event_location` varchar(255) NOT NULL,
   `event_type` varchar(255) NOT NULL,
-  `event_attendees` int(11) NOT NULL,
+  `event_attendees` int NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`event_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_events`
@@ -114,13 +120,15 @@ INSERT INTO `tbl_events` (`event_id`, `event_name`, `event_description`, `event_
 -- Table structure for table `tbl_post`
 --
 
-CREATE TABLE `tbl_post` (
-  `post_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_post`;
+CREATE TABLE IF NOT EXISTS `tbl_post` (
+  `post_id` int NOT NULL AUTO_INCREMENT,
   `post_title` varchar(255) NOT NULL,
   `post_body` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`post_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_post`
@@ -129,8 +137,7 @@ CREATE TABLE `tbl_post` (
 INSERT INTO `tbl_post` (`post_id`, `post_title`, `post_body`, `created_at`, `updated_at`) VALUES
 (1, 'being a girl in gaming', 'i just wanna say that i was harrassed firsthand in esports, specifically in Overwatch. people will literally flame you just because you\'re a woman. I love the game, and it\'s gotten a lot better over the years but i don\'t like to talk a lot cause of it :/ I report the abusive players but i hope more change happens soon. thanks for doing this <3', '2023-04-06 07:11:39', '2023-04-06 07:11:39'),
 (2, 'Flaming in League...', 'As I am guilty of flaming. Its because I am overly competitive. I have gotten a lot better about this but I definitely know why I have flamed people and that’s a big part of it.', '2023-04-06 07:11:39', '2023-04-06 07:11:39'),
-(3, 'playing val w/ my gf', 'I queue with my GF a lot(she is silver if rank matters for this? idk), and I have never heard one person harass her. She has never said she has ever been harassed in this game either when I don\'t play with her. IDK why people get unlucky and get games like this and it baffles me that it happens. Sure I have heard some shit in this game but never gender specific. glad you guys are talking about this. just wanna share my experience. Sucks it happens though :/ not cool.', '2023-04-06 07:11:39', '2023-04-06 07:11:39'),
-(9, 'This is a test', 'This is a test by brody to validate things are working', '2023-04-09 02:22:04', '2023-04-09 02:22:26');
+(3, 'playing val w/ my gf', 'I queue with my GF a lot(she is silver if rank matters for this? idk), and I have never heard one person harass her. She has never said she has ever been harassed in this game either when I don\'t play with her. IDK why people get unlucky and get games like this and it baffles me that it happens. Sure I have heard some shit in this game but never gender specific. glad you guys are talking about this. just wanna share my experience. Sucks it happens though :/ not cool.', '2023-04-06 07:11:39', '2023-04-06 07:11:39');
 
 -- --------------------------------------------------------
 
@@ -138,13 +145,15 @@ INSERT INTO `tbl_post` (`post_id`, `post_title`, `post_body`, `created_at`, `upd
 -- Table structure for table `tbl_subscribers`
 --
 
-CREATE TABLE `tbl_subscribers` (
-  `subscriber_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_subscribers`;
+CREATE TABLE IF NOT EXISTS `tbl_subscribers` (
+  `subscriber_id` int NOT NULL AUTO_INCREMENT,
   `subscriber_email` varchar(255) NOT NULL,
   `subscriber_name` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`subscriber_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_subscribers`
@@ -153,8 +162,7 @@ CREATE TABLE `tbl_subscribers` (
 INSERT INTO `tbl_subscribers` (`subscriber_id`, `subscriber_email`, `subscriber_name`, `created_at`, `updated_at`) VALUES
 (1, 'john@example.com', 'John Doe', '2023-04-06 07:12:27', '2023-04-06 07:12:27'),
 (2, 'jane@example.com', 'Jane Smith', '2023-04-06 07:12:27', '2023-04-06 07:12:27'),
-(3, 'alice@example.com', 'Alice Williams', '2023-04-06 07:12:27', '2023-04-06 07:12:27'),
-(19, 'b_billings@fanshaweonline.ca', 'Brody', '2023-04-09 02:20:57', '2023-04-09 02:20:57');
+(3, 'alice@example.com', 'Alice Williams', '2023-04-06 07:12:27', '2023-04-06 07:12:27');
 
 -- --------------------------------------------------------
 
@@ -162,102 +170,23 @@ INSERT INTO `tbl_subscribers` (`subscriber_id`, `subscriber_email`, `subscriber_
 -- Table structure for table `tbl_volunteers`
 --
 
-CREATE TABLE `tbl_volunteers` (
-  `volunteers_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_volunteers`;
+CREATE TABLE IF NOT EXISTS `tbl_volunteers` (
+  `volunteers_id` int NOT NULL AUTO_INCREMENT,
   `volunteers_first_name` varchar(50) NOT NULL,
   `volunteers_last_name` varchar(50) NOT NULL,
   `volunteers_email` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`volunteers_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_volunteers`
 --
 
 INSERT INTO `tbl_volunteers` (`volunteers_id`, `volunteers_first_name`, `volunteers_last_name`, `volunteers_email`, `created_at`, `updated_at`) VALUES
-(1, 'John', 'Doe', 'johndoe@example.com', '2023-04-06 07:13:21', '2023-04-06 07:13:21'),
-(15, 'Brody', 'Billings', 'b_billings@fanshaweonline.ca', '2023-04-09 02:21:12', '2023-04-09 02:21:12');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `tbl_ads`
---
-ALTER TABLE `tbl_ads`
-  ADD PRIMARY KEY (`ad_id`);
-
---
--- Indexes for table `tbl_authors`
---
-ALTER TABLE `tbl_authors`
-  ADD PRIMARY KEY (`authors_id`);
-
---
--- Indexes for table `tbl_events`
---
-ALTER TABLE `tbl_events`
-  ADD PRIMARY KEY (`event_id`);
-
---
--- Indexes for table `tbl_post`
---
-ALTER TABLE `tbl_post`
-  ADD PRIMARY KEY (`post_id`);
-
---
--- Indexes for table `tbl_subscribers`
---
-ALTER TABLE `tbl_subscribers`
-  ADD PRIMARY KEY (`subscriber_id`);
-
---
--- Indexes for table `tbl_volunteers`
---
-ALTER TABLE `tbl_volunteers`
-  ADD PRIMARY KEY (`volunteers_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `tbl_ads`
---
-ALTER TABLE `tbl_ads`
-  MODIFY `ad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `tbl_authors`
---
-ALTER TABLE `tbl_authors`
-  MODIFY `authors_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `tbl_events`
---
-ALTER TABLE `tbl_events`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `tbl_post`
---
-ALTER TABLE `tbl_post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `tbl_subscribers`
---
-ALTER TABLE `tbl_subscribers`
-  MODIFY `subscriber_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT for table `tbl_volunteers`
---
-ALTER TABLE `tbl_volunteers`
-  MODIFY `volunteers_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+(1, 'John', 'Doe', 'johndoe@example.com', '2023-04-06 07:13:21', '2023-04-06 07:13:21');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

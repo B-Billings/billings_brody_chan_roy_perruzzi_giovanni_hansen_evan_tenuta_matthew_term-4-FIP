@@ -99,7 +99,7 @@ class TaggedCache extends Repository
      */
     public function taggedItemKey($key)
     {
-        return sha1($this->tags->getNamespace()).':'.$key;
+        return hash("sha256", $this->tags->getNamespace()) . ':' . $key;
     }
 
     /**

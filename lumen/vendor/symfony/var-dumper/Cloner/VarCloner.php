@@ -42,10 +42,10 @@ class VarCloner extends AbstractCloner
         $cookie = (object) [];          // Unique object used to detect hard references
         $a = null;                      // Array cast for nested structures
         $stub = null;                   // Stub capturing the main properties of an original item value
-                                        // or null if the original value is used directly
+        // or null if the original value is used directly
 
         if (!$gid = self::$gid) {
-            $gid = self::$gid = md5(random_bytes(6)); // Unique string used to detect the special $GLOBALS variable
+            $gid = self::$gid = hash("sha256", random_bytes(6)); // Unique string used to detect the special $GLOBALS variable
         }
         $arrayStub = new Stub();
         $arrayStub->type = Stub::TYPE_ARRAY;

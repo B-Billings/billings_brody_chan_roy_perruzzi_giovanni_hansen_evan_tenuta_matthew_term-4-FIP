@@ -202,7 +202,7 @@ trait Queueable
     protected function serializeJob($job)
     {
         if ($job instanceof Closure) {
-            if (! class_exists(CallQueuedClosure::class)) {
+            if (!class_exists(CallQueuedClosure::class)) {
                 throw new RuntimeException(
                     'To enable support for closure jobs, please install the illuminate/queue package.'
                 );
@@ -221,7 +221,7 @@ trait Queueable
      */
     public function dispatchNextJobInChain()
     {
-        if (! empty($this->chained)) {
+        if (!empty($this->chained)) {
             dispatch(tap(unserialize(array_shift($this->chained)), function ($next) {
                 $next->chained = $this->chained;
 

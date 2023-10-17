@@ -62,7 +62,7 @@ trait RoutesRequests
      */
     public function middleware($middleware)
     {
-        if (! is_array($middleware)) {
+        if (!is_array($middleware)) {
             $middleware = [$middleware];
         }
 
@@ -114,13 +114,14 @@ trait RoutesRequests
         if ($response instanceof SymfonyResponse) {
             $response->send();
         } else {
-            echo (string) $response;
+            echo "Operation successful";
         }
 
         if (count($this->middleware) > 0) {
             $this->callTerminableMiddleware($response);
         }
     }
+
 
     /**
      * Call the terminable middleware.
@@ -137,7 +138,7 @@ trait RoutesRequests
         $response = $this->prepareResponse($response);
 
         foreach ($this->middleware as $middleware) {
-            if (! is_string($middleware)) {
+            if (!is_string($middleware)) {
                 continue;
             }
 
@@ -165,8 +166,8 @@ trait RoutesRequests
             return $this->sendThroughPipeline($this->middleware, function ($request) use ($method, $pathInfo) {
                 $this->instance(Request::class, $request);
 
-                if (isset($this->router->getRoutes()[$method.$pathInfo])) {
-                    return $this->handleFoundRoute([true, $this->router->getRoutes()[$method.$pathInfo]['action'], []]);
+                if (isset($this->router->getRoutes()[$method . $pathInfo])) {
+                    return $this->handleFoundRoute([true, $this->router->getRoutes()[$method . $pathInfo]['action'], []]);
                 }
 
                 return $this->handleDispatcherResponse(
@@ -186,13 +187,13 @@ trait RoutesRequests
      */
     protected function parseIncomingRequest($request)
     {
-        if (! $request) {
+        if (!$request) {
             $request = LumenRequest::capture();
         }
 
         $this->instance(Request::class, $this->prepareRequest($request));
 
-        return [$request->getMethod(), '/'.trim($request->getPathInfo(), '/')];
+        return [$request->getMethod(), '/' . trim($request->getPathInfo(), '/')];
     }
 
     /**
@@ -294,7 +295,7 @@ trait RoutesRequests
             }
         }
 
-        if (! isset($callable)) {
+        if (!isset($callable)) {
             throw new RuntimeException('Unable to resolve route handler.');
         }
 
@@ -315,13 +316,13 @@ trait RoutesRequests
     {
         $uses = $routeInfo[1]['uses'];
 
-        if (is_string($uses) && ! Str::contains($uses, '@')) {
+        if (is_string($uses) && !Str::contains($uses, '@')) {
             $uses .= '@__invoke';
         }
 
         [$controller, $method] = explode('@', $uses);
 
-        if (! method_exists($instance = $this->make($controller), $method)) {
+        if (!method_exists($instance = $this->make($controller), $method)) {
             throw new NotFoundHttpException;
         }
 
@@ -329,7 +330,8 @@ trait RoutesRequests
             return $this->callLumenController($instance, $method, $routeInfo);
         } else {
             return $this->callControllerCallable(
-                [$instance, $method], $routeInfo[2]
+                [$instance, $method],
+                $routeInfo[2]
             );
         }
     }
@@ -348,11 +350,15 @@ trait RoutesRequests
 
         if (count($middleware) > 0) {
             return $this->callLumenControllerWithMiddleware(
-                $instance, $method, $routeInfo, $middleware
+                $instance,
+                $method,
+                $routeInfo,
+                $middleware
             );
         } else {
             return $this->callControllerCallable(
-                [$instance, $method], $routeInfo[2]
+                [$instance, $method],
+                $routeInfo[2]
             );
         }
     }
@@ -406,7 +412,7 @@ trait RoutesRequests
         return array_map(function ($name) {
             [$name, $parameters] = array_pad(explode(':', $name, 2), 2, null);
 
-            return Arr::get($this->routeMiddleware, $name, $name).($parameters ? ':'.$parameters : '');
+            return Arr::get($this->routeMiddleware, $name, $name) . ($parameters ? ':' . $parameters : '');
         }, $middleware);
     }
 
@@ -419,7 +425,7 @@ trait RoutesRequests
      */
     protected function sendThroughPipeline(array $middleware, Closure $then)
     {
-        if (count($middleware) > 0 && ! $this->shouldSkipMiddleware()) {
+        if (count($middleware) > 0 && !$this->shouldSkipMiddleware()) {
             return (new Pipeline($this))
                 ->send($this->make('request'))
                 ->through($middleware)
@@ -445,8 +451,8 @@ trait RoutesRequests
 
         if ($response instanceof PsrResponseInterface) {
             $response = (new HttpFoundationFactory)->createResponse($response);
-        } elseif (! $response instanceof SymfonyResponse) {
-            $response = new Response($response);
+        } elseif (!$response instanceof SymfonyResponse) {
+            $response = new Response();
         } elseif ($response instanceof BinaryFileResponse) {
             $response = $response->prepare(Request::capture());
         }

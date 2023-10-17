@@ -72,13 +72,12 @@ final class VcsIgnoredFilterIterator extends \FilterIterator
 
             [$exclusionRegex, $inclusionRegex] = $regexps;
 
-            if (preg_match($exclusionRegex, $fileRelativePath)) {
+            if (preg_match('/' . preg_quote($exclusionRegex, '/') . '/', $fileRelativePath)) {
                 $ignored = true;
-
                 continue;
             }
 
-            if (preg_match($inclusionRegex, $fileRelativePath)) {
+            if (preg_match('/^' . preg_quote($inclusionRegex, '/') . '$/', $fileRelativePath)) {
                 $ignored = false;
             }
         }

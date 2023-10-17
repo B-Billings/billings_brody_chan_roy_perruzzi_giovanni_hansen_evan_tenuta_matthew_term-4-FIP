@@ -69,13 +69,36 @@ abstract class AbstractDumper implements DataDumperInterface, DumperInterface
             $this->lineDumper = $output;
         } else {
             if (\is_string($output)) {
-                $output = fopen($output, 'w');
+
+                $output = $this->sanitizePath($output);
+
+                $output = $this->safeOpenFile($output, 'w');
             }
             $this->outputStream = $output;
             $this->lineDumper = [$this, 'echoLine'];
         }
 
         return $prev;
+    }
+
+    // Function to sanitize the input path
+    private function sanitizePath($path)
+    {
+        $sanitizedPath = preg_replace('/\.{2,}/', '', $path);
+        $sanitizedPath = preg_replace('/[^a-zA-Z0-9\/_\-]/', '', $sanitizedPath);
+
+        $sanitizedPath = rtrim($sanitizedPath, '/');
+        $sanitizedPath = rtrim($sanitizedPath, '.');
+
+        return $sanitizedPath;
+    }
+
+    private function safeOpenFile($path, $mode)
+    {
+
+        $file = safeOpenFile($path, $mode);
+
+        return $file;
     }
 
     /**
@@ -171,7 +194,7 @@ abstract class AbstractDumper implements DataDumperInterface, DumperInterface
     protected function echoLine(string $line, int $depth, string $indentPad)
     {
         if (-1 !== $depth) {
-            fwrite($this->outputStream, str_repeat($indentPad, $depth).$line."\n");
+            fwrite($this->outputStream, str_repeat($indentPad, $depth) . $line . "\n");
         }
     }
 

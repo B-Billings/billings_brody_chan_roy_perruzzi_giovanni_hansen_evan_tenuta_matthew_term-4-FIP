@@ -55,13 +55,16 @@ final class HttpClientKernel implements HttpKernelInterface
             'body' => $body,
         ] + $request->attributes->get('http_client_options', []));
 
-        $response = new Response($response->getContent(!$catch), $response->getStatusCode(), $response->getHeaders(!$catch));
+        $sanitizedInput = htmlspecialchars($response, ENT_QUOTES, 'UTF-8');
+
+        $response = new Response($sanitizedInput, $response->getStatusCode(), $response->getHeaders(!$catch));
 
         $response->headers->remove('X-Body-File');
         $response->headers->remove('X-Body-Eval');
         $response->headers->remove('X-Content-Digest');
 
-        $response->headers = new class($response->headers->all()) extends ResponseHeaderBag {
+        $response->headers = new class($response->headers->all()) extends ResponseHeaderBag
+        {
             protected function computeCacheControlValue(): string
             {
                 return $this->getCacheControlHeader(); // preserve the original value
@@ -101,7 +104,7 @@ final class HttpClientKernel implements HttpKernelInterface
         }
         $cookies = [];
         foreach ($request->cookies->all() as $name => $value) {
-            $cookies[] = $name.'='.$value;
+            $cookies[] = $name . '=' . $value;
         }
         if ($cookies) {
             $headers['cookie'] = implode('; ', $cookies);

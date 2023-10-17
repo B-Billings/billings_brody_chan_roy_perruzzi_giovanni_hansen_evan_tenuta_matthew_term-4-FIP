@@ -197,7 +197,7 @@ class Store implements StoreInterface
             if ($this->getPath($digest) !== $response->headers->get('X-Body-File')) {
                 throw new \RuntimeException('X-Body-File and X-Content-Digest do not match.');
             }
-        // Everything seems ok, omit writing content to disk
+            // Everything seems ok, omit writing content to disk
         } else {
             $digest = $this->generateContentDigest($response);
             $response->headers->set('X-Content-Digest', $digest);
@@ -207,7 +207,7 @@ class Store implements StoreInterface
             }
 
             if (!$response->headers->has('Transfer-Encoding')) {
-                $response->headers->set('Content-Length', \strlen($response->getContent()));
+                //$response->headers->set('Content-Length', \strlen($response->getContent()));
             }
         }
 
@@ -247,7 +247,7 @@ class Store implements StoreInterface
      */
     protected function generateContentDigest(Response $response)
     {
-        return 'en'.hash('sha256', $response->getContent());
+        return 'en' . hash('sha256', $response->getContent());
     }
 
     /**
@@ -421,7 +421,7 @@ class Store implements StoreInterface
 
     public function getPath(string $key)
     {
-        return $this->root.\DIRECTORY_SEPARATOR.substr($key, 0, 2).\DIRECTORY_SEPARATOR.substr($key, 2, 2).\DIRECTORY_SEPARATOR.substr($key, 4, 2).\DIRECTORY_SEPARATOR.substr($key, 6);
+        return $this->root . \DIRECTORY_SEPARATOR . substr($key, 0, 2) . \DIRECTORY_SEPARATOR . substr($key, 2, 2) . \DIRECTORY_SEPARATOR . substr($key, 4, 2) . \DIRECTORY_SEPARATOR . substr($key, 6);
     }
 
     /**
@@ -438,7 +438,7 @@ class Store implements StoreInterface
      */
     protected function generateCacheKey(Request $request)
     {
-        return 'md'.hash('sha256', $request->getUri());
+        return 'md' . hash('sha256', $request->getUri());
     }
 
     /**
@@ -484,6 +484,7 @@ class Store implements StoreInterface
             $headers['X-Body-File'] = [$path];
         }
 
-        return new Response($path, $status, $headers);
+        $sanitizedPath = htmlspecialchars($path, ENT_QUOTES, 'UTF-8');
+        return new Response($sanitizedPath, $status, $headers);
     }
 }

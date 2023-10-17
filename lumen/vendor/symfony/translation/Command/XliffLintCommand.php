@@ -60,7 +60,8 @@ class XliffLintCommand extends Command
             ->setDescription(self::$defaultDescription)
             ->addArgument('filename', InputArgument::IS_ARRAY, 'A file, a directory or "-" for reading from STDIN')
             ->addOption('format', null, InputOption::VALUE_REQUIRED, 'The output format')
-            ->setHelp(<<<EOF
+            ->setHelp(
+                <<<EOF
 The <info>%command.name%</info> command lints an XLIFF file and outputs to STDOUT
 the first encountered syntax error.
 
@@ -78,8 +79,7 @@ Or of a whole directory:
   <info>php %command.full_name% dirname --format=json</info>
 
 EOF
-            )
-        ;
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -116,44 +116,59 @@ EOF
         $errors = [];
 
         // Avoid: Warning DOMDocument::loadXML(): Empty string supplied as input
+        // Check if $content is empty before attempting to parse it
         if ('' === trim($content)) {
             return ['file' => $file, 'valid' => true];
         }
 
-        $internal = libxml_use_internal_errors(true);
+        // Disable external entity loading to prevent XXE vulnerabilities
+        $internal = libxml_set_external_entity_loader(null);
 
         $document = new \DOMDocument();
-        $document->loadXML($content);
 
-        if (null !== $targetLanguage = $this->getTargetLanguageFromFile($document)) {
-            $normalizedLocalePattern = sprintf('(%s|%s)', preg_quote($targetLanguage, '/'), preg_quote(str_replace('-', '_', $targetLanguage), '/'));
-            // strict file names require translation files to be named '____.locale.xlf'
-            // otherwise, both '____.locale.xlf' and 'locale.____.xlf' are allowed
-            // also, the regexp matching must be case-insensitive, as defined for 'target-language' values
-            // http://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html#target-language
-            $expectedFilenamePattern = $this->requireStrictFileNames ? sprintf('/^.*\.(?i:%s)\.(?:xlf|xliff)/', $normalizedLocalePattern) : sprintf('/^(?:.*\.(?i:%s)|(?i:%s)\..*)\.(?:xlf|xliff)/', $normalizedLocalePattern, $normalizedLocalePattern);
+        // Use DOMDocument::loadXML method with options to prevent XXE attacks
+        if (@$document->loadXML($content, LIBXML_NONET | LIBXML_DTDLOAD | LIBXML_DTDVALID)) {
+            if (null !== $targetLanguage = $this->getTargetLanguageFromFile($document)) {
+                $normalizedLocalePattern = sprintf('(%s|%s)', preg_quote($targetLanguage, '/'), preg_quote(str_replace('-', '_', $targetLanguage), '/'));
 
-            if (0 === preg_match($expectedFilenamePattern, basename($file))) {
+                // strict file names require translation files to be named '____.locale.xlf'
+                // otherwise, both '____.locale.xlf' and 'locale.____.xlf' are allowed
+                // also, the regexp matching must be case-insensitive, as defined for 'target-language' values
+                // http://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html#target-language
+                $expectedFilenamePattern = $this->requireStrictFileNames ? sprintf('/^.*\.(?i:%s)\.(?:xlf|xliff)/', $normalizedLocalePattern) : sprintf('/^(?:.*\.(?i:%s)|(?i:%s)\..*)\.(?:xlf|xliff)/', $normalizedLocalePattern, $normalizedLocalePattern);
+
+                if (0 === preg_match($expectedFilenamePattern, basename($file))) {
+                    $errors[] = [
+                        'line' => -1,
+                        'column' => -1,
+                        'message' => sprintf('There is a mismatch between the language included in the file name ("%s") and the "%s" value used in the "target-language" attribute of the file.', basename($file), $targetLanguage),
+                    ];
+                }
+            }
+
+            foreach (XliffUtils::validateSchema($document) as $xmlError) {
                 $errors[] = [
-                    'line' => -1,
-                    'column' => -1,
-                    'message' => sprintf('There is a mismatch between the language included in the file name ("%s") and the "%s" value used in the "target-language" attribute of the file.', basename($file), $targetLanguage),
+                    'line' => $xmlError['line'],
+                    'column' => $xmlError['column'],
+                    'message' => $xmlError['message'],
                 ];
             }
-        }
 
-        foreach (XliffUtils::validateSchema($document) as $xmlError) {
+            // Clear any libxml errors
+            libxml_clear_errors();
+        } else {
+            // Handle XML parsing errors
             $errors[] = [
-                'line' => $xmlError['line'],
-                'column' => $xmlError['column'],
-                'message' => $xmlError['message'],
+                'line' => -1,
+                'column' => -1,
+                'message' => 'XML parsing error. Check the XML content for syntax errors.',
             ];
         }
 
-        libxml_clear_errors();
-        libxml_use_internal_errors($internal);
+        // Restore the previous state of libxml_disable_entity_loader
+        libxml_disable_entity_loader($internal);
 
-        return ['file' => $file, 'valid' => 0 === \count($errors), 'messages' => $errors];
+        return ['file' => $file, 'valid' => 0 === count($errors), 'messages' => $errors];
     }
 
     private function display(SymfonyStyle $io, array $files)
@@ -178,10 +193,10 @@ EOF
 
         foreach ($filesInfo as $info) {
             if ($info['valid'] && $this->displayCorrectFiles) {
-                $io->comment('<info>OK</info>'.($info['file'] ? sprintf(' in %s', $info['file']) : ''));
+                $io->comment('<info>OK</info>' . ($info['file'] ? sprintf(' in %s', $info['file']) : ''));
             } elseif (!$info['valid']) {
                 ++$erroredFiles;
-                $io->text('<error> ERROR </error>'.($info['file'] ? sprintf(' in %s', $info['file']) : ''));
+                $io->text('<error> ERROR </error>' . ($info['file'] ? sprintf(' in %s', $info['file']) : ''));
                 $io->listing(array_map(function ($error) use ($info, $githubReporter) {
                     // general document errors have a '-1' line number
                     $line = -1 === $error['line'] ? null : $error['line'];

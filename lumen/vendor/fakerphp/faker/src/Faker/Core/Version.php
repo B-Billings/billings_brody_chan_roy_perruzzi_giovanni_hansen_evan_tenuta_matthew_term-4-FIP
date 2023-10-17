@@ -51,7 +51,7 @@ final class Version implements VersionExtension
     {
         if (mt_rand(0, 1)) {
             // short git revision syntax: https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection
-            return substr(sha1(Helper::lexify('??????')), 0, 7);
+            return substr(hash("sha256", Helper::lexify('??????')), 0, 7);
         }
 
         // date syntax

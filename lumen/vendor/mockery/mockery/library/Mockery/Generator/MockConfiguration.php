@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Mockery
  *
@@ -133,7 +134,7 @@ class MockConfiguration
             'mockOriginalDestructor' => $this->mockOriginalDestructor
         );
 
-        return md5(serialize($vars));
+        return hash("sha256", serialize($vars));
     }
 
     /**
@@ -179,9 +180,11 @@ class MockConfiguration
          * such, we can't mock it and will need a pass to add a dummy
          * implementation
          */
-        if ($this->getTargetClass()
+        if (
+            $this->getTargetClass()
             && $this->getTargetClass()->implementsInterface("Serializable")
-            && $this->getTargetClass()->hasInternalAncestor()) {
+            && $this->getTargetClass()->hasInternalAncestor()
+        ) {
             $methods = array_filter($methods, function ($method) {
                 return $method->getName() !== "unserialize";
             });
@@ -322,7 +325,7 @@ class MockConfiguration
             if (strpos($this->targetClassName, '@') !== false) {
                 $alias = (new MockNameBuilder())
                     ->addPart('anonymous_class')
-                    ->addPart(md5($this->targetClassName))
+                    ->addPart(hash("sha256", $this->targetClassName))
                     ->build();
                 class_alias($this->targetClassName, $alias);
             }
@@ -331,10 +334,10 @@ class MockConfiguration
             if ($this->getTargetObject() == false && $dtc->isFinal()) {
                 throw new \Mockery\Exception(
                     'The class ' . $this->targetClassName . ' is marked final and its methods'
-                    . ' cannot be replaced. Classes marked final can be passed in'
-                    . ' to \Mockery::mock() as instantiated objects to create a'
-                    . ' partial mock, but only if the mock is not subject to type'
-                    . ' hinting checks.'
+                        . ' cannot be replaced. Classes marked final can be passed in'
+                        . ' to \Mockery::mock() as instantiated objects to create a'
+                        . ' partial mock, but only if the mock is not subject to type'
+                        . ' hinting checks.'
                 );
             }
 
@@ -428,12 +431,12 @@ class MockConfiguration
 
         if ($this->getTargetObject()) {
             $className = get_class($this->getTargetObject());
-            $nameBuilder->addPart(strpos($className, '@') !== false ? md5($className) : $className);
+            $nameBuilder->addPart(strpos($className, '@') !== false ? hash("sha256", $className) : $className);
         }
 
         if ($this->getTargetClass()) {
             $className = $this->getTargetClass()->getName();
-            $nameBuilder->addPart(strpos($className, '@') !== false ? md5($className) : $className);
+            $nameBuilder->addPart(strpos($className, '@') !== false ? hash("sha256", $className) : $className);
         }
 
         foreach ($this->getTargetInterfaces() as $targetInterface) {
