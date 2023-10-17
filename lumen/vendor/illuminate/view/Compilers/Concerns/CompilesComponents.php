@@ -24,8 +24,8 @@ trait CompilesComponents
     protected function compileComponent($expression)
     {
         [$component, $alias, $data] = strpos($expression, ',') !== false
-                    ? array_map('trim', explode(',', trim($expression, '()'), 3)) + ['', '', '']
-                    : [trim($expression, '()'), '', ''];
+            ? array_map('trim', explode(',', trim($expression, '()'), 3)) + ['', '', '']
+            : [trim($expression, '()'), '', ''];
 
         $component = trim($component, '\'"');
 
@@ -46,7 +46,7 @@ trait CompilesComponents
      */
     public static function newComponentHash(string $component)
     {
-        static::$componentHashStack[] = $hash = sha1($component);
+        static::$componentHashStack[] = $hash = hash("sha256", $component);
 
         return $hash;
     }
@@ -63,9 +63,9 @@ trait CompilesComponents
     public static function compileClassComponentOpening(string $component, string $alias, string $data, string $hash)
     {
         return implode("\n", [
-            '<?php if (isset($component)) { $__componentOriginal'.$hash.' = $component; } ?>',
-            '<?php $component = $__env->getContainer()->make('.Str::finish($component, '::class').', '.($data ?: '[]').'); ?>',
-            '<?php $component->withName('.$alias.'); ?>',
+            '<?php if (isset($component)) { $__componentOriginal' . $hash . ' = $component; } ?>',
+            '<?php $component = $__env->getContainer()->make(' . Str::finish($component, '::class') . ', ' . ($data ?: '[]') . '); ?>',
+            '<?php $component->withName(' . $alias . '); ?>',
             '<?php if ($component->shouldRender()): ?>',
             '<?php $__env->startComponent($component->resolveView(), $component->data()); ?>',
         ]);
@@ -90,11 +90,11 @@ trait CompilesComponents
     {
         $hash = array_pop(static::$componentHashStack);
 
-        return $this->compileEndComponent()."\n".implode("\n", [
+        return $this->compileEndComponent() . "\n" . implode("\n", [
             '<?php endif; ?>',
-            '<?php if (isset($__componentOriginal'.$hash.')): ?>',
-            '<?php $component = $__componentOriginal'.$hash.'; ?>',
-            '<?php unset($__componentOriginal'.$hash.'); ?>',
+            '<?php if (isset($__componentOriginal' . $hash . ')): ?>',
+            '<?php $component = $__componentOriginal' . $hash . '; ?>',
+            '<?php unset($__componentOriginal' . $hash . '); ?>',
             '<?php endif; ?>',
         ]);
     }
@@ -187,8 +187,8 @@ trait CompilesComponents
         }
 
         return is_string($value) ||
-               (is_object($value) && ! $value instanceof ComponentAttributeBag && method_exists($value, '__toString'))
-                        ? e($value)
-                        : $value;
+            (is_object($value) && !$value instanceof ComponentAttributeBag && method_exists($value, '__toString'))
+            ? e($value)
+            : $value;
     }
 }

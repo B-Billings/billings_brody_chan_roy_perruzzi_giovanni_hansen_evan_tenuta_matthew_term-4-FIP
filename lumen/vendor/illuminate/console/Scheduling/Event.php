@@ -191,14 +191,16 @@ class Event
      */
     public function run(Container $container)
     {
-        if ($this->withoutOverlapping &&
-            ! $this->mutex->create($this)) {
+        if (
+            $this->withoutOverlapping &&
+            !$this->mutex->create($this)
+        ) {
             return;
         }
 
         $this->runInBackground
-                    ? $this->runCommandInBackground($container)
-                    : $this->runCommandInForeground($container);
+            ? $this->runCommandInBackground($container)
+            : $this->runCommandInForeground($container);
     }
 
     /**
@@ -208,7 +210,7 @@ class Event
      */
     public function mutexName()
     {
-        return 'framework'.DIRECTORY_SEPARATOR.'schedule-'.sha1($this->expression.$this->command);
+        return 'framework' . DIRECTORY_SEPARATOR . 'schedule-' . hash("sha256", $this->expression . $this->command);
     }
 
     /**
@@ -222,15 +224,24 @@ class Event
         try {
             $this->callBeforeCallbacks($container);
 
-            $this->exitCode = Process::fromShellCommandline(
-                $this->buildCommand(), base_path(), null, null, null
-            )->run();
+            // Ensure that the input to fromShellCommandline is properly sanitized.
+            $command = escapeshellcmd($this->buildCommand());
+
+            // Use an array for the command and arguments to avoid shell injection.
+            $commandArray = [$command];
+
+            $process = new Process($commandArray);
+            $process->setWorkingDirectory(base_path());
+            $process->run();
+
+            $this->exitCode = $process->getExitCode();
 
             $this->callAfterCallbacks($container);
         } finally {
             $this->removeMutex();
         }
     }
+
 
     /**
      * Run the command in the background.
@@ -243,7 +254,8 @@ class Event
         try {
             $this->callBeforeCallbacks($container);
 
-            Process::fromShellCommandline($this->buildCommand(), base_path(), null, null, null)->run();
+            $command = escapeshellarg($this->buildCommand());
+            Process::fromShellCommandline($command, base_path(), null, null, null)->run();
         } catch (Throwable $exception) {
             $this->removeMutex();
 
@@ -313,12 +325,12 @@ class Event
      */
     public function isDue($app)
     {
-        if (! $this->runsInMaintenanceMode() && $app->isDownForMaintenance()) {
+        if (!$this->runsInMaintenanceMode() && $app->isDownForMaintenance()) {
             return false;
         }
 
         return $this->expressionPasses() &&
-               $this->runsInEnvironment($app->environment());
+            $this->runsInEnvironment($app->environment());
     }
 
     /**
@@ -367,7 +379,7 @@ class Event
     public function filtersPass($app)
     {
         foreach ($this->filters as $callback) {
-            if (! $app->call($callback)) {
+            if (!$app->call($callback)) {
                 return false;
             }
         }
@@ -478,7 +490,7 @@ class Event
     protected function ensureOutputIsBeingCaptured()
     {
         if (is_null($this->output) || $this->output == $this->getDefaultOutput()) {
-            $this->sendOutputTo(storage_path('logs/schedule-'.sha1($this->mutexName()).'.log'));
+            $this->sendOutputTo(storage_path('logs/schedule-' . hash("sha256", $this->mutexName()) . '.log'));
         }
     }
 
@@ -490,17 +502,44 @@ class Event
      * @param  bool  $onlyIfOutputExists
      * @return void
      */
-    protected function emailOutput(Mailer $mailer, $addresses, $onlyIfOutputExists = false)
+    protected function emailOutput(Mailer $mailer, array $addresses, bool $onlyIfOutputExists = false)
     {
-        $text = is_file($this->output) ? file_get_contents($this->output) : '';
+        // Check if the output file exists and is readable.
+        if ($onlyIfOutputExists && !is_readable($this->output)) {
+            throw new \Exception("Output file does not exist or is not readable: {$this->output}");
+        }
 
-        if ($onlyIfOutputExists && empty($text)) {
+        // Sanitize the file path before using it.
+        $outputPath = realpath($this->output);
+
+        if ($outputPath === false || strpos($outputPath, realpath(__DIR__)) !== 0) {
+            throw new \Exception("Invalid output file path: {$this->output}");
+        }
+
+        // Ensure the sanitized path is within a designated directory.
+        $allowedDirectory = realpath(__DIR__);
+
+        if (strncmp($outputPath, $allowedDirectory, strlen($allowedDirectory)) !== 0) {
+            throw new \Exception("Output file path is outside the allowed directory: {$this->output}");
+        }
+
+        // Read the content of the output file.
+        $content = is_readable($outputPath) ? file_get_contents($outputPath) : '';
+
+        if ($onlyIfOutputExists && empty($content)) {
+            // If the output file is empty and we require content, do not send the email.
             return;
         }
 
-        $mailer->raw($text, function ($m) use ($addresses) {
-            $m->to($addresses)->subject($this->getEmailSubject());
-        });
+        try {
+            // Send the email with the file content.
+            $mailer->raw($content, function ($m) use ($addresses) {
+                $m->to($addresses)->subject($this->getEmailSubject());
+            });
+        } catch (\Exception $e) {
+            // Handle exceptions when sending the email.
+            throw new \Exception("Email sending failed: " . $e->getMessage());
+        }
     }
 
     /**
@@ -596,7 +635,7 @@ class Event
         return function (Container $container, HttpClient $http) use ($url) {
             try {
                 $http->request('GET', $url);
-            } catch (ClientExceptionInterface|TransferException $e) {
+            } catch (ClientExceptionInterface | TransferException $e) {
                 $container->make(ExceptionHandler::class)->report($e);
             }
         };
@@ -848,11 +887,21 @@ class Event
     protected function withOutputCallback(Closure $callback, $onlyIfOutputExists = false)
     {
         return function (Container $container) use ($callback, $onlyIfOutputExists) {
-            $output = $this->output && is_file($this->output) ? file_get_contents($this->output) : '';
+            if ($this->output && is_file($this->output)) {
+                $outputPath = realpath($this->output);
+
+                if ($outputPath !== false && strpos($outputPath, '/') === 0) {
+                    $output = file_get_contents($outputPath);
+                } else {
+                    throw new InvalidArgumentException('Invalid or malicious file path.');
+                }
+            } else {
+                $output = '';
+            }
 
             return $onlyIfOutputExists && empty($output)
-                            ? null
-                            : $container->call($callback, ['output' => new Stringable($output)]);
+                ? null
+                : $container->call($callback, ['output' => new Stringable($output)]);
         };
     }
 

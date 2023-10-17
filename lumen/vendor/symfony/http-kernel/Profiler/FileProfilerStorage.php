@@ -199,7 +199,7 @@ class FileProfilerStorage implements ProfilerStorageInterface
         $folderA = substr($token, -2, 2);
         $folderB = substr($token, -4, 2);
 
-        return $this->folder.'/'.$folderA.'/'.$folderB.'/'.$token;
+        return $this->folder . '/' . $folderA . '/' . $folderB . '/' . $token;
     }
 
     /**
@@ -209,7 +209,7 @@ class FileProfilerStorage implements ProfilerStorageInterface
      */
     protected function getIndexFilename()
     {
-        return $this->folder.'/index.csv';
+        return $this->folder . '/index.csv';
     }
 
     /**
@@ -243,12 +243,12 @@ class FileProfilerStorage implements ProfilerStorageInterface
             $buffer = fread($file, $chunkSize);
 
             if (false === ($upTo = strrpos($buffer, "\n"))) {
-                $line = $buffer.$line;
+                $line = $buffer . $line;
                 continue;
             }
 
             $position += $upTo;
-            $line = substr($buffer, $upTo + 1).$line;
+            $line = substr($buffer, $upTo + 1) . $line;
             fseek($file, max(0, $position), \SEEK_SET);
 
             if ('' !== $line) {
@@ -292,11 +292,33 @@ class FileProfilerStorage implements ProfilerStorageInterface
             return null;
         }
 
-        $h = fopen($file, 'r');
-        flock($h, \LOCK_SH);
+        $fileName = sanitizeInput($file);
+
+        function sanitizeInput($input)
+        {
+            $input = preg_replace('/\.\.([\/\\\\])*/', '', $input);
+            return $input;
+        }
+
+        $h = fopen($fileName, 'r');
+
+        if (
+            $h === false
+        ) {
+            die("Unable to open the file.");
+        }
+
+        flock(
+            $h,
+            LOCK_SH
+        );
         $data = stream_get_contents($h);
-        flock($h, \LOCK_UN);
+        flock(
+            $h,
+            LOCK_UN
+        );
         fclose($h);
+
 
         if (\function_exists('gzdecode')) {
             $data = @gzdecode($data) ?: $data;

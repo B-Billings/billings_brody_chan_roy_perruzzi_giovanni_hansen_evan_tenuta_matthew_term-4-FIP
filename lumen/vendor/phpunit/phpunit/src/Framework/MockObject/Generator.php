@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /*
  * This file is part of PHPUnit.
  *
@@ -7,6 +9,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PHPUnit\Framework\MockObject;
 
 use const DIRECTORY_SEPARATOR;
@@ -268,7 +271,7 @@ EOT;
             $intersectionName = sprintf(
                 'Intersection_%s_%s',
                 implode('_', $unqualifiedNames),
-                substr(md5((string) mt_rand()), 0, 8)
+                substr(hash("sha256", (string) mt_rand()), 0, 8)
             );
         } while (interface_exists($intersectionName, false));
 
@@ -312,8 +315,10 @@ EOT;
      */
     public function getMockForAbstractClass(string $originalClassName, array $arguments = [], string $mockClassName = '', bool $callOriginalConstructor = true, bool $callOriginalClone = true, bool $callAutoload = true, array $mockedMethods = null, bool $cloneArguments = true): MockObject
     {
-        if (class_exists($originalClassName, $callAutoload) ||
-            interface_exists($originalClassName, $callAutoload)) {
+        if (
+            class_exists($originalClassName, $callAutoload) ||
+            interface_exists($originalClassName, $callAutoload)
+        ) {
             try {
                 $reflector = new ReflectionClass($originalClassName);
                 // @codeCoverageIgnoreStart
@@ -464,12 +469,13 @@ EOT;
             );
         }
 
-        $key = md5(
+        $key = hash(
+            "sha256",
             $type .
-            serialize($methods) .
-            serialize($callOriginalClone) .
-            serialize($cloneArguments) .
-            serialize($callOriginalMethods)
+                serialize($methods) .
+                serialize($callOriginalClone) .
+                serialize($cloneArguments) .
+                serialize($callOriginalMethods)
         );
 
         if (!isset(self::$cache[$key])) {
@@ -801,8 +807,8 @@ EOT;
 
             if (!empty($_mockClassName['namespaceName'])) {
                 $prologue = 'namespace ' . $_mockClassName['namespaceName'] .
-                            " {\n\n" . $prologue . "}\n\n" .
-                            "namespace {\n\n";
+                    " {\n\n" . $prologue . "}\n\n" .
+                    "namespace {\n\n";
 
                 $epilogue = "\n\n}";
             }
@@ -881,9 +887,11 @@ EOT;
             }
 
             // @see https://github.com/sebastianbergmann/phpunit-mock-objects/issues/103
-            if ($isInterface && $class->implementsInterface(Traversable::class) &&
+            if (
+                $isInterface && $class->implementsInterface(Traversable::class) &&
                 !$class->implementsInterface(Iterator::class) &&
-                !$class->implementsInterface(IteratorAggregate::class)) {
+                !$class->implementsInterface(IteratorAggregate::class)
+            ) {
                 $additionalInterfaces[] = Iterator::class;
 
                 $mockMethods->addMethods(
@@ -1027,7 +1035,7 @@ EOT;
         if ($className === '') {
             do {
                 $className = $prefix . $type . '_' .
-                             substr(md5((string) mt_rand()), 0, 8);
+                    substr(hash("sha256", (string) mt_rand()), 0, 8);
             } while (class_exists($className, false));
         }
 

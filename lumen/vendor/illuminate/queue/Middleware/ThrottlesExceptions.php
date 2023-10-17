@@ -98,7 +98,7 @@ class ThrottlesExceptions
 
             $this->limiter->clear($jobKey);
         } catch (Throwable $throwable) {
-            if ($this->whenCallback && ! call_user_func($this->whenCallback, $throwable)) {
+            if ($this->whenCallback && !call_user_func($this->whenCallback, $throwable)) {
                 throw $throwable;
             }
 
@@ -156,12 +156,12 @@ class ThrottlesExceptions
     protected function getKey($job)
     {
         if ($this->key) {
-            return $this->prefix.$this->key;
+            return $this->prefix . $this->key;
         } elseif ($this->byJob) {
-            return $this->prefix.$job->job->uuid();
+            return $this->prefix . $job->job->uuid();
         }
 
-        return $this->prefix.md5(get_class($job));
+        return $this->prefix . hash("sha256", get_class($job));
     }
 
     /**

@@ -186,7 +186,7 @@ abstract class AbstractSessionListener implements EventSubscriberInterface, Rese
                             $expire,
                             $sessionCookiePath,
                             $sessionCookieDomain,
-                            $sessionCookieSecure,
+                            true,
                             $sessionCookieHttpOnly,
                             false,
                             $sessionCookieSameSite
@@ -203,7 +203,7 @@ abstract class AbstractSessionListener implements EventSubscriberInterface, Rese
         if ($autoCacheControl) {
             $maxAge = $response->headers->hasCacheControlDirective('public') ? 0 : (int) $response->getMaxAge();
             $response
-                ->setExpires(new \DateTimeImmutable('+'.$maxAge.' seconds'))
+                ->setExpires(new \DateTimeImmutable('+' . $maxAge . ' seconds'))
                 ->setPrivate()
                 ->setMaxAge($maxAge)
                 ->headers->addCacheControlDirective('must-revalidate');
@@ -300,7 +300,7 @@ abstract class AbstractSessionListener implements EventSubscriberInterface, Rese
         $mergedSessionOptions = [];
 
         foreach (session_get_cookie_params() as $key => $value) {
-            $mergedSessionOptions['cookie_'.$key] = $value;
+            $mergedSessionOptions['cookie_' . $key] = $value;
         }
 
         foreach ($sessionOptions as $key => $value) {

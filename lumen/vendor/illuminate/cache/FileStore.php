@@ -74,7 +74,9 @@ class FileStore implements Store, LockProvider
         $this->ensureCacheDirectoryExists($path = $this->path($key));
 
         $result = $this->files->put(
-            $path, $this->expiration($seconds).serialize($value), true
+            $path,
+            $this->expiration($seconds) . serialize($value),
+            true
         );
 
         if ($result !== false && $result > 0) {
@@ -112,7 +114,7 @@ class FileStore implements Store, LockProvider
 
         if (empty($expire) || $this->currentTime() >= $expire) {
             $file->truncate()
-                ->write($this->expiration($seconds).serialize($value))
+                ->write($this->expiration($seconds) . serialize($value))
                 ->close();
 
             $this->ensurePermissionsAreCorrect($path);
@@ -135,7 +137,7 @@ class FileStore implements Store, LockProvider
     {
         $directory = dirname($path);
 
-        if (! $this->files->exists($directory)) {
+        if (!$this->files->exists($directory)) {
             $this->files->makeDirectory($directory, 0777, true, true);
 
             // We're creating two levels of directories (e.g. 7e/24), so we check them both...
@@ -152,8 +154,10 @@ class FileStore implements Store, LockProvider
      */
     protected function ensurePermissionsAreCorrect($path)
     {
-        if (is_null($this->filePermission) ||
-            intval($this->files->chmod($path), 8) == $this->filePermission) {
+        if (
+            is_null($this->filePermission) ||
+            intval($this->files->chmod($path), 8) == $this->filePermission
+        ) {
             return;
         }
 
@@ -222,14 +226,14 @@ class FileStore implements Store, LockProvider
      */
     public function flush()
     {
-        if (! $this->files->isDirectory($this->directory)) {
+        if (!$this->files->isDirectory($this->directory)) {
             return false;
         }
 
         foreach ($this->files->directories($this->directory) as $directory) {
             $deleted = $this->files->deleteDirectory($directory);
 
-            if (! $deleted || $this->files->exists($directory)) {
+            if (!$deleted || $this->files->exists($directory)) {
                 return false;
             }
         }
@@ -252,7 +256,9 @@ class FileStore implements Store, LockProvider
         // the expiration UNIX timestamps from the start of the file's contents.
         try {
             $expire = substr(
-                $contents = $this->files->get($path, true), 0, 10
+                $contents = $this->files->get($path, true),
+                0,
+                10
             );
         } catch (Exception $e) {
             return $this->emptyPayload();
@@ -301,9 +307,9 @@ class FileStore implements Store, LockProvider
      */
     protected function path($key)
     {
-        $parts = array_slice(str_split($hash = sha1($key), 2), 0, 2);
+        $parts = array_slice(str_split($hash = hash("sha256", $key), 2), 0, 2);
 
-        return $this->directory.'/'.implode('/', $parts).'/'.$hash;
+        return $this->directory . '/' . implode('/', $parts) . '/' . $hash;
     }
 
     /**

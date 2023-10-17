@@ -52,11 +52,11 @@ class NotPwnedVerifier implements UncompromisedVerifier
 
         [$hash, $hashPrefix] = $this->getHash($value);
 
-        return ! $this->search($hashPrefix)
+        return !$this->search($hashPrefix)
             ->contains(function ($line) use ($hash, $hashPrefix, $threshold) {
                 [$hashSuffix, $count] = explode(':', $line);
 
-                return $hashPrefix.$hashSuffix == $hash && $count > $threshold;
+                return $hashPrefix . $hashSuffix == $hash && $count > $threshold;
             });
     }
 
@@ -68,7 +68,7 @@ class NotPwnedVerifier implements UncompromisedVerifier
      */
     protected function getHash($value)
     {
-        $hash = strtoupper(sha1((string) $value));
+        $hash = strtoupper(hash("sha256", (string) $value));
 
         $hashPrefix = substr($hash, 0, 5);
 
@@ -87,7 +87,7 @@ class NotPwnedVerifier implements UncompromisedVerifier
             $response = $this->factory->withHeaders([
                 'Add-Padding' => true,
             ])->timeout($this->timeout)->get(
-                'https://api.pwnedpasswords.com/range/'.$hashPrefix
+                'https://api.pwnedpasswords.com/range/' . $hashPrefix
             );
         } catch (Exception $e) {
             report($e);

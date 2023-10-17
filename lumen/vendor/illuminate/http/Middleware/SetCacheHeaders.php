@@ -21,7 +21,7 @@ class SetCacheHeaders
     {
         $response = $next($request);
 
-        if (! $request->isMethodCacheable() || ! $response->getContent()) {
+        if (!$request->isMethodCacheable() || !$response->getContent()) {
             return $response;
         }
 
@@ -30,7 +30,7 @@ class SetCacheHeaders
         }
 
         if (isset($options['etag']) && $options['etag'] === true) {
-            $options['etag'] = md5($response->getContent());
+            $options['etag'] = hash("sha256", $response->getContent());
         }
 
         if (isset($options['last_modified'])) {

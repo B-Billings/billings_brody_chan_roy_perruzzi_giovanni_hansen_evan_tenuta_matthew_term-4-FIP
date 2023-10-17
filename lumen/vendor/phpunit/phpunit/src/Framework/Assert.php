@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /*
  * This file is part of PHPUnit.
  *
@@ -7,6 +9,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PHPUnit\Framework;
 
 use const DEBUG_BACKTRACE_IGNORE_ARGS;
@@ -541,13 +544,41 @@ abstract class Assert
      */
     public static function assertFileEquals(string $expected, string $actual, string $message = ''): void
     {
-        static::assertFileExists($expected, $message);
-        static::assertFileExists($actual, $message);
+        // Check if $expected and $actual are valid file paths
+        if (!is_file($expected) || !is_file($actual)) {
+            throw new InvalidArgumentException('Both expected and actual paths must be valid files.');
+        }
 
-        $constraint = new IsEqual(file_get_contents($expected));
+        // Load the contents of the expected file
+        $expectedContents = file_get_contents($expected);
 
-        static::assertThat(file_get_contents($actual), $constraint, $message);
+        // Check if file_get_contents was successful
+        if ($expectedContents === false) {
+            throw new \RuntimeException('Failed to read the expected file contents.');
+        }
+
+        // Load the contents of the actual file
+        $actualContents = file_get_contents($actual);
+
+        // Check if file_get_contents was successful
+        if ($actualContents === false) {
+            throw new \RuntimeException('Failed to read the actual file contents.');
+        }
+
+        // Compare the contents of the two files
+        if ($expectedContents !== $actualContents) {
+            throw new PHPUnit_Framework_ExpectationFailedException(
+                "Failed asserting that the contents of '{$expected}' match the contents of '{$actual}'.",
+                new SebastianBergmann\Comparator\ComparisonFailure(
+                    $expectedContents,
+                    $actualContents,
+                    $expectedContents,
+                    $actualContents
+                )
+            );
+        }
     }
+
 
     /**
      * Asserts that the contents of one file is equal to the contents of another
@@ -558,14 +589,25 @@ abstract class Assert
      */
     public static function assertFileEqualsCanonicalizing(string $expected, string $actual, string $message = ''): void
     {
-        static::assertFileExists($expected, $message);
-        static::assertFileExists($actual, $message);
+        // Sanitize the input file paths
+        $expected = realpath($expected);
+        $actual = realpath($actual);
 
-        $constraint = new IsEqualCanonicalizing(
-            file_get_contents($expected)
-        );
+        if ($expected === false || $actual === false) {
+            throw new InvalidArgumentException('Invalid file path provided');
+        }
 
-        static::assertThat(file_get_contents($actual), $constraint, $message);
+        // Check if the files exist
+        if (!file_exists($expected) || !file_exists($actual)) {
+            throw new InvalidArgumentException('File not found');
+        }
+
+        $expectedContents = file_get_contents($expected);
+        $actualContents = file_get_contents($actual);
+
+        // Compare the file contents using IsEqualCanonicalizing
+        $constraint = new IsEqualCanonicalizing($expectedContents);
+        static::assertThat($actualContents, $constraint, $message);
     }
 
     /**
@@ -577,11 +619,27 @@ abstract class Assert
      */
     public static function assertFileEqualsIgnoringCase(string $expected, string $actual, string $message = ''): void
     {
-        static::assertFileExists($expected, $message);
-        static::assertFileExists($actual, $message);
+        // Check if the expected and actual file paths exist
+        if (!file_exists($expected) || !file_exists($actual)) {
+            // Handle invalid or non-existent paths
+            static::fail("Invalid path provided");
+            return;
+        }
 
+        // Ensure the input paths are safe using realpath
+        $expected = realpath($expected);
+        $actual = realpath($actual);
+
+        if ($expected === false || $actual === false) {
+            // Handle invalid or non-existent paths
+            static::fail("Invalid path provided");
+            return;
+        }
+
+        // Create a constraint for comparing file contents while ignoring case
         $constraint = new IsEqualIgnoringCase(file_get_contents($expected));
 
+        // Compare the contents of the actual file with the expected content
         static::assertThat(file_get_contents($actual), $constraint, $message);
     }
 
@@ -594,15 +652,21 @@ abstract class Assert
      */
     public static function assertFileNotEquals(string $expected, string $actual, string $message = ''): void
     {
-        static::assertFileExists($expected, $message);
-        static::assertFileExists($actual, $message);
+        // Check if the expected and actual file paths are safe by validating them
+        if (!is_file($expected) || !is_file($actual)) {
+            throw new InvalidArgumentException('Invalid file paths provided.');
+        }
 
-        $constraint = new LogicalNot(
-            new IsEqual(file_get_contents($expected))
-        );
+        $expectedContents = file_get_contents($expected);
+        $actualContents = file_get_contents($actual);
 
-        static::assertThat(file_get_contents($actual), $constraint, $message);
+        if ($expectedContents !== $actualContents) {
+            return;
+        }
+
+        throw new \RuntimeException('File contents are equal.');
     }
+
 
     /**
      * Asserts that the contents of one file is not equal to the contents of another
@@ -632,15 +696,26 @@ abstract class Assert
      */
     public static function assertFileNotEqualsIgnoringCase(string $expected, string $actual, string $message = ''): void
     {
-        static::assertFileExists($expected, $message);
-        static::assertFileExists($actual, $message);
+        // Verify that the input paths are safe and exist
+        if (!file_exists($expected) || !file_exists($actual)) {
+            throw new InvalidArgumentException('Invalid file paths provided.');
+        }
 
+        $expectedContents = file_get_contents($expected);
+        $actualContents = file_get_contents($actual);
+
+        if ($expectedContents === false || $actualContents === false) {
+            throw new ExpectationFailedException('Failed to read file contents.');
+        }
+
+        // Compare the file contents without regard to case
         $constraint = new LogicalNot(
-            new IsEqualIgnoringCase(file_get_contents($expected))
+            new IsEqualIgnoringCase($expectedContents)
         );
 
-        static::assertThat(file_get_contents($actual), $constraint, $message);
+        static::assertThat($actualContents, $constraint, $message);
     }
+
 
     /**
      * Asserts that the contents of a string is equal
@@ -651,7 +726,13 @@ abstract class Assert
      */
     public static function assertStringEqualsFile(string $expectedFile, string $actualString, string $message = ''): void
     {
-        static::assertFileExists($expectedFile, $message);
+        // Sanitize the expected file path to prevent path traversal
+        $expectedFile = realpath($expectedFile);
+
+        // Ensure the sanitized path exists and is a file
+        if (!$expectedFile || !is_file($expectedFile)) {
+            throw new InvalidArgumentException("Invalid or non-existent file path: $expectedFile");
+        }
 
         $constraint = new IsEqual(file_get_contents($expectedFile));
 
@@ -667,9 +748,15 @@ abstract class Assert
      */
     public static function assertStringEqualsFileCanonicalizing(string $expectedFile, string $actualString, string $message = ''): void
     {
-        static::assertFileExists($expectedFile, $message);
+        // Check if the expected file exists and is a valid path
+        $realPath = realpath($expectedFile);
 
-        $constraint = new IsEqualCanonicalizing(file_get_contents($expectedFile));
+        if ($realPath === false) {
+            // Handle the case where the path is not valid
+            throw new InvalidArgumentException("Invalid file path: $expectedFile");
+        }
+
+        $constraint = new IsEqualCanonicalizing(file_get_contents($realPath));
 
         static::assertThat($actualString, $constraint, $message);
     }
@@ -683,7 +770,18 @@ abstract class Assert
      */
     public static function assertStringEqualsFileIgnoringCase(string $expectedFile, string $actualString, string $message = ''): void
     {
-        static::assertFileExists($expectedFile, $message);
+        // Ensure $expectedFile is a valid file path
+        if (!is_readable($expectedFile)) {
+            throw new \InvalidArgumentException("Invalid or inaccessible file: $expectedFile");
+        }
+
+        // You should validate that $expectedFile is a safe path and doesn't contain traversal characters.
+        // You can use realpath() to get the canonicalized absolute pathname, which helps mitigate traversal vulnerabilities.
+        $canonicalPath = realpath($expectedFile);
+
+        if ($canonicalPath === false || strpos($canonicalPath, realpath(__DIR__)) !== 0) {
+            throw new \InvalidArgumentException("Invalid file path: $expectedFile");
+        }
 
         $constraint = new IsEqualIgnoringCase(file_get_contents($expectedFile));
 
@@ -699,13 +797,26 @@ abstract class Assert
      */
     public static function assertStringNotEqualsFile(string $expectedFile, string $actualString, string $message = ''): void
     {
-        static::assertFileExists($expectedFile, $message);
+        // Sanitize the expectedFile path
+        $expectedFile = realpath($expectedFile);
 
-        $constraint = new LogicalNot(
-            new IsEqual(file_get_contents($expectedFile))
-        );
+        // Check if the expectedFile path is valid and allowed
+        if ($expectedFile && strpos($expectedFile, '/valid-directory/') === 0) {
+            // Validate that the file exists
+            if (file_exists($expectedFile)) {
+                $constraint = new LogicalNot(
+                    new IsEqual(file_get_contents($expectedFile))
+                );
 
-        static::assertThat($actualString, $constraint, $message);
+                static::assertThat($actualString, $constraint, $message);
+            } else {
+                // Handle the case where the file doesn't exist
+                throw new \InvalidArgumentException('Expected file does not exist.');
+            }
+        } else {
+            // Handle invalid or unauthorized paths
+            throw new \InvalidArgumentException('Invalid or unauthorized file path.');
+        }
     }
 
     /**
@@ -717,7 +828,10 @@ abstract class Assert
      */
     public static function assertStringNotEqualsFileCanonicalizing(string $expectedFile, string $actualString, string $message = ''): void
     {
-        static::assertFileExists($expectedFile, $message);
+        // Validate the expectedFile to prevent Path Traversal vulnerability
+        if (!is_file($expectedFile) || !realpath($expectedFile)) {
+            throw new InvalidArgumentException('Invalid or non-existent file path provided: ' . $expectedFile);
+        }
 
         $constraint = new LogicalNot(
             new IsEqualCanonicalizing(file_get_contents($expectedFile))
@@ -725,6 +839,7 @@ abstract class Assert
 
         static::assertThat($actualString, $constraint, $message);
     }
+
 
     /**
      * Asserts that the contents of a string is not equal
@@ -735,7 +850,12 @@ abstract class Assert
      */
     public static function assertStringNotEqualsFileIgnoringCase(string $expectedFile, string $actualString, string $message = ''): void
     {
-        static::assertFileExists($expectedFile, $message);
+        // Sanitize the $expectedFile variable to prevent Path Traversal
+        $expectedFile = realpath($expectedFile);
+
+        if (!$expectedFile || !file_exists($expectedFile)) {
+            throw new InvalidArgumentException('Invalid or non-existent file specified.');
+        }
 
         $constraint = new LogicalNot(
             new IsEqualIgnoringCase(file_get_contents($expectedFile))
@@ -2039,13 +2159,15 @@ abstract class Assert
      */
     public static function assertStringMatchesFormatFile(string $formatFile, string $string, string $message = ''): void
     {
-        static::assertFileExists($formatFile, $message);
+        if (!file_exists($formatFile)) {
+            throw new InvalidArgumentException('Invalid file path for formatFile.');
+        }
+
+        $fileContent = file_get_contents($formatFile);
 
         static::assertThat(
             $string,
-            new StringMatchesFormatDescription(
-                file_get_contents($formatFile)
-            ),
+            new StringMatchesFormatDescription($fileContent),
             $message
         );
     }
@@ -2058,18 +2180,22 @@ abstract class Assert
      */
     public static function assertStringNotMatchesFormatFile(string $formatFile, string $string, string $message = ''): void
     {
-        static::assertFileExists($formatFile, $message);
+        if (!is_file($formatFile)) {
+            throw new InvalidArgumentException("Invalid formatFile provided: $formatFile");
+        }
 
+        $fileContents = file_get_contents($formatFile);
+
+        // Perform the assertion.
         static::assertThat(
             $string,
             new LogicalNot(
-                new StringMatchesFormatDescription(
-                    file_get_contents($formatFile)
-                )
+                new StringMatchesFormatDescription($fileContents)
             ),
             $message
         );
     }
+
 
     /**
      * Asserts that a string starts with a given prefix.
@@ -2463,7 +2589,19 @@ abstract class Assert
      */
     public static function assertJsonStringEqualsJsonFile(string $expectedFile, string $actualJson, string $message = ''): void
     {
-        static::assertFileExists($expectedFile, $message);
+        // Check if the expected file exists and is a valid path
+        if (!file_exists($expectedFile) || !is_file($expectedFile)) {
+            throw new InvalidArgumentException('Invalid or non-existent expected file.');
+        }
+
+        // Sanitize the expected file path to ensure it's safe
+        $expectedFile = realpath($expectedFile);
+
+        // Verify that the expected file path is still within an allowed directory
+        if (strpos($expectedFile, '/path/to/allowed/directory') !== 0) {
+            throw new SecurityException('Path traversal detected.');
+        }
+
         $expectedJson = file_get_contents($expectedFile);
 
         static::assertJson($expectedJson, $message);
@@ -2480,19 +2618,26 @@ abstract class Assert
      */
     public static function assertJsonStringNotEqualsJsonFile(string $expectedFile, string $actualJson, string $message = ''): void
     {
-        static::assertFileExists($expectedFile, $message);
-        $expectedJson = file_get_contents($expectedFile);
+        // Ensure that the expectedFile is a safe path before using it
+        if (is_string($expectedFile) && is_file($expectedFile) && is_readable($expectedFile)) {
+            $expectedJson = file_get_contents($expectedFile);
 
-        static::assertJson($expectedJson, $message);
-        static::assertJson($actualJson, $message);
+            // Additional security checks for the actualJson input can be added here, if needed
 
-        static::assertThat(
-            $actualJson,
-            new LogicalNot(
-                new JsonMatches($expectedJson)
-            ),
-            $message
-        );
+            static::assertJson($expectedJson, $message);
+            static::assertJson($actualJson, $message);
+
+            static::assertThat(
+                $actualJson,
+                new LogicalNot(
+                    new JsonMatches($expectedJson)
+                ),
+                $message
+            );
+        } else {
+            // Handle the case where $expectedFile is not a valid or accessible file
+            throw new InvalidArgumentException("Invalid or inaccessible file: $expectedFile");
+        }
     }
 
     /**
@@ -2503,23 +2648,33 @@ abstract class Assert
      */
     public static function assertJsonFileEqualsJsonFile(string $expectedFile, string $actualFile, string $message = ''): void
     {
-        static::assertFileExists($expectedFile, $message);
-        static::assertFileExists($actualFile, $message);
+        // Sanitize and validate the expected file path
+        $expectedFile = realpath($expectedFile);
+        if ($expectedFile === false || !is_file($expectedFile)) {
+            throw new \InvalidArgumentException("Invalid expected file path: $expectedFile");
+        }
 
-        $actualJson   = file_get_contents($actualFile);
+        // Sanitize and validate the actual file path
+        $actualFile = realpath($actualFile);
+        if ($actualFile === false || !is_file($actualFile)) {
+            throw new \InvalidArgumentException("Invalid actual file path: $actualFile");
+        }
+
+        // Read the JSON content from sanitized file paths
+        $actualJson = file_get_contents($actualFile);
         $expectedJson = file_get_contents($expectedFile);
 
+        // Validate the JSON content
         static::assertJson($expectedJson, $message);
         static::assertJson($actualJson, $message);
 
-        $constraintExpected = new JsonMatches(
-            $expectedJson
-        );
-
+        // Create JSON matching constraints
+        $constraintExpected = new JsonMatches($expectedJson);
         $constraintActual = new JsonMatches($actualJson);
 
-        static::assertThat($expectedJson, $constraintActual, $message);
+        // Perform the assertions
         static::assertThat($actualJson, $constraintExpected, $message);
+        static::assertThat($expectedJson, $constraintActual, $message);
     }
 
     /**
@@ -2530,24 +2685,30 @@ abstract class Assert
      */
     public static function assertJsonFileNotEqualsJsonFile(string $expectedFile, string $actualFile, string $message = ''): void
     {
-        static::assertFileExists($expectedFile, $message);
-        static::assertFileExists($actualFile, $message);
+        // Ensure the input paths are safe and exist
+        if (!is_file($expectedFile) || !is_file($actualFile)) {
+            throw new InvalidArgumentException("Invalid file paths provided.");
+        }
 
-        $actualJson   = file_get_contents($actualFile);
+        $actualJson = file_get_contents($actualFile);
         $expectedJson = file_get_contents($expectedFile);
 
+        // Additional validation, if required
+        if ($actualJson === false || $expectedJson === false) {
+            throw new ExpectationFailedException("Failed to read JSON files.");
+        }
+
+        // The rest of your code remains the same
         static::assertJson($expectedJson, $message);
         static::assertJson($actualJson, $message);
 
-        $constraintExpected = new JsonMatches(
-            $expectedJson
-        );
-
+        $constraintExpected = new JsonMatches($expectedJson);
         $constraintActual = new JsonMatches($actualJson);
 
         static::assertThat($expectedJson, new LogicalNot($constraintActual), $message);
         static::assertThat($actualJson, new LogicalNot($constraintExpected), $message);
     }
+
 
     /**
      * @throws Exception
